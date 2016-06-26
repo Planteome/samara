@@ -74,7 +74,7 @@ class ApsnetParser$Test extends FlatSpec with Matchers with NameFinderStatic {
     println(s"found ${diseases.size} disease interactions:")
     println("disease\tpathogen\thost")
     diseases.foreach(disease => {
-      s"${disease.name}\t${disease.pathogen}\t${disease.host}"
+      println(s"${disease.name}\t${disease.pathogen}\t${disease.host}")
     })
   }
 
