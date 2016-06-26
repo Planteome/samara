@@ -29,7 +29,6 @@ abstract class ApsnetParser extends NameFinder {
   }
 
   def parse(doc: Document): Iterable[Disease] = {
-
     val diseaseLists = doc >> elements("dt,dd")
     val elems = diseaseLists.map(elem => {
       (elem.tagName, elem >> text(elem.tagName))

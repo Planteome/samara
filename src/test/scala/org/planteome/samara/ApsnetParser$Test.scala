@@ -9,13 +9,6 @@ import net.ruippeixotog.scalascraper.model.Document
 import org.scalatest._
 
 
-trait NameFinderStatic extends NameFinder {
-
-  def findNames(text: String): List[String] = {
-    List(text)
-  }
-}
-
 object ParserStatic extends ApsnetParser with NameFinderStatic {
   def parsePageIndex(doc: Document) : Iterable[String] = {
     doc >> elements(".link-item") >> attrs("href")("a")
@@ -23,10 +16,10 @@ object ParserStatic extends ApsnetParser with NameFinderStatic {
 
 }
 
-class ApsnetParser$Test extends FlatSpec with Matchers with NameFinderStatic {
+class ApsnetParser$Test extends FlatSpec with Matchers with NameFinderStatic with ParseTestUtil {
 
   "Parsing Alfalfa" should "result in pathogen-host interactions for disease" in {
-    val doc: Document = parse("Alfalfa.aspx")
+    val doc: Document = parse("apsnet/Alfalfa.aspx")
     val interactions: Iterable[Disease] = ParserStatic.parse(doc)
 
     interactions should contain(Disease("Alfalfa witches’-broom", "‘Candidatus Phytoplasma asteris’", "Diseases of Alfalfa (Medicago sativa L.)"))
@@ -34,7 +27,7 @@ class ApsnetParser$Test extends FlatSpec with Matchers with NameFinderStatic {
   }
 
   "Parsing Peach and Nectarine" should "result in pathogen-host interactions for disease" in {
-    val doc: Document = parse("PeachandNectarine.aspx")
+    val doc: Document = parse("apsnet/PeachandNectarine.aspx")
     val interactions: Iterable[Disease] = ParserStatic.parse(doc)
 
     interactions should contain(Disease("Bacterial canker", "Pseudomonas syringae pv. syringae van Hall 1902", "Diseases of Peach and Nectarine Peach: Prunus persica (L.) Batsch Nectarine: P. persica var. nucipersica (Suckow) C.K. Schneid."))
@@ -50,7 +43,7 @@ class ApsnetParser$Test extends FlatSpec with Matchers with NameFinderStatic {
   }
 
   "Parsing disease index" should "result in a list of urls to species pages" in {
-    val doc: Document = parse("default.aspx")
+    val doc: Document = parse("apsnet/default.aspx")
     val links = ParserStatic.parsePageIndex(doc)
 
     links should contain("http://www.apsnet.org/publications/commonnames/Pages/AfricanDaisy.aspx")
@@ -78,7 +71,4 @@ class ApsnetParser$Test extends FlatSpec with Matchers with NameFinderStatic {
     })
   }
 
-  def parse(resourceName: String): Document = {
-    JsoupBrowser().parseFile(new File(classOf[ApsnetParser$Test].getResource(resourceName).getFile))
-  }
 }
