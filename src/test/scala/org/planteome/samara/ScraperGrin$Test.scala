@@ -9,7 +9,7 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
   val wheat = Crop(65)
 
   "scraper" should "enable retrieval of crop ids" in {
-    val cropIds: Iterable[Crop] = cropIds
+    val cropIds: Iterable[Crop] = ScraperGrin.getCropIds()
     cropIds should contain(apple)
     cropIds should contain(wheat)
   }
