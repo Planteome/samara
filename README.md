@@ -8,9 +8,14 @@ A commandline tool to extract plant trait data from [open data sources](sources.
 ## prerequisites
 sbt 0.13.8+/java jdk 8+/git
 
-## usage
-
+## build/test
 1. clone this repo
-2. build jar by ```sbt assembly```
-3. list available sources by ```java -jar target/scala-2.11/samara-assembly-0.1.0.jar list```
-4. scrape a apsnet and put results into ```apsnet.tsv``` by ```java -jar target/scala-2.11/samara-assembly-0.1.0.jar scrape apsnet > apsnet.tsv```
+2. build jar by ```sbt assembly```: a stand-alone jar ```samara-assembly-[version].jar``` will be available in ```target/scala-2.11/```
+3. run tests by ```sbt test```
+
+## download
+Don't like building your own jar? Go to [releases](https://github.com/jhpoelen/samara/releases), pick a release and download the jar from there.
+
+## usage
+1. list available sources by ```java -jar samara-assembly-[version].jar list```
+2. scrape a source called ```apsnet``` and put results into ```apsnet.tsv``` by ```java -jar samara-assembly-[version].jar scrape apsnet > apsnet.tsv```
