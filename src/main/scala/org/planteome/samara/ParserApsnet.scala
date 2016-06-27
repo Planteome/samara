@@ -14,19 +14,7 @@ import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 
 case class Disease(name: String, pathogen: String, host: String)
 
-trait NameFinder {
-  def findNames(text: String): List[String]
-}
-
-object Apsnet extends App {
-  println("Hi!")
-}
-
-abstract class ApsnetParser extends NameFinder {
-
-  def scrub(str: String): String = {
-    """[\s\xa0]+""".r.replaceAllIn(str, " ").trim()
-  }
+abstract class ParserApsnet extends NameFinder with Scrubber {
 
   def parse(doc: Document): Iterable[Disease] = {
     val diseaseLists = doc >> elements("dt,dd")

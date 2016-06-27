@@ -9,4 +9,11 @@ trait ParseTestUtil {
   def parse(resourceName: String): Document = {
     JsoupBrowser().parseFile(new File(classOf[ParseTestUtil].getResource(resourceName).getFile))
   }
+
+  def get(resourceName: String): Document = {
+    println(s"[$resourceName] downloading ...")
+    val doc = JsoupBrowser().get(resourceName)
+    println(s"[$resourceName] downloaded.")
+    doc
+  }
 }
