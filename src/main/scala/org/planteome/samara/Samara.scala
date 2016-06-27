@@ -9,7 +9,7 @@ case class Config(source: String = "",
                   mode: String = "")
 
 object Samara extends App {
-  val sourceMap = Map[String, Scraper]("apsnet" -> ScraperApsnet, "ars-grin" -> ScraperGrin)
+  val sourceMap = Map[String, Scraper]("apsnet" -> ScraperApsnet, "grin" -> ScraperGrin)
   val supportedSources = sourceMap.keys.toSeq
 
   val parser = new scopt.OptionParser[Config]("samara") {
