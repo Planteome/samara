@@ -6,12 +6,7 @@ import net.ruippeixotog.scalascraper.model.Document
 import org.scalatest._
 
 
-object ParserApsnetStatic$ extends ParserApsnet with NameFinderStatic {
-  def parsePageIndex(doc: Document) : Iterable[String] = {
-    doc >> elements(".link-item") >> attrs("href")("a")
-  }
-
-}
+object ParserApsnetStatic$ extends ParserApsnet with NameFinderStatic
 
 class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic with ParseTestUtil {
 
@@ -48,22 +43,13 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
   }
 
   "get all pages" should "produce a giant list of disease interactions" in {
-    val doc: Document = get("http://www.apsnet.org/publications/commonnames/Pages/default.aspx")
-    val pages = ParserApsnetStatic$.parsePageIndex(doc)
-    val diseases = pages.flatMap(page => {
-      val pageDoc = get(page)
-      val results = ParserApsnetStatic$.parse(pageDoc)
-      results
-    })
+    val diseases = ScraperApsnet.scrapeDiseases()
 
     diseases should contain(Disease("Bacterial canker", "Pseudomonas syringae pv. syringae van Hall 1902", "Diseases of Peach and Nectarine Peach: Prunus persica (L.) Batsch Nectarine: P. persica var. nucipersica (Suckow) C.K. Schneid."))
     diseases should contain(Disease("Alfalfa witches’-broom", "‘Candidatus Phytoplasma asteris’", "Diseases of Alfalfa (Medicago sativa L.)"))
 
     println(s"found ${diseases.size} disease interactions:")
-    println("disease\tpathogen\thost")
-    diseases.foreach(disease => {
-      println(s"${disease.name}\t${disease.pathogen}\t${disease.host}")
-    })
+
   }
 
 }

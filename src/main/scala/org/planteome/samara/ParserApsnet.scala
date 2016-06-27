@@ -16,6 +16,10 @@ case class Disease(name: String, pathogen: String, host: String)
 
 abstract class ParserApsnet extends NameFinder with Scrubber {
 
+  def parsePageIndex(doc: Document): Iterable[String] = {
+    doc >> elements(".link-item") >> attrs("href")("a")
+  }
+
   def parse(doc: Document): Iterable[Disease] = {
     val diseaseLists = doc >> elements("dt,dd")
     val elems = diseaseLists.map(elem => {

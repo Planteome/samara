@@ -74,59 +74,36 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
   val apple = Crop(115)
   val wheat = Crop(65)
 
-  "parser" should "enable retrieval of crop ids" in {
-    val doc: Document = get("https://npgsweb.ars-grin.gov/gringlobal/descriptors.aspx")
-    val cropIds = ParserGrinStatic.parseCropIds(doc)
+  "scraper" should "enable retrieval of crop ids" in {
+    val cropIds: Iterable[Crop] = cropIds
     cropIds should contain(apple)
     cropIds should contain(wheat)
   }
 
-  "parser" should "be able to retrieve accessors for apple crops" in {
-    val accessionIds = Seq(apple).foldLeft(Seq.empty[Int])((agg0, crop) => {
-      val descriptorsForCropDoc = get(crop.descriptorsUrl)
-      val descriptorsForCrop = ParserGrinStatic.parseAvailableDescriptorIdsForCropId(descriptorsForCropDoc)
-      descriptorsForCrop.foldLeft(Seq.empty[Int])((agg1, descriptorForCrop) => {
-        val detailsDoc = get(descriptorForCrop.detailsUrl)
-        val descriptorMethods = ParserGrinStatic.parseAvailableMethodsForDescriptor(detailsDoc)
-        descriptorMethods.foldLeft(Seq.empty[Int])((agg2, descriptorMethod) => {
-          val accessionsDoc = get(descriptorMethod.accessionsUrl)
-          val accessionIds = ParserGrinStatic.parseAvailableAccessionsForDescriptorAndMethod(accessionsDoc)
-          agg2 ++ accessionIds
-        }) ++ agg1
-      }) ++ agg0
 
-    })
+  "parser" should "be able to retrieve accessors for apple crops" in {
+
+    val cropIds: Seq[Crop] = Seq(apple)
+    val accessionIds: Iterable[Int] = ScraperGrin.getAccessionIds(cropIds)
 
     println(s"counted [${accessionIds.size}] accessors")
     println(s"counted [${accessionIds.distinct.size}] distinct accessors")
     accessionIds.size should be > 0
   }
 
+
   "parser" should "be able to retrieve info for individual accessions" in {
     val firstAccessionId = 1265054
-    val accessionDetailsPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionDetail.aspx?id=$firstAccessionId")
-    val accessionObservationPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionObservation.aspx?id=$firstAccessionId")
-    val observations = ParserGrinStatic.parseObservationsForAccession(accessionObservationPage)
-    val taxonIds = ParserGrinStatic.parseTaxonIdInAccessionDetails(accessionDetailsPage)
-
-    val taxonPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/taxonomydetail.aspx?id=${
-      taxonIds.head
-    }")
-    val (scientificName, taxa) = ParserGrinStatic.parseTaxonPage(taxonPage)
-
-    observations.size should be > 0
-    val objs = observations
-      .map {
-        case (descriptorId, methodId, observedValue) => {
-          Observation(scientificName = scientificName, taxonPath = taxa, descriptor = Descriptor(descriptorId), method = Method(id = methodId, descriptor = Descriptor(descriptorId)), value = observedValue, id = firstAccessionId)
-        }
-      }
+    val objs: Iterable[Observation] = ScraperGrin.getObservationsForAccession(firstAccessionId)
 
     val obs: Observation = Observation("Triticum monococcum L. subsp. monococcum", List(Taxon("genus", "Triticum", 12442), Taxon("family", "Poaceae", 897), Taxon("subfamily", "Pooideae", 1472), Taxon("tribe", "Triticeae", 1317)), Descriptor(65098), Method(402008, Descriptor(65098)), "0 - RESISTANT, NO SYMPTOMS", 1265054)
+
+    objs.size should be > 0
     objs should contain(obs)
 
     objs.foreach(println)
 
   }
+
 
 }
