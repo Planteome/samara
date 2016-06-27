@@ -28,7 +28,7 @@ case class Descriptor(id: Int) extends GRINTerm {
 
 case class Accession(id: Int) extends GRINTerm
 
-case class Observation(taxonPath: Iterable[Taxon], descriptor: Descriptor, method: Method, value: String, id: Int) extends GRINTerm
+case class Observation(scientificName: String, taxonPath: Iterable[Taxon], descriptor: Descriptor, method: Method, value: String, id: Int) extends GRINTerm
 
 abstract class ParserGrin extends NameFinder with Scrubber {
   def parseCropIds(doc: Document): Iterable[Crop] = {

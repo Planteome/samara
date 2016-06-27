@@ -71,11 +71,11 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     ranks should contain(Taxon(name = "Rosaceae", rank = "family", id = 972))
   }
 
-  "parser" should "enable retrieval of all accessors of all crops, at least the first 10" in {
+  "parser" should "enable retrieval of all accessors of all crops, at least the first 2" in {
     val doc: Document = get("https://npgsweb.ars-grin.gov/gringlobal/descriptors.aspx")
     val cropIds = ParserGrinStatic.parseCropIds(doc)
 
-    val accessionIds = cropIds.take(10).foldLeft(Seq.empty[Int])((agg0, crop) => {
+    val accessionIds = cropIds.take(2).foldLeft(Seq.empty[Int])((agg0, crop) => {
       val descriptorsForCropDoc = get(crop.descriptorsUrl)
       val descriptorsForCrop = ParserGrinStatic.parseAvailableDescriptorIdsForCropId(descriptorsForCropDoc)
       descriptorsForCrop.foldLeft(Seq.empty[Int])((agg1, descriptorForCrop) => {
@@ -97,15 +97,15 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     val firstAccessionId = accessionIds.head
     val accessionDetailsPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionDetail.aspx?id=$firstAccessionId")
     val observations = ParserGrinStatic.parseObservationsForAccession(accessionDetailsPage)
-    val taxonId = ParserGrinStatic.parseTaxonIdInAccessionDetails(accessionDetailsPage)
+    val taxonIds = ParserGrinStatic.parseTaxonIdInAccessionDetails(accessionDetailsPage)
 
-    val taxonPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/taxonomydetail.aspx?id=$taxonId")
+    val taxonPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/taxonomydetail.aspx?id=${taxonIds.head}.")
     val (scientificName, taxa) = ParserGrinStatic.parseTaxonPage(taxonPage)
 
     println(s"printing some observations for accession $firstAccessionId")
     observations
-      .map { case (descriptorId, methodId, value) => {
-        Observation(taxonPath = taxa, descriptor = Descriptor(descriptorId), method = Method(id = methodId, descriptor = Descriptor(descriptorId)), value = value, id = firstAccessionId)
+      .map { case (descriptorId, methodId, observedValue) => {
+        Observation(scientificName = scientificName, taxonPath = taxa, descriptor = Descriptor(descriptorId), method = Method(id = methodId, descriptor = Descriptor(descriptorId)), value = observedValue, id = firstAccessionId)
       }
       }
       .foreach(println)
