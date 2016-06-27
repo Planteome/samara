@@ -71,11 +71,18 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     ranks should contain(Taxon(name = "Rosaceae", rank = "family", id = 972))
   }
 
-  "parser" should "enable retrieval of all accessors of all crops, at least the first 2" in {
+  val apple = Crop(115)
+  val wheat = Crop(65)
+
+  "parser" should "enable retrieval of crop ids" in {
     val doc: Document = get("https://npgsweb.ars-grin.gov/gringlobal/descriptors.aspx")
     val cropIds = ParserGrinStatic.parseCropIds(doc)
+    cropIds should contain(apple)
+    cropIds should contain(wheat)
+  }
 
-    val accessionIds = cropIds.take(2).foldLeft(Seq.empty[Int])((agg0, crop) => {
+  "parser" should "be able to retrieve accessors for apple and wheat crops" in {
+    val accessionIds = Seq(apple, wheat).foldLeft(Seq.empty[Int])((agg0, crop) => {
       val descriptorsForCropDoc = get(crop.descriptorsUrl)
       val descriptorsForCrop = ParserGrinStatic.parseAvailableDescriptorIdsForCropId(descriptorsForCropDoc)
       descriptorsForCrop.foldLeft(Seq.empty[Int])((agg1, descriptorForCrop) => {
