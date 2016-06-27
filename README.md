@@ -1,5 +1,5 @@
 # samara*
-A commandline tool to extract plant trait data from open data sources.
+A commandline tool to extract plant trait data from [open data sources](sources.md).
 
 [![Build Status](https://travis-ci.org/jhpoelen/samara.svg?branch=master)](https://travis-ci.org/jhpoelen/samara)
 
