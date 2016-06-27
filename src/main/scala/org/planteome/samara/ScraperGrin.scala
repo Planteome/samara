@@ -15,10 +15,13 @@ object ScraperGrin extends Scraper with ResourceUtil {
   object Parser extends ParserGrin with NameFinderStatic
 
   def scrape() = {
-    val accessionIds = getAccessionIds(getCropIds())
-    accessionIds.toSeq.distinct.foreach(accessionId => {
-      val obs = getObservationsForAccession(accessionId)
-      obs.foreach(println)
+    val cropIds: Iterable[Crop] = getCropIds()
+    cropIds.foreach(cropId => {
+      val accessionIds = getAccessionIds(Seq(cropId))
+      accessionIds.toSeq.distinct.foreach(accessionId => {
+        val obs = getObservationsForAccession(accessionId)
+        obs.foreach(println)
+      })
     })
   }
 
