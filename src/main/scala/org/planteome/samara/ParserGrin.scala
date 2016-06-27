@@ -22,13 +22,13 @@ case class Crop(id: Int) extends GRINTerm {
 
 case class Taxon(rank: String, name: String, id: Int) extends GRINTerm
 
-case class Descriptor(id: Int) extends GRINTerm {
+case class Descriptor(id: Int, definition: Option[String] = None) extends GRINTerm {
   def detailsUrl = s"https://npgsweb.ars-grin.gov/gringlobal/descriptordetail.aspx?id=$id"
 }
 
 case class Accession(id: Int) extends GRINTerm
 
-case class Observation(scientificName: String, taxonPath: Iterable[Taxon], descriptor: Descriptor, method: Method, value: String, id: Int) extends GRINTerm
+case class Observation(scientificName: String, taxonPath: Iterable[Taxon], descriptor: Descriptor, method: Method, value: String, accessionId: Int) extends GRINTerm
 
 abstract class ParserGrin extends NameFinder with Scrubber {
   def parseCropIds(doc: Document): Iterable[Crop] = {
@@ -38,7 +38,13 @@ abstract class ParserGrin extends NameFinder with Scrubber {
 
   def parseAvailableDescriptorIdsForCropId(doc: Document): Iterable[Descriptor] = {
     val urls: Iterable[String] = doc >> elements("li") >> attrs("href")("a")
-    extractIdsFromUrls(urls, """(descriptordetail.aspx\?id=)(\d+)""".r).map(Descriptor)
+    val descriptorIds = extractIdsFromUrls(urls, """(descriptordetail.aspx\?id=)(\d+)""".r)
+    val labels: Iterable[String] = doc >> texts("li")
+    descriptorIds
+      .zip(labels.map(scrub))
+      .map {
+        case (descriptorId, descriptorText) => Descriptor(id = descriptorId, definition = Some(descriptorText))
+      }
   }
 
   def parseAvailableMethodsForDescriptor(doc: Document): Iterable[Method] = {
@@ -48,7 +54,7 @@ abstract class ParserGrin extends NameFinder with Scrubber {
       .flatMap(
         methodDetails findFirstIn _ match {
           case Some(methodDetails(_, descriptorId, _, methodId)) => {
-            Some(Method(descriptor = Descriptor(Integer.parseInt(descriptorId)), id = Integer.parseInt(methodId)))
+            Some(Method(descriptor = Descriptor(id = Integer.parseInt(descriptorId)), id = Integer.parseInt(methodId)))
           }
           case _ => None
         })
@@ -75,17 +81,22 @@ abstract class ParserGrin extends NameFinder with Scrubber {
         })
   }
 
-  def parseObservationsForAccession(doc: Document): Iterable[(Int, Int, String)] = {
+  def parseObservationsForAccession(doc: Document): Iterable[(Descriptor, Int, String)] = {
     val table = doc >> element("div#content") >> elements("table")
-    val descriptorUrls = table >> elements("td:nth-of-type(4n-3)") >> attrs("href")("a")
+    val descriptorElems = table >> elements("td:nth-of-type(4n-3)")
+    val descriptorUrls = descriptorElems >> attrs("href")("a")
     val descriptorIds = extractIdsFromUrls(descriptorUrls, """(descriptordetail.aspx\?id=)(\d+)""".r)
+    val descriptorTitles = descriptorElems >> attrs("title")("a")
+    val descriptors = descriptorIds.zip(descriptorTitles).map {
+      case (descriptorId, descriptorTitle) => Descriptor(id = descriptorId, definition = Some(descriptorTitle))
+    }
 
     val methodUrls = table >> elements("td:nth-of-type(4n-1)") >> attrs("href")("a")
     val methodIds = extractIdsFromUrls(methodUrls, """(method.aspx\?id=)(\d+)""".r)
 
     val values = table >> texts("td:nth-of-type(4n-2)")
 
-    (descriptorIds, methodIds, values).zipped.toList
+    (descriptors, methodIds, values).zipped.toList
   }
 
   def parseTaxonPage(doc: Document): (String, Iterable[Taxon]) = {
@@ -95,7 +106,7 @@ abstract class ParserGrin extends NameFinder with Scrubber {
 
     val scientificName = scrub(h1.replace("Taxon:", ""))
 
-    val (names, urls) = table >> element("table.grid") >> (texts("a"), attrs("href")("a"))
+    val (names, urls) = table >> element("table.grid") >>(texts("a"), attrs("href")("a"))
 
     val ranks = extractTaxa(names, urls, """(taxonomy)(\w+)(.aspx\?id=)(\d+)""".r)
     val familyRanks = extractTaxa(names, urls, """(taxonomyfamily.aspx\?type=)(\w+)(&id=)(\d+)""".r)

@@ -28,8 +28,8 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     val doc: Document = parse("grin/cropdetail.aspx")
     val ids: Iterable[Descriptor] = ParserGrinStatic.parseAvailableDescriptorIdsForCropId(doc)
 
-    ids should contain(Descriptor(115156))
-    ids should contain(Descriptor(115159))
+    ids.take(2) should contain(Descriptor(id = 115156, definition = Some("SOLUBLE SOLIDS (SOLSOLIDS) PERCENT SOLUBLE SOLIDS (AVERAGE REFRACTOMETER READINGS FROM 3 FRUITS AT FULL MATURITY)")))
+    ids.take(2) should contain(Descriptor(id = 115159, definition = Some("Ploidy Level (PLOIDY) Ploidy level determined by nuclear DNA content using flow cytometry")))
   }
 
   "parsing descriptor detail page" should "generate a list of (descriptor, study / environment) id pairs" in {
@@ -56,10 +56,11 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
 
   "parsing assession observations page" should "list all observations for assession" in {
     val doc: Document = parse("grin/AccessionObservation.aspx")
-    val observations: Iterable[(Int, Int, String)] = ParserGrinStatic.parseObservationsForAccession(doc)
+    val observations: Iterable[(Descriptor, Int, String)] = ParserGrinStatic.parseObservationsForAccession(doc)
 
-    observations should contain((115156, 492154, "10"))
-    observations should contain((115134, 492154, "6,6 - OTHER USE (ORNAMENTAL, ROOTSTOCK, GERMPLASM)"))
+    val expectedDescriptorDefinition = "PERCENT SOLUBLE SOLIDS (AVERAGE REFRACTOMETER READINGS FROM 3 FRUITS AT FULL MATURITY)"
+    observations should contain((Descriptor(id = 115156, definition = Some(expectedDescriptorDefinition)), 492154, "10"))
+    observations should contain((Descriptor(id = 115134, definition = Some("DEFINITION OF USUAL METHOD OF CONSUMPTION.")), 492154, "6,6 - OTHER USE (ORNAMENTAL, ROOTSTOCK, GERMPLASM)"))
   }
 
   "parsing taxon page" should "return a taxon path" in {

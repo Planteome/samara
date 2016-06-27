@@ -27,7 +27,8 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
   "scraper" should "be able to retrieve info for individual accessions" in {
     val firstAccessionId = 1265054
     val objs: Iterable[Observation] = ScraperGrin.getObservationsForAccession(firstAccessionId)
-    val obs: Observation = Observation("Triticum monococcum L. subsp. monococcum", List(Taxon("genus", "Triticum", 12442), Taxon("family", "Poaceae", 897), Taxon("subfamily", "Pooideae", 1472), Taxon("tribe", "Triticeae", 1317)), Descriptor(65098), Method(402008, Descriptor(65098)), "0 - RESISTANT, NO SYMPTOMS", 1265054)
+    val expectedDescriptorDefinition = "Reaction to Stripe Rust (incited by Puccinia striiformis) in the adult plant stage in the field.  See also related descriptor Stripe Rust Adult Severity.  Grown in Mt. Vernon."
+    val obs: Observation = Observation("Triticum monococcum L. subsp. monococcum", List(Taxon("genus", "Triticum", 12442), Taxon("family", "Poaceae", 897), Taxon("subfamily", "Pooideae", 1472), Taxon("tribe", "Triticeae", 1317)), Descriptor(65098,Some(expectedDescriptorDefinition)), Method(402008, Descriptor(65098, Some(expectedDescriptorDefinition))), "0 - RESISTANT, NO SYMPTOMS", 1265054)
     objs.size should be > 0
     objs should contain(obs)
     objs.foreach(println)

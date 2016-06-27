@@ -15,12 +15,17 @@ object ScraperGrin extends Scraper with ResourceUtil {
   object Parser extends ParserGrin with NameFinderStatic
 
   def scrape() = {
+    println("scientific name\tdescriptor id\tdescriptor definition\tobserved value\taccession id")
     val cropIds: Iterable[Crop] = getCropIds()
     cropIds.foreach(cropId => {
       val accessionIds = getAccessionIds(Seq(cropId))
       accessionIds.toSeq.distinct.foreach(accessionId => {
         val obs = getObservationsForAccession(accessionId)
-        obs.foreach(println)
+
+        obs.foreach(ob => {
+          val line = Seq(ob.scientificName, ob.descriptor.id, ob.descriptor.definition.getOrElse(""), ob.value, ob.accessionId)
+          println(line.mkString("\t"))
+        })
       })
     })
   }
@@ -58,8 +63,8 @@ object ScraperGrin extends Scraper with ResourceUtil {
     val (scientificName, taxa) = Parser.parseTaxonPage(taxonPage)
 
     observations.map {
-      case (descriptorId, methodId, observedValue) => {
-        Observation(scientificName = scientificName, taxonPath = taxa, descriptor = Descriptor(descriptorId), method = Method(id = methodId, descriptor = Descriptor(descriptorId)), value = observedValue, id = firstAccessionId)
+      case (descriptor, methodId, observedValue) => {
+        Observation(scientificName = scientificName, taxonPath = taxa, descriptor = descriptor, method = Method(id = methodId, descriptor = descriptor), value = observedValue, accessionId = firstAccessionId)
       }
     }
   }
