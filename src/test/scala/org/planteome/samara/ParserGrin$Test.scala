@@ -101,21 +101,30 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     println(s"counted [${accessionIds.distinct.size}] distinct accessors")
     accessionIds.distinct.foreach(println)
 
-    val firstAccessionId = accessionIds.head
-    val accessionDetailsPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionDetail.aspx?id=$firstAccessionId")
-    val observations = ParserGrinStatic.parseObservationsForAccession(accessionDetailsPage)
-    val taxonIds = ParserGrinStatic.parseTaxonIdInAccessionDetails(accessionDetailsPage)
+    accessionIds.headOption match {
+      case Some(firstAccessionId) => {
+        val accessionDetailsPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionDetail.aspx?id=$firstAccessionId")
+        val observations = ParserGrinStatic.parseObservationsForAccession(accessionDetailsPage)
+        val taxonIds = ParserGrinStatic.parseTaxonIdInAccessionDetails(accessionDetailsPage)
 
-    val taxonPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/taxonomydetail.aspx?id=${taxonIds.head}.")
-    val (scientificName, taxa) = ParserGrinStatic.parseTaxonPage(taxonPage)
+        val taxonPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/taxonomydetail.aspx?id=${
+          taxonIds.head
+        }.")
+        val (scientificName, taxa) = ParserGrinStatic.parseTaxonPage(taxonPage)
 
-    println(s"printing some observations for accession $firstAccessionId")
-    observations
-      .map { case (descriptorId, methodId, observedValue) => {
-        Observation(scientificName = scientificName, taxonPath = taxa, descriptor = Descriptor(descriptorId), method = Method(id = methodId, descriptor = Descriptor(descriptorId)), value = observedValue, id = firstAccessionId)
+        println(s"printing some observations for accession $firstAccessionId")
+        observations
+          .map {
+            case (descriptorId, methodId, observedValue) => {
+              Observation(scientificName = scientificName, taxonPath = taxa, descriptor = Descriptor(descriptorId), method = Method(id = methodId, descriptor = Descriptor(descriptorId)), value = observedValue, id = firstAccessionId)
+            }
+          }
+          .foreach(println)
       }
+      case None => {
+        fail("expected at least one accessor, but found none")
       }
-      .foreach(println)
+    }
 
   }
 
