@@ -15,7 +15,7 @@ object ScraperGrin extends Scraper with ResourceUtil {
   object Parser extends ParserGrin with NameFinderStatic
 
   def scrape() = {
-    println("scientific name\tdescriptor id\tdescriptor definition\tobserved value\taccession id")
+    println("taxon id\ttaxon name\tdescriptor id\tdescriptor definition\tmethod id\tmethod name\tobserved value\taccession id")
     val cropIds: Iterable[Crop] = getCropIds()
     cropIds.foreach(cropId => {
       val accessionIds = getAccessionIds(Seq(cropId))
@@ -23,7 +23,7 @@ object ScraperGrin extends Scraper with ResourceUtil {
         val obs = getObservationsForAccession(accessionId)
 
         obs.foreach(ob => {
-          val line = Seq(ob.scientificName, ob.descriptor.id, ob.descriptor.definition.getOrElse(""), ob.value, ob.accessionId)
+          val line = Seq(ob.taxon.id, ob.taxon.name, ob.descriptor.id, ob.descriptor.definition.getOrElse(""), ob.method.id, ob.method.name.getOrElse(""), ob.value, ob.accessionId)
           println(line.mkString("\t"))
         })
       })
@@ -51,20 +51,15 @@ object ScraperGrin extends Scraper with ResourceUtil {
     })
   }
 
-  def getObservationsForAccession(firstAccessionId: Int): Iterable[Observation] = {
-    val accessionDetailsPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionDetail.aspx?id=$firstAccessionId")
-    val accessionObservationPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionObservation.aspx?id=$firstAccessionId")
+  def getObservationsForAccession(accessionId: Int): Iterable[Observation] = {
+    val accessionDetailsPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionDetail.aspx?id=$accessionId")
+    val accessionObservationPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionObservation.aspx?id=$accessionId")
     val observations = Parser.parseObservationsForAccession(accessionObservationPage)
-    val taxonIds = Parser.parseTaxonIdInAccessionDetails(accessionDetailsPage)
-
-    val taxonPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/taxonomydetail.aspx?id=${
-      taxonIds.head
-    }")
-    val (scientificName, taxa) = Parser.parseTaxonPage(taxonPage)
+    val taxa = Parser.parseTaxonInAccessionDetails(accessionDetailsPage)
 
     observations.map {
-      case (descriptor, methodId, observedValue) => {
-        Observation(scientificName = scientificName, taxonPath = taxa, descriptor = descriptor, method = Method(id = methodId, descriptor = descriptor), value = observedValue, accessionId = firstAccessionId)
+      case (descriptor, method, observedValue) => {
+        Observation(taxa.head, descriptor = descriptor, method = method, value = observedValue, accessionId = accessionId)
       }
     }
   }
