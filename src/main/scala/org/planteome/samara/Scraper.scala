@@ -1,5 +1,5 @@
 package org.planteome.samara
 
-abstract class Scraper {
+trait Scraper {
   def scrape(): Unit
 }
