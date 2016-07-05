@@ -1,15 +1,7 @@
 package org.planteome.samara
 
-import java.io.File
-
-import net.ruippeixotog.scalascraper.browser.JsoupBrowser
-import net.ruippeixotog.scalascraper.dsl.DSL._
-import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-import net.ruippeixotog.scalascraper.scraper.ContentExtractors._
-import net.ruippeixotog.scalascraper.model.{Element, Document}
+import net.ruippeixotog.scalascraper.model.Document
 import org.scalatest._
-
-import scala.util.matching.Regex
 
 object ParserGrinStatic extends ParserGrin with NameFinderStatic
 
