@@ -15,7 +15,7 @@ object ScraperGrin extends Scraper with ResourceUtil {
   object Parser extends ParserGrin with NameFinderStatic
 
   override def scrape() = {
-    println("taxon id\ttaxon name\tdescriptor id\tdescriptor definition\tmethod id\tmethod name\tobserved value\taccession id")
+    println("taxon id\ttaxon name\tdescriptor id\tdescriptor definition\tmethod id\tmethod name\tobserved value\taccession id\taccession number\taccession name")
     val cropIds: Iterable[Crop] = getCropIds()
     cropIds.foreach(cropId => {
       val accessionIds = getAccessionIds(Seq(cropId))
@@ -23,7 +23,12 @@ object ScraperGrin extends Scraper with ResourceUtil {
         val obs = getObservationsForAccession(accessionId)
 
         obs.foreach(ob => {
-          val line = Seq(ob.taxon.id, ob.taxon.name, ob.descriptor.id, ob.descriptor.definition.getOrElse(""), ob.method.id, ob.method.name.getOrElse(""), ob.value, ob.accessionId)
+          val line = Seq(ob.taxon.id, ob.taxon.name, ob.descriptor.id, ob.descriptor.definition.getOrElse(""),
+            ob.method.id, ob.method.name.getOrElse(""),
+            ob.value,
+            ob.accession.id,
+            ob.accession.number,
+            ob.accession.name)
           println(line.mkString("\t"))
         })
       })
@@ -55,11 +60,12 @@ object ScraperGrin extends Scraper with ResourceUtil {
     val accessionDetailsPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionDetail.aspx?id=$accessionId")
     val accessionObservationPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionObservation.aspx?id=$accessionId")
     val observations = Parser.parseObservationsForAccession(accessionObservationPage)
-    val taxa = Parser.parseTaxonInAccessionDetails(accessionDetailsPage)
+    val (accessionNumber, accessionName, taxa) = Parser.parseTaxonInAccessionDetails(accessionDetailsPage)
 
     observations.map {
       case (descriptor, method, observedValue) => {
-        Observation(taxa.head, descriptor = descriptor, method = method, value = observedValue, accessionId = accessionId)
+        val accession: Accession = Accession(id = accessionId, number = accessionNumber, name = accessionName)
+        Observation(taxa.head, descriptor = descriptor, method = method, value = observedValue, accession = accession)
       }
     }
   }

@@ -34,7 +34,7 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
       descriptor = Descriptor(65098,Some(expectedDescriptorDefinition)),
       method = Method(402008, Some(expectedMethodName)),
       value = "0 - RESISTANT, NO SYMPTOMS",
-      accessionId = accessionId)
+      accession = Accession(id = accessionId, name = "", number = "PI 355548"))
 
     objs.size should be > 0
     objs should contain(obs)

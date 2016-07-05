@@ -372,7 +372,7 @@
 
         <h1>PI 589198 </h1>
         <h2><b><a href="taxonomydetail.aspx?id=23257">Malus platycarpa Rehder </a></b></h2>
-        <b></b> 
+        <b>'Some Test Name'</b>
         <br /><br />
     
 

@@ -1,11 +1,8 @@
 package org.planteome.samara
 
-import net.ruippeixotog.scalascraper.scraper.ContentExtractors._
-import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL._
-import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.scraper.ContentExtractors._
-import net.ruippeixotog.scalascraper.model.{Element, Document}
+import net.ruippeixotog.scalascraper.model.{Document,Element}
 
 
 import scala.util.matching.Regex
@@ -28,9 +25,9 @@ case class Descriptor(id: Int, definition: Option[String] = None) extends GRINTe
   def detailsUrl = s"https://npgsweb.ars-grin.gov/gringlobal/descriptordetail.aspx?id=$id"
 }
 
-case class Accession(id: Int) extends GRINTerm
+case class Accession(id: Int, name: String, number: String) extends GRINTerm
 
-case class Observation(taxon: Taxon, taxonPath: Option[Iterable[Taxon]] = None, descriptor: Descriptor, method: Method, value: String, accessionId: Int) extends GRINTerm
+case class Observation(taxon: Taxon, taxonPath: Option[Iterable[Taxon]] = None, descriptor: Descriptor, method: Method, value: String, accession: Accession) extends GRINTerm
 
 abstract class ParserGrin extends NameFinder with Scrubber {
   def parseCropIds(doc: Document): Iterable[Crop] = {
@@ -67,12 +64,15 @@ abstract class ParserGrin extends NameFinder with Scrubber {
     extractIdsFromUrls(urls, """(AccessionDetail.aspx\?id=)(\d+)""".r)
   }
 
-  def parseTaxonInAccessionDetails(doc: Document): Iterable[Taxon] = {
+  def parseTaxonInAccessionDetails(doc: Document): (String, String, Iterable[Taxon]) = {
     val taxonomyDetailRegex: Regex = """(taxonomydetail.aspx\?id=)(\d+)""".r
+    val accessionNumber = doc >> text("h1")
+    val accessionName = doc >> text("div#main-wrapper > b")
+
     val aElem = doc >> elements("b")
     val names: Iterable[Element] = aElem >> elements("a")
     val taxonElems = names.filter { nameElem => taxonomyDetailRegex.findFirstMatchIn(nameElem.attr("href")).isDefined }
-    taxonElems.flatMap {
+    val taxa = taxonElems.flatMap {
       elem => {
         taxonomyDetailRegex.findFirstIn(elem.attr("href")) match {
           case Some(taxonomyDetailRegex(_, someId)) => {
@@ -82,6 +82,7 @@ abstract class ParserGrin extends NameFinder with Scrubber {
         }
       }
     }
+    (accessionNumber, accessionName, taxa)
   }
 
   def extractIdsFromUrls(urls: Iterable[String], regex: Regex): Iterable[Int] = {
