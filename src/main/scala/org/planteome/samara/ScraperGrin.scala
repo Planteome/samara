@@ -24,7 +24,7 @@ object ScraperGrin extends Scraper with ResourceUtil {
 
         obs.foreach(ob => {
           val line = Seq(ob.taxon.id, ob.taxon.name,
-            ob.descriptor.id, ob.descriptor.name, ob.descriptor.definition.getOrElse(""),
+            ob.descriptor.id, accessionId._2.name.getOrElse(""), ob.descriptor.definition.getOrElse(""),
             ob.method.id, ob.method.name.getOrElse(""),
             ob.value,
             ob.accession.id,
