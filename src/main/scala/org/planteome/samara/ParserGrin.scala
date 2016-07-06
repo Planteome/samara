@@ -2,7 +2,7 @@ package org.planteome.samara
 
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.scraper.ContentExtractors._
-import net.ruippeixotog.scalascraper.model.{Document,Element}
+import net.ruippeixotog.scalascraper.model.{Document, Element}
 
 
 import scala.util.matching.Regex
@@ -10,7 +10,7 @@ import scala.util.matching.Regex
 abstract class GRINTerm
 
 case class MethodDescriptor(id: Int, descriptor: Descriptor) extends GRINTerm {
-  def accessionsUrl = s"https://npgsweb.ars-grin.gov/gringlobal/methodaccession.aspx?id1=${descriptor.id}&id2=${id}"
+  def accessionsUrl = s"https://npgsweb.ars-grin.gov/gringlobal/methodaccession.aspx?id1=${descriptor.id}&id2=$id"
 }
 
 case class Method(id: Int, name: Option[String]) extends GRINTerm
@@ -21,7 +21,7 @@ case class Crop(id: Int) extends GRINTerm {
 
 case class Taxon(name: String, id: Int, rank: Option[String] = None) extends GRINTerm
 
-case class Descriptor(id: Int, definition: Option[String] = None) extends GRINTerm {
+case class Descriptor(id: Int, definition: Option[String] = None, name: Option[String] = None) extends GRINTerm {
   def detailsUrl = s"https://npgsweb.ars-grin.gov/gringlobal/descriptordetail.aspx?id=$id"
 }
 
@@ -47,13 +47,17 @@ abstract class ParserGrin extends NameFinder with Scrubber {
   }
 
   def parseAvailableMethodsForDescriptor(doc: Document): Iterable[MethodDescriptor] = {
+    val descriptorName = doc >> element("table.detail") >> text("h1")
+
     val urls: Iterable[String] = doc >> elements("li") >> attrs("href")("a")
     val methodDetails: Regex = """(methodaccession.aspx\?id1=)(\d+)(&id2=)(\d+)""".r
     urls
       .flatMap(
         methodDetails findFirstIn _ match {
           case Some(methodDetails(_, descriptorId, _, methodId)) => {
-            Some(MethodDescriptor(descriptor = Descriptor(id = Integer.parseInt(descriptorId)), id = Integer.parseInt(methodId)))
+            Some(MethodDescriptor(descriptor = Descriptor(id = Integer.parseInt(descriptorId),
+              name = Some(descriptorName.replace("Descriptor: ", ""))),
+              id = Integer.parseInt(methodId)))
           }
           case _ => None
         })

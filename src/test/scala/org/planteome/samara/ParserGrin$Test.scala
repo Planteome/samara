@@ -28,8 +28,8 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     val doc: Document = parse("grin/descriptordetail.aspx")
     val methods: Iterable[MethodDescriptor] = ParserGrinStatic.parseAvailableMethodsForDescriptor(doc)
 
-    methods should contain(MethodDescriptor(descriptor = Descriptor(115156), id = 492154))
-    methods should contain(MethodDescriptor(descriptor = Descriptor(115156), id = 492159))
+    methods should contain(MethodDescriptor(descriptor = Descriptor(id = 115156, name = Some("SOLUBLE SOLIDS (SOLSOLIDS)")), id = 492154))
+    methods should contain(MethodDescriptor(descriptor = Descriptor(id = 115156, name = Some("SOLUBLE SOLIDS (SOLSOLIDS)")), id = 492159))
   }
 
   "parsing method assession page" should "generate a list of (descriptor, study / environment) id pairs" in {

@@ -15,15 +15,16 @@ object ScraperGrin extends Scraper with ResourceUtil {
   object Parser extends ParserGrin with NameFinderStatic
 
   override def scrape() = {
-    println("taxon id\ttaxon name\tdescriptor id\tdescriptor definition\tmethod id\tmethod name\tobserved value\taccession id\taccession number\taccession name")
+    println("taxon id\ttaxon name\tdescriptor id\tdescriptor name\tdescriptor definition\tmethod id\tmethod name\tobserved value\taccession id\taccession number\taccession name")
     val cropIds: Iterable[Crop] = getCropIds()
     cropIds.foreach(cropId => {
       val accessionIds = getAccessionIds(Seq(cropId))
       accessionIds.toSeq.distinct.foreach(accessionId => {
-        val obs = getObservationsForAccession(accessionId)
+        val obs = getObservationsForAccession(accessionId._1)
 
         obs.foreach(ob => {
-          val line = Seq(ob.taxon.id, ob.taxon.name, ob.descriptor.id, ob.descriptor.definition.getOrElse(""),
+          val line = Seq(ob.taxon.id, ob.taxon.name,
+            ob.descriptor.id, ob.descriptor.name, ob.descriptor.definition.getOrElse(""),
             ob.method.id, ob.method.name.getOrElse(""),
             ob.value,
             ob.accession.id,
@@ -40,17 +41,17 @@ object ScraperGrin extends Scraper with ResourceUtil {
     Parser.parseCropIds(doc)
   }
 
-  def getAccessionIds(cropIds: Iterable[Crop]): Iterable[Int] = {
-    cropIds.foldLeft(Seq.empty[Int])((agg0, crop) => {
+  def getAccessionIds(cropIds: Iterable[Crop]): Iterable[(Int, Descriptor)] = {
+    cropIds.foldLeft(Seq.empty[(Int, Descriptor)])((agg0, crop) => {
       val descriptorsForCropDoc = get(crop.descriptorsUrl)
       val descriptorsForCrop = Parser.parseAvailableDescriptorIdsForCropId(descriptorsForCropDoc)
-      descriptorsForCrop.foldLeft(Seq.empty[Int])((agg1, descriptorForCrop) => {
+      descriptorsForCrop.foldLeft(Seq.empty[(Int, Descriptor)])((agg1, descriptorForCrop) => {
         val detailsDoc = get(descriptorForCrop.detailsUrl)
         val descriptorMethods = Parser.parseAvailableMethodsForDescriptor(detailsDoc)
-        descriptorMethods.foldLeft(Seq.empty[Int])((agg2, descriptorMethod) => {
+        descriptorMethods.foldLeft(Seq.empty[(Int, Descriptor)])((agg2, descriptorMethod) => {
           val accessionsDoc = get(descriptorMethod.accessionsUrl)
           val accessionIds = Parser.parseAvailableAccessionsForDescriptorAndMethod(accessionsDoc)
-          agg2 ++ accessionIds
+          agg2 ++ accessionIds.map((_, descriptorMethod.descriptor))
         }) ++ agg1
       }) ++ agg0
     })
