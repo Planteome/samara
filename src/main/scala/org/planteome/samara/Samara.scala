@@ -45,9 +45,12 @@ object Samara extends App {
         }
         case "list" =>
           supportedSources.foreach(println)
+
+        case _ =>
+          parser.showUsage()
       }
 
     case None =>
-    // arguments are bad, error message will have been displayed
+
   }
 }
