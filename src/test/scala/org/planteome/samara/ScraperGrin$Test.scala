@@ -27,14 +27,18 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
   "scraper" should "be able to retrieve info for individual accessions" in {
     val accessionId = 1265054
     val objs: Iterable[Observation] = ScraperGrin.getObservationsForAccession(accessionId)
-    val expectedDescriptorDefinition = "Reaction to Stripe Rust (incited by Puccinia striiformis) in the adult plant stage in the field.  See also related descriptor Stripe Rust Adult Severity.  Grown in Mt. Vernon."
-    val expectedMethodName = "WHEAT.STRIPERUST.MTVERNON.87"
+    val expectedDescriptor: Descriptor = Descriptor(id = 65098,
+      definition = Some("Reaction to Stripe Rust (incited by Puccinia striiformis) in the adult plant stage in the field.  See also related descriptor Stripe Rust Adult Severity.  Grown in Mt. Vernon."),
+      name = Some("Stripe Rust Adult Reaction MTV (STRIPRUSAD_MTVERNON)"))
+    val expectedMethod: Method = Method(402008, Some("WHEAT.STRIPERUST.MTVERNON.87"))
+    val expectedTaxon: Taxon = Taxon(name = "Triticum monococcum L. subsp. monococcum", id = 40597)
+    val expectedAccession: Accession = Accession(id = accessionId, name = "", number = "PI 355548")
 
-    val obs: Observation = Observation(taxon = Taxon(name = "Triticum monococcum L. subsp. monococcum", id = 40597),
-      descriptor = Descriptor(id = 65098, definition = Some(expectedDescriptorDefinition), name = Some("bla")),
-      method = Method(402008, Some(expectedMethodName)),
+    val obs: Observation = Observation(taxon = expectedTaxon,
+      descriptor = expectedDescriptor,
+      method = expectedMethod,
       value = "0 - RESISTANT, NO SYMPTOMS",
-      accession = Accession(id = accessionId, name = "", number = "PI 355548"))
+      accession = expectedAccession)
 
     objs.size should be > 0
     objs should contain(obs)
