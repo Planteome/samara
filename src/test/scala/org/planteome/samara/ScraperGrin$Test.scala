@@ -32,9 +32,10 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
       name = None)
     val expectedMethod: Method = Method(402008, Some("WHEAT.STRIPERUST.MTVERNON.87"))
     val expectedTaxon: Taxon = Taxon(name = "Triticum monococcum L. subsp. monococcum", id = 40597)
-    val expectedAccession: Accession = Accession(id = accessionId, name = "", number = "PI 355548")
+    val expectedAccessionDetails = AccessionDetails(name = "", number = "PI 355548", collectedFrom = Some("Vorarlberg Austria"), taxa = List(expectedTaxon))
+    val expectedAccession: Accession = Accession(id = accessionId, details = expectedAccessionDetails)
 
-    val obs: Observation = Observation(taxon = expectedTaxon,
+    val obs: Observation = Observation(
       descriptor = expectedDescriptor,
       method = expectedMethod,
       value = "0 - RESISTANT, NO SYMPTOMS",

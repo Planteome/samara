@@ -25,9 +25,11 @@ case class Descriptor(id: Int, definition: Option[String] = None, name: Option[S
   def detailsUrl = s"https://npgsweb.ars-grin.gov/gringlobal/descriptordetail.aspx?id=$id"
 }
 
-case class Accession(id: Int, name: String, number: String) extends GRINTerm
+case class Accession(id: Int, details: AccessionDetails) extends GRINTerm
 
-case class Observation(taxon: Taxon, taxonPath: Option[Iterable[Taxon]] = None, descriptor: Descriptor, method: Method, value: String, accession: Accession) extends GRINTerm
+case class AccessionDetails(name: String, number: String, collectedFrom: Option[String], taxa: Iterable[Taxon]) extends GRINTerm
+
+case class Observation(descriptor: Descriptor, method: Method, value: String, accession: Accession) extends GRINTerm
 
 abstract class ParserGrin extends NameFinder with Scrubber {
   def parseCropIds(doc: Document): Iterable[Crop] = {
@@ -68,10 +70,19 @@ abstract class ParserGrin extends NameFinder with Scrubber {
     extractIdsFromUrls(urls, """(AccessionDetail.aspx\?id=)(\d+)""".r)
   }
 
-  def parseTaxonInAccessionDetails(doc: Document): (String, String, Iterable[Taxon]) = {
+  def parseTaxonInAccessionDetails(doc: Document): AccessionDetails = {
     val taxonomyDetailRegex: Regex = """(taxonomydetail.aspx\?id=)(\d+)""".r
     val accessionNumber = doc >> text("h1")
     val accessionName = doc >> text("div#main-wrapper > b")
+    val headers = doc >> elements("th")
+    val collectedFromRow = headers
+      .filter { _.text == "Collected from:" }
+      .flatMap { _.parent }
+    val collectedFrom = collectedFromRow.headOption match {
+      case Some(row) => Some(row >> text("td"))
+      case None => None
+    }
+
 
     val aElem = doc >> elements("b")
     val names: Iterable[Element] = aElem >> elements("a")
@@ -86,7 +97,7 @@ abstract class ParserGrin extends NameFinder with Scrubber {
         }
       }
     }
-    (accessionNumber, accessionName, taxa)
+    AccessionDetails(number = accessionNumber, name = accessionName, collectedFrom = collectedFrom, taxa = taxa)
   }
 
   def extractIdsFromUrls(urls: Iterable[String], regex: Regex): Iterable[Int] = {
