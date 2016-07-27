@@ -27,7 +27,7 @@ case class Descriptor(id: Int, definition: Option[String] = None, name: Option[S
 
 case class Accession(id: Int, details: AccessionDetails) extends GRINTerm
 
-case class AccessionDetails(name: String, number: String, collectedFrom: Option[String], taxa: Iterable[Taxon]) extends GRINTerm
+case class AccessionDetails(name: String, number: String, collectedFrom: Option[String], taxa: Iterable[Taxon], references: Iterable[String]) extends GRINTerm
 
 case class Observation(descriptor: Descriptor, method: Method, value: String, accession: Accession) extends GRINTerm
 
@@ -76,13 +76,24 @@ abstract class ParserGrin extends NameFinder with Scrubber {
     val accessionName = doc >> text("div#main-wrapper > b")
     val headers = doc >> elements("th")
     val collectedFromRow = headers
-      .filter { _.text == "Collected from:" }
-      .flatMap { _.parent }
+      .filter {
+        _.text == "Collected from:"
+      }
+      .flatMap {
+        _.parent
+      }
+
     val collectedFrom = collectedFromRow.headOption match {
       case Some(row) => Some(row >> text("td"))
       case None => None
     }
 
+
+    val referenceRegex: Regex = """(Reference: )(.*)((Comment:)(.*))?$""".r
+    val listItems = doc >> elements("li")
+    val references = listItems.flatMap {
+      elem => extractReference(elem.text)
+    }
 
     val aElem = doc >> elements("b")
     val names: Iterable[Element] = aElem >> elements("a")
@@ -97,7 +108,11 @@ abstract class ParserGrin extends NameFinder with Scrubber {
         }
       }
     }
-    AccessionDetails(number = accessionNumber, name = accessionName, collectedFrom = collectedFrom, taxa = taxa)
+    AccessionDetails(number = accessionNumber,
+      name = accessionName,
+      collectedFrom = collectedFrom,
+      taxa = taxa,
+      references = references)
   }
 
   def extractIdsFromUrls(urls: Iterable[String], regex: Regex): Iterable[Int] = {
@@ -109,6 +124,18 @@ abstract class ParserGrin extends NameFinder with Scrubber {
           }
           case _ => None
         })
+  }
+
+  def extractReference(citationText: String): Option[String] = {
+    val referenceRegex: Regex = """(Reference: )(.*)""".r
+    val commentRegex: Regex = """(.*)(Comment:)(.*)""".r
+    citationText match {
+      case referenceRegex(_, ref) => ref match {
+        case commentRegex(refNoCmt, _, _) => Some(refNoCmt.trim)
+        case _ => Some(ref.trim)
+      }
+      case _ => None
+    }
   }
 
   def parseObservationsForAccession(doc: Document): Iterable[(Descriptor, Method, String)] = {

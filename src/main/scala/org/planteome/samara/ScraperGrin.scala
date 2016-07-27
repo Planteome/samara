@@ -15,7 +15,7 @@ object ScraperGrin extends Scraper with ResourceUtil {
   object Parser extends ParserGrin with NameFinderStatic
 
   override def scrape() = {
-    println("taxon id\ttaxon name\tdescriptor id\tdescriptor name\tdescriptor definition\tmethod id\tmethod name\tobserved value\taccession id\taccession number\taccession name\tcollected from")
+    println("taxon id\ttaxon name\tdescriptor id\tdescriptor name\tdescriptor definition\tmethod id\tmethod name\tobserved value\taccession id\taccession number\taccession name\tcollected from\tcitations")
     val cropIds: Iterable[Crop] = getCropIds()
     cropIds.foreach(cropId => {
       val accessionIds = getAccessionIds(Seq(cropId))
@@ -31,7 +31,8 @@ object ScraperGrin extends Scraper with ResourceUtil {
             ob.accession.id,
             ob.accession.details.number,
             ob.accession.details.name,
-            ob.accession.details.collectedFrom.getOrElse(""))
+            ob.accession.details.collectedFrom.getOrElse(""),
+            ob.accession.details.references.mkString("|"))
           println(line.mkString("\t"))
         })
       })

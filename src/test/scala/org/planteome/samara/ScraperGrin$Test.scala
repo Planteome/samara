@@ -32,7 +32,9 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
       name = None)
     val expectedMethod: Method = Method(402008, Some("WHEAT.STRIPERUST.MTVERNON.87"))
     val expectedTaxon: Taxon = Taxon(name = "Triticum monococcum L. subsp. monococcum", id = 40597)
-    val expectedAccessionDetails = AccessionDetails(name = "", number = "PI 355548", collectedFrom = Some("Vorarlberg Austria"), taxa = List(expectedTaxon))
+    val expectedAccessionDetails = AccessionDetails(name = "", number = "PI 355548", collectedFrom = Some("Vorarlberg Austria"),
+      taxa = List(expectedTaxon),
+      references = List("""M.N. Rouse and Y. Jin. 2011. Stem rust resistance in A-genome diploid relatives of wheat. Pl Dis 95:941-944.""", """C.C. Anker and R.E. Niks. 2001. Prehaustorial resistance to the wheat leaf rust fungus, Puccinia triticina, in Triticum monococcum (s.s.). Euphytica 117:209-215."""))
     val expectedAccession: Accession = Accession(id = accessionId, details = expectedAccessionDetails)
 
     val obs: Observation = Observation(

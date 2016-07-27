@@ -3,6 +3,8 @@ package org.planteome.samara
 import net.ruippeixotog.scalascraper.model.Document
 import org.scalatest._
 
+import scala.util.matching.Regex
+
 object ParserGrinStatic extends ParserGrin with NameFinderStatic
 
 class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with ParseTestUtil {
@@ -43,7 +45,10 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
   "parsing accession detail page" should "result in a taxon id" in {
     val doc: Document = parse("grin/AccessionDetail.aspx")
     val taxonIds: AccessionDetails = ParserGrinStatic.parseTaxonInAccessionDetails(doc)
-    taxonIds should be(AccessionDetails(number = "PI 589198", name = "'Some Test Name'", collectedFrom = Some("United States"), taxa = List(Taxon(id = 23257, name = "Malus platycarpa Rehder"))))
+    taxonIds should be(AccessionDetails(number = "PI 589198", name = "'Some Test Name'",
+      collectedFrom = Some("United States"),
+      taxa = List(Taxon(id = 23257, name = "Malus platycarpa Rehder")),
+      references = List()))
   }
 
   "parsing assession observations page" should "list all observations for assession" in {
@@ -54,6 +59,12 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     observations should contain((Descriptor(id = 115156, definition = Some(expectedDescriptorDefinition)), Method(492154, Some("APPLE.MORPHOLOGIC.00")), "10"))
     observations should contain((Descriptor(id = 115134, definition = Some("DEFINITION OF USUAL METHOD OF CONSUMPTION.")), Method(492154, Some("APPLE.MORPHOLOGIC.00")), "6,6 - OTHER USE (ORNAMENTAL, ROOTSTOCK, GERMPLASM)"))
   }
+
+  "parsing reference" should "omit comments" in {
+    ParserGrinStatic.extractReference("Reference: xyz Comment: abc") should be(Some("xyz"))
+    ParserGrinStatic.extractReference("Reference: xyz") should be(Some("xyz"))
+  }
+
 
   "parsing taxon page" should "return a taxon path" in {
     val doc: Document = parse("grin/taxonomydetail.aspx")
