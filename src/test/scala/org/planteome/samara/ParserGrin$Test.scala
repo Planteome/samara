@@ -44,8 +44,8 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
 
   "parsing accession detail page" should "result in a taxon id" in {
     val doc: Document = parse("grin/AccessionDetail.aspx")
-    val taxonIds: AccessionDetails = ParserGrinStatic.parseTaxonInAccessionDetails(doc)
-    taxonIds should be(AccessionDetails(number = "PI 589198", name = "'Some Test Name'",
+    val taxonIds: AccessionDetail = ParserGrinStatic.parseTaxonInAccessionDetails(doc)
+    taxonIds should be(AccessionDetail(number = "PI 589198", name = "'Some Test Name'",
       collectedFrom = Some("United States"),
       taxa = List(Taxon(id = 23257, name = "Malus platycarpa Rehder")),
       references = List()))

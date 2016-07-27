@@ -25,9 +25,9 @@ case class Descriptor(id: Int, definition: Option[String] = None, name: Option[S
   def detailsUrl = s"https://npgsweb.ars-grin.gov/gringlobal/descriptordetail.aspx?id=$id"
 }
 
-case class Accession(id: Int, details: AccessionDetails) extends GRINTerm
+case class Accession(id: Int, detail: AccessionDetail) extends GRINTerm
 
-case class AccessionDetails(name: String, number: String, collectedFrom: Option[String], taxa: Iterable[Taxon], references: Iterable[String]) extends GRINTerm
+case class AccessionDetail(name: String, number: String, collectedFrom: Option[String], taxa: Iterable[Taxon], references: Iterable[String]) extends GRINTerm
 
 case class Observation(descriptor: Descriptor, method: Method, value: String, accession: Accession) extends GRINTerm
 
@@ -70,7 +70,7 @@ abstract class ParserGrin extends NameFinder with Scrubber {
     extractIdsFromUrls(urls, """(AccessionDetail.aspx\?id=)(\d+)""".r)
   }
 
-  def parseTaxonInAccessionDetails(doc: Document): AccessionDetails = {
+  def parseTaxonInAccessionDetails(doc: Document): AccessionDetail = {
     val taxonomyDetailRegex: Regex = """(taxonomydetail.aspx\?id=)(\d+)""".r
     val accessionNumber = doc >> text("h1")
     val accessionName = doc >> text("div#main-wrapper > b")
@@ -108,7 +108,7 @@ abstract class ParserGrin extends NameFinder with Scrubber {
         }
       }
     }
-    AccessionDetails(number = accessionNumber,
+    AccessionDetail(number = accessionNumber,
       name = accessionName,
       collectedFrom = collectedFrom,
       taxa = taxa,

@@ -1,13 +1,6 @@
 package org.planteome.samara
 
-import java.io.File
-
 import net.ruippeixotog.scalascraper.model.Document
-import net.ruippeixotog.scalascraper.scraper.ContentExtractors._
-
-import net.ruippeixotog.scalascraper.browser.JsoupBrowser
-import net.ruippeixotog.scalascraper.dsl.DSL._
-import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 
 
 object ScraperGrin extends Scraper with ResourceUtil {
@@ -23,16 +16,16 @@ object ScraperGrin extends Scraper with ResourceUtil {
         val obs = getObservationsForAccession(accessionId._1)
 
         obs.foreach(ob => {
-          val taxon = ob.accession.details.taxa.head
+          val taxon = ob.accession.detail.taxa.head
           val line = Seq(taxon.id, taxon.name,
             ob.descriptor.id, accessionId._2.name.getOrElse(""), ob.descriptor.definition.getOrElse(""),
             ob.method.id, ob.method.name.getOrElse(""),
             ob.value,
             ob.accession.id,
-            ob.accession.details.number,
-            ob.accession.details.name,
-            ob.accession.details.collectedFrom.getOrElse(""),
-            ob.accession.details.references.mkString("|"))
+            ob.accession.detail.number,
+            ob.accession.detail.name,
+            ob.accession.detail.collectedFrom.getOrElse(""),
+            ob.accession.detail.references.mkString("|"))
           println(line.mkString("\t"))
         })
       })
@@ -68,7 +61,7 @@ object ScraperGrin extends Scraper with ResourceUtil {
 
     observations.map {
       case (descriptor, method, observedValue) => {
-        val accession: Accession = Accession(id = accessionId, details = details)
+        val accession: Accession = Accession(id = accessionId, detail = details)
         Observation(descriptor = descriptor, method = method, value = observedValue, accession = accession)
       }
     }
