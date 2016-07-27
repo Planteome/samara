@@ -17,11 +17,11 @@ object ScraperGrin extends Scraper with ResourceUtil {
 
         obs.foreach(ob => {
           val taxon = ob.accession.detail.taxa.head
-          val line = Seq(taxon.id, taxon.name,
-            ob.descriptor.id, accessionId._2.name.getOrElse(""), ob.descriptor.definition.getOrElse(""),
-            ob.method.id, ob.method.name.getOrElse(""),
+          val line = Seq(s"GRINTaxon:${taxon.id}", taxon.name,
+            s"GRINDesc:${ob.descriptor.id}", accessionId._2.name.getOrElse(""), ob.descriptor.definition.getOrElse(""),
+            s"GRINMethod:${ob.method.id}", ob.method.name.getOrElse(""),
             ob.value,
-            ob.accession.id,
+            s"GRINAccess:${ob.accession.id}",
             ob.accession.detail.number,
             ob.accession.detail.name,
             ob.accession.detail.collectedFrom.getOrElse(""),
