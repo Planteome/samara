@@ -56,8 +56,9 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     val observations: Iterable[(Descriptor, Method, String)] = ParserGrinStatic.parseObservationsForAccession(doc)
 
     val expectedDescriptorDefinition = "PERCENT SOLUBLE SOLIDS (AVERAGE REFRACTOMETER READINGS FROM 3 FRUITS AT FULL MATURITY)"
-    observations should contain((Descriptor(id = 115156, definition = Some(expectedDescriptorDefinition)), Method(492154, Some("APPLE.MORPHOLOGIC.00")), "10"))
-    observations should contain((Descriptor(id = 115134, definition = Some("DEFINITION OF USUAL METHOD OF CONSUMPTION.")), Method(492154, Some("APPLE.MORPHOLOGIC.00")), "6,6 - OTHER USE (ORNAMENTAL, ROOTSTOCK, GERMPLASM)"))
+    observations should contain((Descriptor(id = 115156, name = Some("SOLUBLE SOLIDS"), definition = Some(expectedDescriptorDefinition)), Method(492154, Some("APPLE.MORPHOLOGIC.00")), "10"))
+    observations should contain((Descriptor(id = 115134, name = Some("MARKET TYPE (FRUIT)"), definition = Some("DEFINITION OF USUAL METHOD OF CONSUMPTION.")), Method(492154, Some("APPLE.MORPHOLOGIC.00")), "6,6 - OTHER USE (ORNAMENTAL, ROOTSTOCK, GERMPLASM)"))
+    observations.size should be(33)
   }
 
   "parsing reference" should "omit comments" in {

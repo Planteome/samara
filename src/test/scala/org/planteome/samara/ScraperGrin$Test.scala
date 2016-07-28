@@ -17,7 +17,8 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
 
   "scraper" should "be able to retrieve accessors for apple crops" in {
     val cropIds: Seq[Crop] = Seq(apple)
-    val accessionIds: Iterable[(Int, Descriptor)] = ScraperGrin.getAccessionIds(cropIds)
+    val accessionIds: Iterable[Int] = ScraperGrin.getAccessionIds(cropIds)
+    accessionIds.foreach(println)
     println(s"counted [${accessionIds.size}] accessors")
     println(s"counted [${accessionIds.toSeq.distinct.size}] distinct accessors")
     accessionIds.size should be > 0
@@ -29,7 +30,7 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
     val objs: Iterable[Observation] = ScraperGrin.getObservationsForAccession(accessionId)
     val expectedDescriptor: Descriptor = Descriptor(id = 65098,
       definition = Some("Reaction to Stripe Rust (incited by Puccinia striiformis) in the adult plant stage in the field.  See also related descriptor Stripe Rust Adult Severity.  Grown in Mt. Vernon."),
-      name = None)
+      name = Some("Stripe Rust Adult Reaction MTV"))
     val expectedMethod: Method = Method(402008, Some("WHEAT.STRIPERUST.MTVERNON.87"))
     val expectedTaxon: Taxon = Taxon(name = "Triticum monococcum L. subsp. monococcum", id = 40597)
     val expectedAccessionDetails = AccessionDetail(name = "", number = "PI 355548", collectedFrom = Some("Vorarlberg Austria"),

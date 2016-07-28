@@ -13,12 +13,12 @@ object ScraperGrin extends Scraper with ResourceUtil {
     cropIds.foreach(cropId => {
       val accessionIds = getAccessionIds(Seq(cropId))
       accessionIds.toSeq.distinct.foreach(accessionId => {
-        val obs = getObservationsForAccession(accessionId._1)
+        val obs = getObservationsForAccession(accessionId)
 
         obs.foreach(ob => {
           val taxon = ob.accession.detail.taxa.head
           val line = Seq(s"GRINTaxon:${taxon.id}", taxon.name,
-            s"GRINDesc:${ob.descriptor.id}", accessionId._2.name.getOrElse(""), ob.descriptor.definition.getOrElse(""),
+            s"GRINDesc:${ob.descriptor.id}", ob.descriptor.name.getOrElse(""), ob.descriptor.definition.getOrElse(""),
             s"GRINMethod:${ob.method.id}", ob.method.name.getOrElse(""),
             ob.value,
             s"GRINAccess:${ob.accession.id}",
@@ -37,17 +37,17 @@ object ScraperGrin extends Scraper with ResourceUtil {
     Parser.parseCropIds(doc)
   }
 
-  def getAccessionIds(cropIds: Iterable[Crop]): Iterable[(Int, Descriptor)] = {
-    cropIds.foldLeft(Seq.empty[(Int, Descriptor)])((agg0, crop) => {
+  def getAccessionIds(cropIds: Iterable[Crop]): Iterable[Int] = {
+    cropIds.foldLeft(Seq.empty[Int])((agg0, crop) => {
       val descriptorsForCropDoc = get(crop.descriptorsUrl)
       val descriptorsForCrop = Parser.parseAvailableDescriptorIdsForCropId(descriptorsForCropDoc)
-      descriptorsForCrop.foldLeft(Seq.empty[(Int, Descriptor)])((agg1, descriptorForCrop) => {
+      descriptorsForCrop.foldLeft(Seq.empty[Int])((agg1, descriptorForCrop) => {
         val detailsDoc = get(descriptorForCrop.detailsUrl)
         val descriptorMethods = Parser.parseAvailableMethodsForDescriptor(detailsDoc)
-        descriptorMethods.foldLeft(Seq.empty[(Int, Descriptor)])((agg2, descriptorMethod) => {
+        descriptorMethods.foldLeft(Seq.empty[Int])((agg2, descriptorMethod) => {
           val accessionsDoc = get(descriptorMethod.accessionsUrl)
           val accessionIds = Parser.parseAvailableAccessionsForDescriptorAndMethod(accessionsDoc)
-          agg2 ++ accessionIds.map((_, descriptorMethod.descriptor))
+          agg2 ++ accessionIds
         }) ++ agg1
       }) ++ agg0
     })
@@ -55,13 +55,13 @@ object ScraperGrin extends Scraper with ResourceUtil {
 
   def getObservationsForAccession(accessionId: Int): Iterable[Observation] = {
     val accessionDetailsPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionDetail.aspx?id=$accessionId")
+    val details = Parser.parseTaxonInAccessionDetails(accessionDetailsPage)
+    val accession: Accession = Accession(id = accessionId, detail = details)
+
     val accessionObservationPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionObservation.aspx?id=$accessionId")
     val observations = Parser.parseObservationsForAccession(accessionObservationPage)
-    val details = Parser.parseTaxonInAccessionDetails(accessionDetailsPage)
-
     observations.map {
       case (descriptor, method, observedValue) => {
-        val accession: Accession = Accession(id = accessionId, detail = details)
         Observation(descriptor = descriptor, method = method, value = observedValue, accession = accession)
       }
     }

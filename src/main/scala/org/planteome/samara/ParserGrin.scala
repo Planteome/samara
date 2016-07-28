@@ -144,8 +144,13 @@ abstract class ParserGrin extends NameFinder with Scrubber {
     val descriptorUrls = descriptorElems >> attrs("href")("a")
     val descriptorIds = extractIdsFromUrls(descriptorUrls, """(descriptordetail.aspx\?id=)(\d+)""".r)
     val descriptorTitles = descriptorElems >> attrs("title")("a")
-    val descriptors = descriptorIds.zip(descriptorTitles).map {
+    val descriptorsAndTitles = descriptorIds.zip(descriptorTitles).map {
       case (descriptorId, descriptorTitle) => Descriptor(id = descriptorId, definition = Some(descriptorTitle))
+    }
+
+    val descriptorNames = descriptorElems >> texts("a")
+    val descriptors = descriptorsAndTitles.zip(descriptorNames).map {
+      case (descriptor, descriptorName) => Descriptor(id = descriptor.id, name = Some(descriptorName), definition = descriptor.definition)
     }
 
     val methodElems = table >> elements("td:nth-of-type(4n-1)")

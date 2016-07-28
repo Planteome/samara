@@ -1,6 +1,6 @@
 lazy val commonSettings = Seq(
   organization := "org.planteome",
-  version := "0.1.4",
+  version := "0.1.5",
   scalaVersion := "2.11.8"
 )
 
