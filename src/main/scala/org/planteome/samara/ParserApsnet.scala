@@ -9,6 +9,8 @@ import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 
+import scala.io.Source
+
 
 // http://www.apsnet.org/publications/commonnames/Pages/default.aspx
 
@@ -44,9 +46,40 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
             case (("dd", _), _) => true
             case _ => false
           }
-          .map {
-            case ((_, p), d) => Disease(name = scrub(d), pathogen = scrub(p), host = scrub(targetTaxon))
+          .flatMap {
+            case ((_, p), d) => {
+              val hostNames: Seq[String] = extractHostNames(targetTaxon)
+              hostNames.map { hostname => Disease(name = scrub(d), pathogen = scrub(p), host = hostname) }
+            }
           }
       })
+  }
+
+  def extractHostNames(targetTaxon: String): Seq[String] = {
+    val scrubbedHost: String = scrub(targetTaxon)
+
+    val nameMap = Source.fromInputStream(getClass.getResourceAsStream("apsnetNameMap.tsv"))
+      .getLines()
+      .foldLeft(Map[String, String]()) {
+        (agg, line) =>
+          val split = line.split('\t')
+          agg ++ Map(split(0) -> split(1))
+      }
+
+    nameMap.get(scrubbedHost) match {
+      case Some(name) => {
+        name.split('|')
+      }
+      case _ => singleHostname(scrubbedHost)
+    }
+
+  }
+
+  def singleHostname(scrubbedHost: String): Seq[String] = {
+    val singleName = """[^:]*\((.*)\).*""".r
+    Seq(scrubbedHost match {
+      case singleName(name) => name
+      case _ => scrubbedHost
+    })
   }
 }
