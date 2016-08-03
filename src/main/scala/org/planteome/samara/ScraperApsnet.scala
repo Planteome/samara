@@ -11,7 +11,7 @@ object ScraperApsnet extends Scraper with ResourceUtil with NameFinderStatic {
   object Parser extends ParserApsnet with NameFinderStatic
 
   override def scrape() = {
-    println("diseaseName\tsourceTaxonName\tinteractionTypeLabel\tinteractionTypeId\ttargetTaxonName\tsourceCitation\tsourceUrl\tsourceAccessedAt")
+    println("disease_name\tsource_taxon_name\tinteraction_type_label\tinteraction_type_id\ttarget_taxon_name\tsource_citation\tsource_url\tsource_accessed_at")
     scrapeDiseases().foreach {
       case (page: String, accessedAt: String, disease: Disease) => {
         val citationFull = s"${disease.citation} Accessed on $accessedAt at $page"
