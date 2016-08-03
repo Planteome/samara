@@ -15,7 +15,7 @@ object ScraperApsnet extends Scraper with ResourceUtil with NameFinderStatic {
     scrapeDiseases().foreach {
       case (page: String, accessedAt: String, disease: Disease) => {
         val citationFull = s"${disease.citation} Accessed on $accessedAt at $page"
-        println(s"${disease.name}\t${disease.pathogen}\tpathogen of\thttp://purl.obolibrary.org/obo/RO_0002556\t${disease.host}\t${citationFull}\tpage\taccessedAt")
+        println(s"${disease.name}\t${disease.pathogen}\tpathogen of\thttp://purl.obolibrary.org/obo/RO_0002556\t${disease.host}\t$citationFull\t$page\t$accessedAt")
       }
     }
 
