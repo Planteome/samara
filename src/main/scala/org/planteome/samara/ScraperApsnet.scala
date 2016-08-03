@@ -9,9 +9,9 @@ object ScraperApsnet extends Scraper with ResourceUtil with NameFinderStatic {
   object Parser extends ParserApsnet with NameFinderStatic
 
   override def scrape() = {
-    println("disease\tpathogen\thost")
+    println("diseaseName\tsourceTaxonName\tinteractionTypeLabel\tinteractionTypeId\ttargetTaxonName")
     scrapeDiseases().foreach(disease => {
-      println(s"${disease.name}\t${disease.pathogen}\t${disease.host}")
+      println(s"${disease.name}\t${disease.pathogen}\tpathogen of\thttp://purl.obolibrary.org/obo/RO_0002556\t${disease.host}")
     })
 
   }
