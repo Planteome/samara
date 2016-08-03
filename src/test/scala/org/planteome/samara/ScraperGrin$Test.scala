@@ -18,7 +18,6 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
   "scraper" should "be able to retrieve accessors for apple crops" in {
     val cropIds: Seq[Crop] = Seq(apple)
     val accessionIds: Iterable[Int] = ScraperGrin.getAccessionIds(cropIds)
-    accessionIds.foreach(println)
     println(s"counted [${accessionIds.size}] accessors")
     println(s"counted [${accessionIds.toSeq.distinct.size}] distinct accessors")
     accessionIds.size should be > 0
