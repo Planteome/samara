@@ -1,7 +1,5 @@
 package org.planteome.samara
 
-import net.ruippeixotog.scalascraper.dsl.DSL._
-import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.model.Document
 import org.scalatest._
 
@@ -29,8 +27,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
 
     interactions should contain(Disease("Green fruit rot", "Monilinia fructicola (G. Wint.) Honey", "Prunus persica"))
     interactions should contain(Disease("Green fruit rot", "Monilinia fructicola (G. Wint.) Honey", "Prunus persica var. nucipersica"))
-    interactions should contain(Disease("Green fruit rot", "M. laxa (Aderhold & Ruhland) Honey", "Prunus persica"))
-    interactions should contain(Disease("Green fruit rot", "M. laxa (Aderhold & Ruhland) Honey", "Prunus persica var. nucipersica"))
+    interactions should contain(Disease("Green fruit rot", "Monilinia laxa (Aderhold & Ruhland) Honey", "Prunus persica"))
+    interactions should contain(Disease("Green fruit rot", "Monilinia laxa (Aderhold & Ruhland) Honey", "Prunus persica var. nucipersica"))
   }
 
   "scrubbing name" should "remove whitespaces" in {
@@ -61,6 +59,10 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     val hostNames: String = "Diseases of Peach and Nectarine Peach: Prunus persica (L.) Batsch Nectarine: P. persica var. nucipersica (Suckow) C.K. Schneid."
     ParserApsnetStatic$.extractHostNames(hostNames) should contain("Prunus persica")
     ParserApsnetStatic$.extractHostNames(hostNames) should contain("Prunus persica var. nucipersica")
+  }
+
+  "expand prefixes" should "fill in genus names of previously mentioned species" in {
+    ParserApsnetStatic$.expandPrefixes(List("Homo sapiens", "H. sapiens", "Ariopsis felis")) should be(List("Homo sapiens", "Homo sapiens", "Ariopsis felis"))
   }
 
 }

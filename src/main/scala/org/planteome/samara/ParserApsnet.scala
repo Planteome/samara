@@ -39,7 +39,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
 
     val targetTaxonNames = doc >> text("h1")
 
-    findNames(targetTaxonNames)
+    val diseases = findNames(targetTaxonNames)
       .flatMap(targetTaxon => {
         elems.zip(withDisease)
           .filter {
@@ -47,12 +47,26 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
             case _ => false
           }
           .flatMap {
-            case ((_, p), d) => {
+            case ((_, pathogenName), diseaseName) => {
               val hostNames: Seq[String] = extractHostNames(targetTaxon)
-              hostNames.map { hostname => Disease(name = scrub(d), pathogen = scrub(p), host = hostname) }
+              hostNames.map { hostname => Disease(name = scrub(diseaseName), pathogen = scrub(pathogenName), host = hostname) }
             }
           }
       })
+
+    diseases zip expandPrefixes(diseases.map(_.pathogen)) map {
+      case ((disease, pathogenExpanded)) => Disease(name = disease.name, pathogen = pathogenExpanded, host = disease.host)
+    }
+  }
+
+  def expandPrefixes(names: List[String]): List[String] = {
+    names.foldLeft((names.headOption.getOrElse(""), List[String]())) { (acc, name) =>
+      val abbreviated = """(^\w*\.)\s+.*""".r
+      name match {
+        case abbreviated(abbr) => (acc._1, name.replaceFirst(abbr, acc._1) :: acc._2)
+        case str => (str.split("\\s").head, name :: acc._2)
+      }
+    }._2.reverse
   }
 
   def extractHostNames(targetTaxon: String): Seq[String] = {
