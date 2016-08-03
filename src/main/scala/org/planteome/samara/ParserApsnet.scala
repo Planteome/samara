@@ -14,7 +14,7 @@ import scala.io.Source
 
 // http://www.apsnet.org/publications/commonnames/Pages/default.aspx
 
-case class Disease(name: String, pathogen: String, host: String)
+case class Disease(name: String, pathogen: String, host: String, citation: String = "")
 
 abstract class ParserApsnet extends NameFinder with Scrubber {
 
@@ -38,6 +38,9 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
       }).reverse
 
     val targetTaxonNames = doc >> text("h1")
+    val authorInfo = doc >> text("h4")
+
+    val citation = s"$authorInfo. $targetTaxonNames. The American Phytopathological Society."
 
     val diseases = findNames(targetTaxonNames)
       .flatMap(targetTaxon => {
@@ -55,7 +58,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
       })
 
     diseases zip expandPrefixes(diseases.map(_.pathogen)) map {
-      case ((disease, pathogenExpanded)) => Disease(name = disease.name, pathogen = pathogenExpanded, host = disease.host)
+      case ((disease, pathogenExpanded)) => Disease(name = disease.name, pathogen = pathogenExpanded, host = disease.host, citation = citation)
     }
   }
 
