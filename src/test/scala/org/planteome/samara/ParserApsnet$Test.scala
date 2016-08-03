@@ -49,17 +49,6 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     links should contain("http://www.apsnet.org/publications/commonnames/Pages/PeachandNectarine.aspx")
   }
 
-  "get all pages" should "produce a giant list of disease interactions" in {
-    val diseases = ScraperApsnet.scrapeDiseases()
-
-    diseases should contain(Disease("Bacterial canker", "Pseudomonas syringae pv. syringae van Hall 1902", "Prunus persica", citation = expectedCitations.peachAndNectarine))
-    diseases should contain(Disease("Bacterial canker", "Pseudomonas syringae pv. syringae van Hall 1902", "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
-    diseases should contain(Disease("Alfalfa witches’-broom", "‘Candidatus Phytoplasma asteris’", "Medicago sativa L.", citation = expectedCitations.alfalfa))
-
-    println(s"found ${diseases.size} disease interactions:")
-
-  }
-
   "extract names" should "produce a list of extracted hostnames" in {
     val hostNames: String = "Diseases of Peach and Nectarine Peach: Prunus persica (L.) Batsch Nectarine: P. persica var. nucipersica (Suckow) C.K. Schneid."
     ParserApsnetStatic$.extractHostNames(hostNames) should contain("Prunus persica")
