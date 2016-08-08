@@ -55,8 +55,42 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     ParserApsnetStatic$.extractHostNames(hostNames) should contain("Prunus persica var. nucipersica")
   }
 
+  "extract names" should "produce a list of extracted pathogens" in {
+    val pathogenNames: String = "Genus Allexivirus; Garlic viruses A-D (GVA, GVB, GVC, GVD), Garlic virus X (GVX), Garlic mite-borne mosaic virus (GMbMV), Shallot virus X (ShVX)"
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Garlic virus X")
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Garlic virus A")
+  }
+
+  "extract names" should "produce a list of extracted pathogens without commas" in {
+    val pathogenNames: String = "Genus Begomovirus: Sweet potato leaf curl Canary virus (SPLCCaV) Sweet potato leaf curl China virus (SPLCV-CN) Sweet potato leaf curl Georgia virus (SPLCGV) Sweet potato leaf curl Lanzarote virus (SPLCLaV) Sweet potato leaf curl South Carolina virus (SPLCSCV) Sweet potato leaf curl Spain virus (SPLCESV) Sweet potato leaf curl Uganda virus (SPLCUV) Sweet potato leaf curl virus (SPLCV)"
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Sweet potato leaf curl Canary virus")
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Sweet potato leaf curl Spain virus")
+  }
+
+  "extract names" should "produce a list of extracted pathogens with hyphens" in {
+    val pathogenNames: String = "Genus Luteovirus; Barley yellow dwarf virus–kerII, Barley yellow dwarf virus–kerIII, Barley yellow dwarf virus–MAV, Barley yellow dwarf virus–PAS, Barley yellow dwarf virus–PAV"
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Barley yellow dwarf virus–kerIII")
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Barley yellow dwarf virus–PAV")
+  }
+
+  "extract names" should "produce a list of extracted pathogens lower case" in {
+    val pathogenNames: String = "genus Tobravirus, Tobacco rattle virus (TRV)"
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Tobacco rattle virus")
+  }
+
+  "extract names" should "produce a list of extracted pathogens no comma" in {
+    val pathogenNames: String = "genus Potexvirus Wineberry latent virus (WLV)"
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Wineberry latent virus")
+  }
+
+  "extract names" should "and ignore stop words" in {
+    val pathogenNames: String = "Other species include: P. scribneri Steiner"
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("P. scribneri Steiner")
+  }
+
   "expand prefixes" should "fill in genus names of previously mentioned species" in {
     ParserApsnetStatic$.expandPrefixes(List("Homo sapiens", "H. sapiens", "Ariopsis felis")) should be(List("Homo sapiens", "Homo sapiens", "Ariopsis felis"))
+    ParserApsnetStatic$.expandPrefixes(List("Homo sapiens", "H sapiens", "Ariopsis felis")) should be(List("Homo sapiens", "Homo sapiens", "Ariopsis felis"))
   }
 
 }

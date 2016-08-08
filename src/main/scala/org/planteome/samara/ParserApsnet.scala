@@ -64,7 +64,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
 
   def expandPrefixes(names: List[String]): List[String] = {
     names.foldLeft((names.headOption.getOrElse(""), List[String]())) { (acc, name) =>
-      val abbreviated = """(^\w*\.)\s+.*""".r
+      val abbreviated = """(^\w[\.]*)\s+.*""".r
       name match {
         case abbreviated(abbr) => (acc._1, name.replaceFirst(abbr, acc._1) :: acc._2)
         case str => (str.split("\\s").head, name :: acc._2)
@@ -72,22 +72,48 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     }._2.reverse
   }
 
+  lazy val nameMap: Map[String, String] = Source.fromInputStream(getClass.getResourceAsStream("apsnetNameMap.tsv"))
+    .getLines()
+    .foldLeft(Map[String, String]()) {
+      (agg, line) =>
+        val split = line.split('\t')
+        agg ++ Map(split(0) -> split(1))
+    }
+
   def extractHostNames(targetTaxon: String): Seq[String] = {
     val scrubbedHost: String = scrub(targetTaxon)
-
-    val nameMap = Source.fromInputStream(getClass.getResourceAsStream("apsnetNameMap.tsv"))
-      .getLines()
-      .foldLeft(Map[String, String]()) {
-        (agg, line) =>
-          val split = line.split('\t')
-          agg ++ Map(split(0) -> split(1))
-      }
 
     nameMap.get(scrubbedHost) match {
       case Some(name) => {
         name.split('|')
       }
       case _ => singleHostname(scrubbedHost)
+    }
+  }
+
+  def extractPathogenNames(sourceTaxon: String): Seq[String] = {
+    val scrubbedName: String = scrub(sourceTaxon)
+    val names: Seq[String] = pathogenNames(scrubbedName)
+    names.flatMap { someName => nameMap.get(someName) match {
+      case Some(name) => name.split('|')
+      case None => Seq(someName)
+    }
+    }
+  }
+
+  def pathogenNames(pathogenName: String): Seq[String] = {
+    val genusSpeciesSplit = """[Gg]enus\s([^;:,\s])*(.*)""".r
+    val removeParenthesis: String = pathogenName
+      .replaceAll("""\s+""", " ")
+      .replaceAll("""\([^\)]*\)""", ",")
+    removeParenthesis match {
+      case genusSpeciesSplit(genusName, postGenusName) => {
+        val speciesNames = postGenusName.split("""[,:;]""")
+          .map(_.trim)
+          .filter(_.nonEmpty)
+        speciesNames
+      }
+      case _ => Seq(pathogenName)
     }
 
   }
