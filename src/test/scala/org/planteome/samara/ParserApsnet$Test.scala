@@ -34,6 +34,11 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     interactions should contain(Disease(name = "Green fruit rot", pathogen = "Monilinia fructicola (G. Wint.) Honey", host = "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
     interactions should contain(Disease(name = "Green fruit rot", pathogen = "Monilinia laxa (Aderhold & Ruhland) Honey", host = "Prunus persica", citation = expectedCitations.peachAndNectarine))
     interactions should contain(Disease(name = "Green fruit rot", pathogen = "Monilinia laxa (Aderhold & Ruhland) Honey", host = "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
+
+    interactions should contain(Disease(name = "Line pattern", pathogen = "Prunus necrotic ringspot virus", host = "Prunus persica", citation = expectedCitations.peachAndNectarine))
+    interactions should contain(Disease(name = "Line pattern", pathogen = "Prunus necrotic ringspot virus", host = "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
+
+    interactions should contain(Disease(name = "Rosette and decline", pathogen = "Prune dwarf virus", host = "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
   }
 
   "scrubbing name" should "remove whitespaces" in {
@@ -86,6 +91,23 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
   "extract names" should "and ignore stop words" in {
     val pathogenNames: String = "Other species include: P. scribneri Steiner"
     ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("P. scribneri Steiner")
+  }
+
+  "extract names" should "and ignore +" in {
+    val pathogenNames: String = "+ genus Ilarvirus, Prune dwarf virus (PDV)"
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Prune dwarf virus")
+  }
+
+"extract names" should "and parse or" in {
+    val pathogenNames: String = "Caused by either genus Nepovirus, Arabis mosaic virus (ArMV) or genus Nepovirus, Strawberry latent ringspot virus (SLRV)"
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Arabis mosaic virus")
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Strawberry latent ringspot virus")
+  }
+
+"extract names" should "and parse candidate" in {
+    ParserApsnetStatic$.extractPathogenNames("unassigned genus, Purple granadilla mosaic virus (PGMV)") should contain("Purple granadilla mosaic virus")
+  val pathogenNames: String = "candidate Rhabdoviridae (unassigned genus), Passion fruit green spot virus (PGSV)"
+  ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Passion fruit green spot virus")
   }
 
   "expand prefixes" should "fill in genus names of previously mentioned species" in {
