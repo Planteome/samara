@@ -8,8 +8,6 @@ import net.ruippeixotog.scalascraper.scraper.ContentExtractors._
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-import org.globalnames.parser.ScientificNameParser.{instance => snp}
-
 
 import scala.io.Source
 
