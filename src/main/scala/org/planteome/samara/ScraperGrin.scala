@@ -56,14 +56,22 @@ object ScraperGrin extends Scraper with ResourceUtil {
   def getObservationsForAccession(accessionId: Int): Iterable[Observation] = {
     val accessionDetailsPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionDetail.aspx?id=$accessionId")
     val details = Parser.parseTaxonInAccessionDetails(accessionDetailsPage)
-    val accession: Accession = Accession(id = accessionId, detail = details)
-
-    val accessionObservationPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionObservation.aspx?id=$accessionId")
-    val observations = Parser.parseObservationsForAccession(accessionObservationPage)
-    observations.map {
-      case (descriptor, method, observedValue) => {
-        Observation(descriptor = descriptor, method = method, value = observedValue, accession = accession)
+    details match {
+      case Some(accessionDetails) => {
+        val accession: Accession = Accession(id = accessionId, detail = accessionDetails)
+        val accessionObservationPage = get(s"https://npgsweb.ars-grin.gov/gringlobal/AccessionObservation.aspx?id=$accessionId")
+        val observations = Parser.parseObservationsForAccession(accessionObservationPage)
+        observations.map {
+          case (descriptor, method, observedValue) => {
+            Observation(descriptor = descriptor, method = method, value = observedValue, accession = accession)
+          }
+        }
+      }
+      case None => {
+        Console.err.println(s"failed to retrieve information for accession id [$accessionId].")
+        List()
       }
     }
+
   }
 }

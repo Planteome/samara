@@ -44,11 +44,26 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
 
   "parsing accession detail page" should "result in a taxon id" in {
     val doc: Document = parse("grin/AccessionDetail.aspx")
-    val taxonIds: AccessionDetail = ParserGrinStatic.parseTaxonInAccessionDetails(doc)
-    taxonIds should be(AccessionDetail(number = "PI 589198", name = "'Some Test Name'",
+    val taxonIds = ParserGrinStatic.parseTaxonInAccessionDetails(doc)
+    taxonIds should be(Some(AccessionDetail(number = "PI 589198", name = "'Some Test Name'",
       collectedFrom = Some("United States"),
       taxa = List(Taxon(id = 23257, name = "Malus platycarpa Rehder")),
-      references = List()))
+      references = List())))
+  }
+
+  "parsing accession detail page 1180776" should "result in a taxon id" in {
+    val doc: Document = parse("grin/AccessionDetail1180776.aspx")
+    val taxonIds = ParserGrinStatic.parseTaxonInAccessionDetails(doc)
+    taxonIds should be(Some(AccessionDetail(number = "PI 224705", name = "",
+      collectedFrom = Some("Mexico"),
+      taxa = List(Taxon(id = 17904, name = "Gossypium barbadense L.")),
+      references = List())))
+  }
+
+  "parsing malformed accession detail page 1180776" should "result in a taxon id" in {
+    val doc: Document = parse("grin/AccessionDetail1180776Malformed.aspx")
+    val taxonIds = ParserGrinStatic.parseTaxonInAccessionDetails(doc)
+    taxonIds should be(None)
   }
 
   "parsing assession observations page" should "list all observations for assession" in {

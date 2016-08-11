@@ -3,7 +3,7 @@ package org.planteome.samara
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.scraper.ContentExtractors._
 import net.ruippeixotog.scalascraper.model.{Document, Element}
-
+import net.ruippeixotog.scalascraper.util.Validated._
 
 import scala.util.matching.Regex
 
@@ -70,9 +70,17 @@ abstract class ParserGrin extends NameFinder with Scrubber {
     extractIdsFromUrls(urls, """(AccessionDetail.aspx\?id=)(\d+)""".r)
   }
 
-  def parseTaxonInAccessionDetails(doc: Document): AccessionDetail = {
+  def parseTaxonInAccessionDetails(doc: Document): Option[AccessionDetail] = {
+    doc ~/~ validator(text("h1"))(_.nonEmpty) match {
+      case VSuccess(_) => Some(parseTaxonInAccessionDetailsWithNumber(doc = doc, accessionNumber = doc >> text("h1")))
+      case VFailure(_) => {
+        None
+      }
+    }
+  }
+
+  def parseTaxonInAccessionDetailsWithNumber(doc: Document, accessionNumber: String): AccessionDetail = {
     val taxonomyDetailRegex: Regex = """(taxonomydetail.aspx\?id=)(\d+)""".r
-    val accessionNumber = doc >> text("h1")
     val accessionName = doc >> text("div#main-wrapper > b")
     val headers = doc >> elements("th")
     val collectedFromRow = headers
