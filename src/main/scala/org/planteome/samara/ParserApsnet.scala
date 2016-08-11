@@ -91,7 +91,14 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     names.foldLeft((names.headOption.getOrElse(""), List[String]())) { (acc, name) =>
       val abbreviated = """(^\w[\.]*)\s+.*""".r
       name match {
-        case abbreviated(abbr) => (acc._1, name.replaceFirst(abbr, acc._1) :: acc._2)
+        case abbreviated(abbr) => {
+          val firstPart = if (abbr.length > 0 && acc._1.toLowerCase.startsWith(abbr.substring(0,1).toLowerCase)) {
+            name.replaceFirst(abbr, acc._1)
+          } else {
+            name
+          }
+          (acc._1, firstPart :: acc._2)
+        }
         case str => (str.split("\\s").head, name :: acc._2)
       }
     }._2.reverse

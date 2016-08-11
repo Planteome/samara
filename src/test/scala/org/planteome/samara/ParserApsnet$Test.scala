@@ -201,6 +201,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
   "expand prefixes" should "fill in genus names of previously mentioned species" in {
     ParserApsnetStatic$.expandPrefixes(List("Homo sapiens", "H. sapiens", "Ariopsis felis")) should be(List("Homo sapiens", "Homo sapiens", "Ariopsis felis"))
     ParserApsnetStatic$.expandPrefixes(List("Homo sapiens", "H sapiens", "Ariopsis felis")) should be(List("Homo sapiens", "Homo sapiens", "Ariopsis felis"))
+    ParserApsnetStatic$.expandPrefixes(List("Lomo sapiens", "H sapiens", "Ariopsis felis")) should be(List("Lomo sapiens", "H sapiens", "Ariopsis felis"))
+    ParserApsnetStatic$.expandPrefixes(List("Homo sapiens", "h sapiens", "Ariopsis felis")) should be(List("Homo sapiens", "Homo sapiens", "Ariopsis felis"))
   }
 
   "canonize" should "create canonical representation of a name" in {
