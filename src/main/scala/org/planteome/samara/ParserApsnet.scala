@@ -8,13 +8,17 @@ import net.ruippeixotog.scalascraper.scraper.ContentExtractors._
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
+import org.globalnames.parser.ScientificNameParser.{instance => snp}
+
 
 import scala.io.Source
 
 
 // http://www.apsnet.org/publications/commonnames/Pages/default.aspx
 
-case class Disease(name: String, pathogen: String, host: String, citation: String = "")
+case class Disease(name: String,
+                   verbatimPathogen: String = "", pathogen: String,
+                   verbatimHost: String = "", host: String, citation: String = "")
 
 abstract class ParserApsnet extends NameFinder with Scrubber {
 
@@ -56,20 +60,32 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
               diseases.flatMap {
                 disease => {
                   val hostNames: Seq[String] = extractHostNames(targetTaxon)
-                  hostNames.map { hostname => disease.copy(host = hostname) }
+                  hostNames.map { hostname => disease.copy(host = hostname, verbatimHost = targetTaxon) }
                 }
               }.flatMap {
                 disease => {
                   val pathogenNames: Seq[String] = extractPathogenNames(pathogenName)
-                  pathogenNames.map { pathogen => disease.copy(pathogen = pathogen) }
+                  pathogenNames.map { pathogen => disease.copy(pathogen = pathogen, verbatimPathogen = pathogenName) }
                 }
               }
             }
           }
       })
 
-    diseases zip expandPrefixes(diseases.map(_.pathogen)) map {
-      case ((disease, pathogenExpanded)) => Disease(name = disease.name, pathogen = pathogenExpanded, host = disease.host, citation = citation)
+    val expandedDiseases = diseases zip expandPrefixes(diseases.map(_.pathogen)) map {
+      case ((disease, pathogenExpanded)) => disease.copy(pathogen = pathogenExpanded, citation = citation)
+    }
+
+    expandedDiseases.map {
+      disease => disease.copy(pathogen = canonize(disease.pathogen), host = canonize(disease.host))
+    }
+  }
+
+  def canonize(name: String): String = {
+    val capital = """(^[A-Z].*)""".r
+    name match {
+      case capital(capitalized) => name
+      case _ => ""
     }
   }
 
@@ -112,21 +128,38 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     }
   }
 
-  def pathogenNames(pathogenName: String): Seq[String] = {
+  def pathogenNames(pathogenName2: String): Seq[String] = {
+
+    val synonymSplit = """^\(=(.*)\)$""".r
+    val synonymSplit3 = """^\(=(.*)$""".r
+    val synonymSplit2 = """^=(.*)""".r
+    val synonymSplit4 = """\(syn\.(.*)\)$""".r
+    val synonymSplit5 = """\(syns\.(.*)\)$""".r
+    val anamorph = """^\((.*morph):(.*)?\)$""".r
+    val pathogenName = pathogenName2 match {
+      case synonymSplit(name) => name.trim
+      case synonymSplit2(name) => name.trim
+      case synonymSplit3(name) => name.trim
+      case synonymSplit5(name) => name.trim
+      case synonymSplit4(name) => name.trim
+      case anamorph(_, name) => name.trim
+      case _ => pathogenName2
+    }
+
     val genusSpeciesSplit = """[Gg]enus\s([^;:,\s])*(.*)""".r
     val removeParenthesis: String = pathogenName
       .replaceAll("""\s+""", " ")
       .replaceAll("""\([^\)]*\)""", ",")
-    removeParenthesis match {
+    val pathogenNameProcessed = removeParenthesis match {
       case genusSpeciesSplit(genusName, postGenusName) => {
-        val speciesNames = postGenusName.split("""[,:;]""")
-          .map(_.trim)
-          .filter(_.nonEmpty)
-        speciesNames
+        postGenusName
       }
-      case _ => Seq(pathogenName)
+      case _ => pathogenName
     }
 
+    pathogenNameProcessed.split("""[,:;]""")
+      .map(_.trim)
+      .filter(_.nonEmpty)
   }
 
   def singleHostname(scrubbedHost: String): Seq[String] = {

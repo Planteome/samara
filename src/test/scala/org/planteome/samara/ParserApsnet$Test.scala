@@ -9,7 +9,10 @@ object ParserApsnetStatic$ extends ParserApsnet with NameFinderStatic
 object expectedCitations {
   val alfalfa = "D. A. Samac, L. H. Rhodes, and W. O. Lamp, primary collators (Last update: 6/25/14). Diseases of Alfalfa (Medicago sativa L.). The American Phytopathological Society."
   val peachAndNectarine = "J. K. Uyemoto, J. M. Ogawa, and B. A. Jaffee, primary collators; updated by J. E. Adaskaveg, S. W. Scott, and H. Scherm (last update 5/23/01). Diseases of Peach and Nectarine Peach: Prunus persica (L.) Batsch Nectarine: P. persica var. nucipersica (Suckow) C.K. Schneid.. The American Phytopathological Society."
+}
 
+object expectedHosts {
+  val verbatimPeachHost: String = "Diseases of Peach and Nectarine Peach: Prunus persica (L.) Batsch Nectarine: P. persica var. nucipersica (Suckow) C.K. Schneid."
 }
 
 class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic with ParseTestUtil {
@@ -17,28 +20,102 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     val doc: Document = parse("apsnet/Alfalfa.aspx")
     val interactions: Iterable[Disease] = ParserApsnetStatic$.parse(doc)
 
-    interactions should contain(Disease(name = "Alfalfa witches’-broom", pathogen = "‘Candidatus Phytoplasma asteris’", host = "Medicago sativa L.", citation = expectedCitations.alfalfa))
-    interactions should contain(Disease("Red clover vein mosaic", "Red clover vein mosaic virus (RCVMV)", "Medicago sativa L.", citation = expectedCitations.alfalfa))
+    interactions should contain(Disease(name = "Alfalfa witches’-broom",
+      verbatimPathogen = "‘Candidatus Phytoplasma asteris’",
+      pathogen = "‘Candidatus Phytoplasma asteris’",
+      verbatimHost = "Diseases of Alfalfa (Medicago sativa L.)",
+      host = "Medicago sativa L.",
+      citation = expectedCitations.alfalfa))
+
+    interactions should contain(Disease(name = "Red clover vein mosaic",
+      verbatimPathogen = "Red clover vein mosaic virus (RCVMV)",
+      pathogen = "Red clover vein mosaic virus (RCVMV)",
+      verbatimHost = "Diseases of Alfalfa (Medicago sativa L.)",
+      host = "Medicago sativa L.",
+      citation = expectedCitations.alfalfa))
   }
+
 
   "Parsing Peach and Nectarine" should "result in pathogen-host interactions for disease" in {
     val doc: Document = parse("apsnet/PeachandNectarine.aspx")
     val interactions: Iterable[Disease] = ParserApsnetStatic$.parse(doc)
 
-    interactions should contain(Disease(name = "Bacterial canker", pathogen = "Pseudomonas syringae pv. syringae van Hall 1902", host = "Prunus persica", citation = expectedCitations.peachAndNectarine))
-    interactions should contain(Disease(name = "Bacterial canker", pathogen = "Pseudomonas syringae pv. syringae van Hall 1902", host = "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
-    interactions should contain(Disease(name = "Bacterial canker", pathogen = "Pseudomonas syringae pv. syringae van Hall 1902", host = "Prunus persica", citation = expectedCitations.peachAndNectarine))
-    interactions should contain(Disease(name = "Bacterial canker", pathogen = "Pseudomonas syringae pv. syringae van Hall 1902", host = "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
+    interactions should contain(Disease(name = "Bacterial canker",
+      verbatimPathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      pathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      host = "Prunus persica",
+      citation = expectedCitations.peachAndNectarine))
 
-    interactions should contain(Disease(name = "Green fruit rot", pathogen = "Monilinia fructicola (G. Wint.) Honey", host = "Prunus persica", citation = expectedCitations.peachAndNectarine))
-    interactions should contain(Disease(name = "Green fruit rot", pathogen = "Monilinia fructicola (G. Wint.) Honey", host = "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
-    interactions should contain(Disease(name = "Green fruit rot", pathogen = "Monilinia laxa (Aderhold & Ruhland) Honey", host = "Prunus persica", citation = expectedCitations.peachAndNectarine))
-    interactions should contain(Disease(name = "Green fruit rot", pathogen = "Monilinia laxa (Aderhold & Ruhland) Honey", host = "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
+    interactions should contain(Disease(name = "Bacterial canker",
+      verbatimPathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      pathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      host = "Prunus persica var. nucipersica",
+      citation = expectedCitations.peachAndNectarine))
 
-    interactions should contain(Disease(name = "Line pattern", pathogen = "Prunus necrotic ringspot virus", host = "Prunus persica", citation = expectedCitations.peachAndNectarine))
-    interactions should contain(Disease(name = "Line pattern", pathogen = "Prunus necrotic ringspot virus", host = "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
+    interactions should contain(Disease(name = "Bacterial canker",
+      verbatimPathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      pathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      host = "Prunus persica",
+      citation = expectedCitations.peachAndNectarine))
 
-    interactions should contain(Disease(name = "Rosette and decline", pathogen = "Prune dwarf virus", host = "Prunus persica var. nucipersica", citation = expectedCitations.peachAndNectarine))
+    interactions should contain(Disease(name = "Bacterial canker",
+      verbatimPathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      pathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      host = "Prunus persica var. nucipersica",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      citation = expectedCitations.peachAndNectarine))
+
+    interactions should contain(Disease(name = "Green fruit rot",
+      verbatimPathogen = "Monilinia fructicola (G. Wint.) Honey",
+      pathogen = "Monilinia fructicola (G. Wint.) Honey",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      host = "Prunus persica",
+      citation = expectedCitations.peachAndNectarine))
+
+    interactions should contain(Disease(name = "Green fruit rot",
+      verbatimPathogen = "Monilinia fructicola (G. Wint.) Honey",
+      pathogen = "Monilinia fructicola (G. Wint.) Honey",
+      host = "Prunus persica var. nucipersica",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      citation = expectedCitations.peachAndNectarine))
+
+    interactions should contain(Disease(name = "Green fruit rot",
+      verbatimPathogen = "M. laxa (Aderhold & Ruhland) Honey",
+      pathogen = "Monilinia laxa (Aderhold & Ruhland) Honey",
+      host = "Prunus persica",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      citation = expectedCitations.peachAndNectarine))
+
+    interactions should contain(Disease(name = "Green fruit rot",
+      verbatimPathogen = "M. laxa (Aderhold & Ruhland) Honey",
+      pathogen = "Monilinia laxa (Aderhold & Ruhland) Honey",
+      host = "Prunus persica var. nucipersica",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      citation = expectedCitations.peachAndNectarine))
+
+    interactions should contain(Disease(name = "Line pattern",
+      verbatimPathogen = "genus Ilarvirus, Prunus necrotic ringspot virus (PNRSV)",
+      pathogen = "Prunus necrotic ringspot virus",
+      host = "Prunus persica",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      citation = expectedCitations.peachAndNectarine))
+
+    interactions should contain(Disease(name = "Line pattern",
+      verbatimPathogen = "genus Ilarvirus, Prunus necrotic ringspot virus (PNRSV)",
+      pathogen = "Prunus necrotic ringspot virus",
+      host = "Prunus persica var. nucipersica",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      citation = expectedCitations.peachAndNectarine))
+
+    interactions should contain(Disease(name = "Rosette and decline",
+      verbatimPathogen = "+ genus Ilarvirus, Prune dwarf virus (PDV)",
+      pathogen = "Prune dwarf virus",
+      host = "Prunus persica var. nucipersica",
+      verbatimHost = expectedHosts.verbatimPeachHost,
+      citation = expectedCitations.peachAndNectarine))
   }
 
   "scrubbing name" should "remove whitespaces" in {
@@ -55,7 +132,7 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
   }
 
   "extract names" should "produce a list of extracted hostnames" in {
-    val hostNames: String = "Diseases of Peach and Nectarine Peach: Prunus persica (L.) Batsch Nectarine: P. persica var. nucipersica (Suckow) C.K. Schneid."
+    val hostNames: String = expectedHosts.verbatimPeachHost
     ParserApsnetStatic$.extractHostNames(hostNames) should contain("Prunus persica")
     ParserApsnetStatic$.extractHostNames(hostNames) should contain("Prunus persica var. nucipersica")
   }
@@ -98,21 +175,36 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Prune dwarf virus")
   }
 
-"extract names" should "and parse or" in {
+  "extract names" should "and parse or" in {
     val pathogenNames: String = "Caused by either genus Nepovirus, Arabis mosaic virus (ArMV) or genus Nepovirus, Strawberry latent ringspot virus (SLRV)"
     ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Arabis mosaic virus")
     ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Strawberry latent ringspot virus")
   }
 
-"extract names" should "and parse candidate" in {
-    ParserApsnetStatic$.extractPathogenNames("unassigned genus, Purple granadilla mosaic virus (PGMV)") should contain("Purple granadilla mosaic virus")
-  val pathogenNames: String = "candidate Rhabdoviridae (unassigned genus), Passion fruit green spot virus (PGSV)"
-  ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Passion fruit green spot virus")
+  "extract names" should "and parse candidate" in {
+    ParserApsnetStatic$.extractPathogenNames("unassigned genus, Purple granadilla mosaic virus (PGMV)") should contain("Purple granadilla mosaic virus (PGMV)")
+    val pathogenNames: String = "candidate Rhabdoviridae (unassigned genus), Passion fruit green spot virus (PGSV)"
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Passion fruit green spot virus (PGSV)")
+  }
+
+  "extract names" should "and parse synonyms" in {
+    ParserApsnetStatic$.extractPathogenNames("(= Armillaria fuscipes Petch)") should contain("Armillaria fuscipes Petch")
+    ParserApsnetStatic$.extractPathogenNames("(= Armillaria fuscipes Petch") should contain("Armillaria fuscipes Petch")
+    ParserApsnetStatic$.extractPathogenNames("(anamorph: Zythia fragariae Laibach)") should contain("Zythia fragariae Laibach")
+    ParserApsnetStatic$.extractPathogenNames("= Rhizoctonia microsclerotia J. Matz") should contain("Rhizoctonia microsclerotia J. Matz")
+    ParserApsnetStatic$.extractPathogenNames("          (syn. C. piperiana Sacc. & Trott. ex Cummins)") should contain("C. piperiana Sacc. & Trott. ex Cummins")
+    ParserApsnetStatic$.extractPathogenNames("          (syns. Pestalotia sydowiana Bres.; Pestalotiopsis rhododendri           Y. M. Zhang, Maharachch., & K. D. Hyde)") should contain("Pestalotia sydowiana Bres.")
+    ParserApsnetStatic$.extractPathogenNames("          (syns. Pestalotia sydowiana Bres.; Pestalotiopsis rhododendri           Y. M. Zhang, Maharachch., & K. D. Hyde)") should contain("Pestalotiopsis rhododendri Y. M. Zhang")
   }
 
   "expand prefixes" should "fill in genus names of previously mentioned species" in {
     ParserApsnetStatic$.expandPrefixes(List("Homo sapiens", "H. sapiens", "Ariopsis felis")) should be(List("Homo sapiens", "Homo sapiens", "Ariopsis felis"))
     ParserApsnetStatic$.expandPrefixes(List("Homo sapiens", "H sapiens", "Ariopsis felis")) should be(List("Homo sapiens", "Homo sapiens", "Ariopsis felis"))
+  }
+
+  "canonize" should "create canonical representation of a name" in {
+    ParserApsnetStatic$.canonize("Pseudomonas cichorii (Swingle 1925) Stapp 1928") should be ("Pseudomonas cichorii (Swingle 1925) Stapp 1928")
+    ParserApsnetStatic$.canonize("sseudomonas cichorii (Swingle 1925) Stapp 1928") should be ("")
   }
 
 }
