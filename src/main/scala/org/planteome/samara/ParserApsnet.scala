@@ -135,6 +135,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     val synonymSplit2 = """^=(.*)""".r
     val synonymSplit4 = """\(syn\.(.*)\)$""".r
     val synonymSplit5 = """\(syns\.(.*)\)$""".r
+    val quoted = """‘(.*)’""".r
     val anamorph = """^\((.*morph):(.*)?\)$""".r
     val pathogenName = pathogenName2 match {
       case synonymSplit(name) => name.trim
@@ -142,6 +143,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
       case synonymSplit3(name) => name.trim
       case synonymSplit5(name) => name.trim
       case synonymSplit4(name) => name.trim
+      case quoted(name) => name.trim
       case anamorph(_, name) => name.trim
       case _ => pathogenName2
     }

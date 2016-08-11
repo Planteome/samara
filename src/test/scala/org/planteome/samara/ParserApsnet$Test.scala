@@ -22,7 +22,7 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
 
     interactions should contain(Disease(name = "Alfalfa witches’-broom",
       verbatimPathogen = "‘Candidatus Phytoplasma asteris’",
-      pathogen = "‘Candidatus Phytoplasma asteris’",
+      pathogen = "Candidatus Phytoplasma asteris",
       verbatimHost = "Diseases of Alfalfa (Medicago sativa L.)",
       host = "Medicago sativa L.",
       citation = expectedCitations.alfalfa))
@@ -195,6 +195,7 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     ParserApsnetStatic$.extractPathogenNames("          (syn. C. piperiana Sacc. & Trott. ex Cummins)") should contain("C. piperiana Sacc. & Trott. ex Cummins")
     ParserApsnetStatic$.extractPathogenNames("          (syns. Pestalotia sydowiana Bres.; Pestalotiopsis rhododendri           Y. M. Zhang, Maharachch., & K. D. Hyde)") should contain("Pestalotia sydowiana Bres.")
     ParserApsnetStatic$.extractPathogenNames("          (syns. Pestalotia sydowiana Bres.; Pestalotiopsis rhododendri           Y. M. Zhang, Maharachch., & K. D. Hyde)") should contain("Pestalotiopsis rhododendri Y. M. Zhang")
+    ParserApsnetStatic$.extractPathogenNames("‘Candidatus Phytoplasma asteris’") should contain("Candidatus Phytoplasma asteris")
   }
 
   "expand prefixes" should "fill in genus names of previously mentioned species" in {
