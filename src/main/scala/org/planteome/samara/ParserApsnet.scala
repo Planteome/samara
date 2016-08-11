@@ -82,7 +82,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
   }
 
   def canonize(name: String): String = {
-    val capital = """(^[A-Z].*)""".r
+    val capital = """(^[A-Z][a-z]{2}.*)""".r
     name match {
       case capital(capitalized) => name
       case _ => ""

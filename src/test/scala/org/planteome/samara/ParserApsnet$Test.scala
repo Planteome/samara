@@ -206,6 +206,7 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
   "canonize" should "create canonical representation of a name" in {
     ParserApsnetStatic$.canonize("Pseudomonas cichorii (Swingle 1925) Stapp 1928") should be ("Pseudomonas cichorii (Swingle 1925) Stapp 1928")
     ParserApsnetStatic$.canonize("sseudomonas cichorii (Swingle 1925) Stapp 1928") should be ("")
+    ParserApsnetStatic$.canonize("Fr.") should be ("")
   }
 
 }
