@@ -31,7 +31,7 @@ class ScraperApsnet$Test extends FlatSpec with Matchers {
 
     diseases should contain(Disease(name = "Alfalfa witches’-broom",
       verbatimPathogen = "‘Candidatus Phytoplasma asteris’",
-      pathogen = "‘Candidatus Phytoplasma asteris’",
+      pathogen = "Candidatus Phytoplasma asteris",
       verbatimHost = "Diseases of Alfalfa (Medicago sativa L.)",
       host = "Medicago sativa L.",
       citation = expectedCitations.alfalfa))
