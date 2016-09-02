@@ -57,15 +57,13 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
 
               diseases.flatMap {
                 disease => {
-                  val hostNames: Seq[(String, String)] = extractHostNames(targetTaxon)
-                    .flatMap(hostName => findNames(hostName).map((hostName, _)))
-                  hostNames.map { hostname => disease.copy(host = hostname._1, hostId = hostname._2, verbatimHost = targetTaxon) }
+                  val hostNames: Seq[String] = extractHostNames(targetTaxon)
+                  hostNames.map { hostname => disease.copy(host = hostname, verbatimHost = targetTaxon) }
                 }
               }.flatMap {
                 disease => {
-                  val pathogenNames: Seq[(String, String)] = extractPathogenNames(pathogenName)
-                    .flatMap(pathogenName => findNames(pathogenName).map((pathogenName, _)))
-                  pathogenNames.map { pathogen => disease.copy(pathogen = pathogen._1, pathogenId = pathogen._2, verbatimPathogen = pathogenName) }
+                  val pathogenNames: Seq[String] = extractPathogenNames(pathogenName)
+                  pathogenNames.map { pathogen => disease.copy(pathogen = pathogen, verbatimPathogen = pathogenName) }
                 }
               }
             }
@@ -76,8 +74,22 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
       case ((disease, pathogenExpanded)) => disease.copy(pathogen = pathogenExpanded, citation = citation)
     }
 
-    expandedDiseases.map {
-      disease => disease.copy(pathogen = canonize(disease.pathogen), host = canonize(disease.host))
+    val resolvedDiseases = expandedDiseases.flatMap {
+      disease => {
+        val hostIds = findNames(disease.host)
+        hostIds.map(hostId => disease.copy(hostId = hostId))
+      }
+    }.flatMap {
+      disease => {
+        val pathogenIds = findNames(disease.pathogen)
+        pathogenIds.map(pathogenId => disease.copy(pathogenId = pathogenId))
+      }
+    }
+
+    resolvedDiseases.map {
+      disease => {
+        disease.copy(pathogen = canonize(disease.pathogen), host = canonize(disease.host))
+      }
     }
   }
 

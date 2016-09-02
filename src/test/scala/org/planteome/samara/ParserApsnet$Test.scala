@@ -32,6 +32,7 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     interactions should contain(Disease(name = "Red clover vein mosaic",
       verbatimPathogen = "Red clover vein mosaic virus (RCVMV)",
       pathogen = "Red clover vein mosaic virus (RCVMV)",
+      pathogenId = "Red clover vein mosaic virus (RCVMV)",
       verbatimHost = "Diseases of Alfalfa (Medicago sativa L.)",
       host = "Medicago sativa L.",
       hostId = "Medicago sativa L.",
