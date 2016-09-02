@@ -3,7 +3,7 @@ package org.planteome.samara
 import net.ruippeixotog.scalascraper.model.Document
 
 
-object ScraperGrin extends Scraper with ResourceUtil with NameFinderTaxonCache {
+object ScraperGrin extends Scraper with ResourceUtil with NameFinderNoMatch {
 
   object Parser extends ParserGrin
 
