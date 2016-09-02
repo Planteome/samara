@@ -15,8 +15,8 @@ import scala.io.Source
 // http://www.apsnet.org/publications/commonnames/Pages/default.aspx
 
 case class Disease(name: String,
-                   verbatimPathogen: String = "", pathogen: String,
-                   verbatimHost: String = "", host: String, citation: String = "")
+                   verbatimPathogen: String = "", pathogen: String, pathogenId: String = "",
+                   verbatimHost: String = "", host: String, hostId: String = "", citation: String = "")
 
 abstract class ParserApsnet extends NameFinder with Scrubber {
 
@@ -44,7 +44,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
 
     val citation = s"$authorInfo. $targetTaxonNames. The American Phytopathological Society."
 
-    val diseases = findNames(targetTaxonNames)
+    val diseases = List(targetTaxonNames)
       .flatMap(targetTaxon => {
         elems.zip(withDisease)
           .filter {
@@ -57,13 +57,15 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
 
               diseases.flatMap {
                 disease => {
-                  val hostNames: Seq[String] = extractHostNames(targetTaxon)
-                  hostNames.map { hostname => disease.copy(host = hostname, verbatimHost = targetTaxon) }
+                  val hostNames: Seq[(String, String)] = extractHostNames(targetTaxon)
+                    .flatMap(hostName => findNames(hostName).map((hostName, _)))
+                  hostNames.map { hostname => disease.copy(host = hostname._1, hostId = hostname._2, verbatimHost = targetTaxon) }
                 }
               }.flatMap {
                 disease => {
-                  val pathogenNames: Seq[String] = extractPathogenNames(pathogenName)
-                  pathogenNames.map { pathogen => disease.copy(pathogen = pathogen, verbatimPathogen = pathogenName) }
+                  val pathogenNames: Seq[(String, String)] = extractPathogenNames(pathogenName)
+                    .flatMap(pathogenName => findNames(pathogenName).map((pathogenName, _)))
+                  pathogenNames.map { pathogen => disease.copy(pathogen = pathogen._1, pathogenId = pathogen._2, verbatimPathogen = pathogenName) }
                 }
               }
             }
@@ -92,7 +94,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
       val abbreviated = """(^\w[\.]*)\s+.*""".r
       name match {
         case abbreviated(abbr) => {
-          val firstPart = if (abbr.length > 0 && acc._1.toLowerCase.startsWith(abbr.substring(0,1).toLowerCase)) {
+          val firstPart = if (abbr.length > 0 && acc._1.toLowerCase.startsWith(abbr.substring(0, 1).toLowerCase)) {
             name.replaceFirst(abbr, acc._1)
           } else {
             name
@@ -117,7 +119,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
 
     nameMap.get(scrubbedHost) match {
       case Some(name) => {
-        name.split('|')
+        name.split('|').toSeq
       }
       case _ => singleHostname(scrubbedHost)
     }

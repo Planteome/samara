@@ -44,9 +44,10 @@ lazy val root = (project in file(".")).
       "GloBI snapshots" at "https://s3.amazonaws.com/globi/snapshot/"),
     libraryDependencies ++= Seq(
       "net.ruippeixotog" %% "scala-scraper" % "1.0.0",
-      "org.scalatest" %% "scalatest" % "2.2.5" % "test",
       "com.github.scopt" %% "scopt" % "3.5.0",
-      taxonCacheModule
+      "org.mapdb" % "mapdb" % "1.0.9",
+      taxonCacheModule,
+      "org.scalatest" %% "scalatest" % "2.2.5" % "test"
     ),
     resourceGenerators in Compile += installTaxonCache.taskValue,
     test in assembly := {}

@@ -19,7 +19,7 @@ case class Crop(id: Int) extends GRINTerm {
   def descriptorsUrl = s"https://npgsweb.ars-grin.gov/gringlobal/cropdetail.aspx?type=descriptor&id=$id"
 }
 
-case class Taxon(name: String, id: Int, rank: Option[String] = None) extends GRINTerm
+case class GRINTaxon(name: String, id: Int, rank: Option[String] = None) extends GRINTerm
 
 case class Descriptor(id: Int, definition: Option[String] = None, name: Option[String] = None) extends GRINTerm {
   def detailsUrl = s"https://npgsweb.ars-grin.gov/gringlobal/descriptordetail.aspx?id=$id"
@@ -27,11 +27,11 @@ case class Descriptor(id: Int, definition: Option[String] = None, name: Option[S
 
 case class Accession(id: Int, detail: AccessionDetail) extends GRINTerm
 
-case class AccessionDetail(name: String, number: String, collectedFrom: Option[String], taxa: Iterable[Taxon], references: Iterable[String]) extends GRINTerm
+case class AccessionDetail(name: String, number: String, collectedFrom: Option[String], taxa: Iterable[GRINTaxon], references: Iterable[String]) extends GRINTerm
 
 case class Observation(descriptor: Descriptor, method: Method, value: String, accession: Accession) extends GRINTerm
 
-abstract class ParserGrin extends NameFinder with Scrubber {
+abstract class ParserGrin extends Scrubber {
   def parseCropIds(doc: Document): Iterable[Crop] = {
     val ids = doc >> elements(".ddl_crops") >> attrs("value")("option")
     ids.map(Integer.parseInt(_)).filter(_ > 0).map(Crop(_))
@@ -110,7 +110,7 @@ abstract class ParserGrin extends NameFinder with Scrubber {
       elem => {
         taxonomyDetailRegex.findFirstIn(elem.attr("href")) match {
           case Some(taxonomyDetailRegex(_, someId)) => {
-            Some(Taxon(id = Integer.parseInt(someId), name = elem.text))
+            Some(GRINTaxon(id = Integer.parseInt(someId), name = elem.text))
           }
           case _ => None
         }
@@ -175,7 +175,7 @@ abstract class ParserGrin extends NameFinder with Scrubber {
     (descriptors, methods, values).zipped.toList
   }
 
-  def parseTaxonPage(doc: Document): (String, Iterable[Taxon]) = {
+  def parseTaxonPage(doc: Document): (String, Iterable[GRINTaxon]) = {
     val table = doc >> element("table.detail")
 
     val h1 = table >> text("h1")
@@ -190,12 +190,12 @@ abstract class ParserGrin extends NameFinder with Scrubber {
     (scientificName, ranks ++ familyRanks)
   }
 
-  def extractTaxa(names: Iterable[String], urls: Iterable[String], regex: Regex): Iterable[Taxon] = {
+  def extractTaxa(names: Iterable[String], urls: Iterable[String], regex: Regex): Iterable[GRINTaxon] = {
     val familyRanks = names.zip(urls)
       .flatMap { case (name, url) =>
         regex findFirstIn (url) match {
           case Some(regex(_, rank, _, someId)) => {
-            Some(Taxon(rank = Some(rank), id = Integer.parseInt(someId), name = name))
+            Some(GRINTaxon(rank = Some(rank), id = Integer.parseInt(someId), name = name))
           }
           case _ => None
         }

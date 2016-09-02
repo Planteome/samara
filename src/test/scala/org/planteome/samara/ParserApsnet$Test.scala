@@ -23,8 +23,10 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     interactions should contain(Disease(name = "Alfalfa witches’-broom",
       verbatimPathogen = "‘Candidatus Phytoplasma asteris’",
       pathogen = "Candidatus Phytoplasma asteris",
+      pathogenId = "Candidatus Phytoplasma asteris",
       verbatimHost = "Diseases of Alfalfa (Medicago sativa L.)",
       host = "Medicago sativa L.",
+      hostId = "Medicago sativa L.",
       citation = expectedCitations.alfalfa))
 
     interactions should contain(Disease(name = "Red clover vein mosaic",
@@ -32,6 +34,7 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       pathogen = "Red clover vein mosaic virus (RCVMV)",
       verbatimHost = "Diseases of Alfalfa (Medicago sativa L.)",
       host = "Medicago sativa L.",
+      hostId = "Medicago sativa L.",
       citation = expectedCitations.alfalfa))
   }
 
@@ -43,77 +46,99 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     interactions should contain(Disease(name = "Bacterial canker",
       verbatimPathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
       pathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      pathogenId = "Pseudomonas syringae pv. syringae van Hall 1902",
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica",
+      hostId = "Prunus persica",
       citation = expectedCitations.peachAndNectarine))
 
     interactions should contain(Disease(name = "Bacterial canker",
       verbatimPathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
       pathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      pathogenId = "Pseudomonas syringae pv. syringae van Hall 1902",
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica var. nucipersica",
+      hostId = "Prunus persica var. nucipersica",
       citation = expectedCitations.peachAndNectarine))
 
     interactions should contain(Disease(name = "Bacterial canker",
       verbatimPathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
       pathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      pathogenId = "Pseudomonas syringae pv. syringae van Hall 1902",
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica",
+      hostId = "Prunus persica",
       citation = expectedCitations.peachAndNectarine))
 
     interactions should contain(Disease(name = "Bacterial canker",
       verbatimPathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
       pathogen = "Pseudomonas syringae pv. syringae van Hall 1902",
+      pathogenId = "Pseudomonas syringae pv. syringae van Hall 1902",
       host = "Prunus persica var. nucipersica",
+      hostId = "Prunus persica var. nucipersica",
       verbatimHost = expectedHosts.verbatimPeachHost,
       citation = expectedCitations.peachAndNectarine))
 
     interactions should contain(Disease(name = "Green fruit rot",
       verbatimPathogen = "Monilinia fructicola (G. Wint.) Honey",
       pathogen = "Monilinia fructicola (G. Wint.) Honey",
+      pathogenId = "Monilinia fructicola (G. Wint.) Honey",
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica",
+      hostId = "Prunus persica",
       citation = expectedCitations.peachAndNectarine))
 
     interactions should contain(Disease(name = "Green fruit rot",
       verbatimPathogen = "Monilinia fructicola (G. Wint.) Honey",
       pathogen = "Monilinia fructicola (G. Wint.) Honey",
+      pathogenId = "Monilinia fructicola (G. Wint.) Honey",
       host = "Prunus persica var. nucipersica",
+      hostId = "Prunus persica var. nucipersica",
       verbatimHost = expectedHosts.verbatimPeachHost,
       citation = expectedCitations.peachAndNectarine))
 
     interactions should contain(Disease(name = "Green fruit rot",
       verbatimPathogen = "M. laxa (Aderhold & Ruhland) Honey",
       pathogen = "Monilinia laxa (Aderhold & Ruhland) Honey",
+      pathogenId = "Monilinia laxa (Aderhold & Ruhland) Honey",
       host = "Prunus persica",
+      hostId = "Prunus persica",
       verbatimHost = expectedHosts.verbatimPeachHost,
       citation = expectedCitations.peachAndNectarine))
 
     interactions should contain(Disease(name = "Green fruit rot",
       verbatimPathogen = "M. laxa (Aderhold & Ruhland) Honey",
       pathogen = "Monilinia laxa (Aderhold & Ruhland) Honey",
+      pathogenId = "Monilinia laxa (Aderhold & Ruhland) Honey",
       host = "Prunus persica var. nucipersica",
+      hostId = "Prunus persica var. nucipersica",
       verbatimHost = expectedHosts.verbatimPeachHost,
       citation = expectedCitations.peachAndNectarine))
 
     interactions should contain(Disease(name = "Line pattern",
       verbatimPathogen = "genus Ilarvirus, Prunus necrotic ringspot virus (PNRSV)",
       pathogen = "Prunus necrotic ringspot virus",
+      pathogenId = "Prunus necrotic ringspot virus",
       host = "Prunus persica",
+      hostId = "Prunus persica",
       verbatimHost = expectedHosts.verbatimPeachHost,
       citation = expectedCitations.peachAndNectarine))
 
     interactions should contain(Disease(name = "Line pattern",
       verbatimPathogen = "genus Ilarvirus, Prunus necrotic ringspot virus (PNRSV)",
       pathogen = "Prunus necrotic ringspot virus",
+      pathogenId = "Prunus necrotic ringspot virus",
       host = "Prunus persica var. nucipersica",
+      hostId = "Prunus persica var. nucipersica",
       verbatimHost = expectedHosts.verbatimPeachHost,
       citation = expectedCitations.peachAndNectarine))
 
     interactions should contain(Disease(name = "Rosette and decline",
       verbatimPathogen = "+ genus Ilarvirus, Prune dwarf virus (PDV)",
       pathogen = "Prune dwarf virus",
+      pathogenId = "Prune dwarf virus",
       host = "Prunus persica var. nucipersica",
+      hostId = "Prunus persica var. nucipersica",
       verbatimHost = expectedHosts.verbatimPeachHost,
       citation = expectedCitations.peachAndNectarine))
   }

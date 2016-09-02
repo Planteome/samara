@@ -47,7 +47,7 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     val taxonIds = ParserGrinStatic.parseTaxonInAccessionDetails(doc)
     taxonIds should be(Some(AccessionDetail(number = "PI 589198", name = "'Some Test Name'",
       collectedFrom = Some("United States"),
-      taxa = List(Taxon(id = 23257, name = "Malus platycarpa Rehder")),
+      taxa = List(GRINTaxon(id = 23257, name = "Malus platycarpa Rehder")),
       references = List())))
   }
 
@@ -56,7 +56,7 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     val taxonIds = ParserGrinStatic.parseTaxonInAccessionDetails(doc)
     taxonIds should be(Some(AccessionDetail(number = "PI 224705", name = "",
       collectedFrom = Some("Mexico"),
-      taxa = List(Taxon(id = 17904, name = "Gossypium barbadense L.")),
+      taxa = List(GRINTaxon(id = 17904, name = "Gossypium barbadense L.")),
       references = List())))
   }
 
@@ -87,8 +87,8 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     val (scientificName, ranks) = ParserGrinStatic.parseTaxonPage(doc)
 
     scientificName should be("Malus platycarpa Rehder")
-    ranks should contain(Taxon(name = "Malus", rank = Some("genus"), id = 7215))
-    ranks should contain(Taxon(name = "Rosaceae", rank = Some("family"), id = 972))
+    ranks should contain(GRINTaxon(name = "Malus", rank = Some("genus"), id = 7215))
+    ranks should contain(GRINTaxon(name = "Rosaceae", rank = Some("family"), id = 972))
   }
 
 }
