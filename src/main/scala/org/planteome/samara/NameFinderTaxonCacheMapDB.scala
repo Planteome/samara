@@ -15,7 +15,7 @@ trait NameFinderTaxonCacheMapDB extends NameFinderTaxonCache {
   }
 
   override lazy val taxonCacheNCBI: collection.Map[String, List[Integer]] = {
-    println("taxonCache building...")
+    Console.err.println("taxonCache building...")
     val start = System.currentTimeMillis()
     val firstFewLines: Iterator[Fun.Tuple2[String, List[Integer]]] = mapdbIterator
 
@@ -26,7 +26,7 @@ trait NameFinderTaxonCacheMapDB extends NameFinderTaxonCache {
       .make[String, List[Integer]].asScala
 
     val end = System.currentTimeMillis()
-    println(s"taxonCache ready [took ${(end - start) / 1000} s].")
+    Console.err.println(s"taxonCache ready [took ${(end - start) / 1000} s].")
 
     taxonCache
   }

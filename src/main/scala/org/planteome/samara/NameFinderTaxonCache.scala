@@ -37,7 +37,7 @@ trait NameFinderTaxonCache extends NameFinder {
   }
 
   lazy val taxonCacheNCBI: collection.Map[String, List[Integer]] = {
-    println("taxonCache building...")
+    Console.err.println("taxonCache building...")
     val taxonCache = reducedTaxonMap
       .foldLeft(HashMap[String, List[Integer]]()) {
         (agg, entry) => {
@@ -45,7 +45,7 @@ trait NameFinderTaxonCache extends NameFinder {
           agg + (entry._1 -> (entry._2 ++ targetTaxonIds).distinct)
         }
       }
-    println("taxonCache ready.")
+    Console.err.println("taxonCache ready.")
     taxonCache
   }
 
