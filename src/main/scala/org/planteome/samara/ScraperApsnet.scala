@@ -8,7 +8,7 @@ import net.ruippeixotog.scalascraper.model.Document
 
 object ScraperApsnet extends Scraper with ResourceUtil {
 
-  object Parser extends ParserApsnet with NameFinderNoMatch
+  object Parser extends ParserApsnet with NameFinderTaxonCacheMapDB
 
   override def scrape() = {
     println("disease_name\tsource_taxon_verbatim_name\tsource_taxon_name\tsource_taxon_id\tinteraction_type_label\tinteraction_type_id\ttarget_taxon_verbatim_name\ttarget_taxon_name\ttarget_taxon_id\tsource_citation\tsource_url\tsource_accessed_at")
