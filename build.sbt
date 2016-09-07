@@ -1,10 +1,10 @@
 lazy val commonSettings = Seq(
   organization := "org.planteome",
-  version := "0.1.7",
+  version := "0.1.8",
   scalaVersion := "2.11.8"
 )
 
-val taxonCacheModule = "org.eol" % "eol-globi-datasets" % "1.0-SNAPSHOT" artifacts Artifact("eol-globi-datasets", "zip", "zip").copy(classifier = Some("taxa"))
+val taxonCacheModule = "org.eol" % "eol-globi-datasets" % "0.6" artifacts Artifact("eol-globi-datasets", "zip", "zip").copy(classifier = Some("taxa")) 
 
 lazy val installTaxonCache = taskKey[Seq[java.io.File]]("install taxon cache in resources")
 
@@ -40,8 +40,7 @@ lazy val root = (project in file(".")).
   settings(
     name := "samara",
     resolvers ++= Seq(Resolver.sonatypeRepo("public"),
-      "GloBI releases" at "https://s3.amazonaws.com/globi/release/",
-      "GloBI snapshots" at "https://s3.amazonaws.com/globi/snapshot/"),
+      "GloBI releases" at "https://s3.amazonaws.com/globi/release/"),
     libraryDependencies ++= Seq(
       "net.ruippeixotog" %% "scala-scraper" % "1.0.0",
       "com.github.scopt" %% "scopt" % "3.5.0",
