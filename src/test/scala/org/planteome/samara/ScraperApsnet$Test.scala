@@ -48,7 +48,7 @@ class ScraperApsnet$Test extends FlatSpec with Matchers {
 //      //hostId = "NCBITaxon:3879",
 //      citation = expectedCitations.alfalfa))
 
-    diseases should not be(empty)
+    diseases should not be empty
 
     println(s"found ${diseases.size} disease interactions:")
 
