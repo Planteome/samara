@@ -15,8 +15,7 @@ class ScraperApsnet$Test extends FlatSpec with Matchers {
       pathogenId = "NCBITaxon:205918",
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica",
-      hostId = "no:match",
-      //hostId = "NCBITaxon:3760",
+      hostId = "NCBITaxon:3760",
       citation = expectedCitations.peachAndNectarine))
 
     diseases should contain(Disease(name = "Bacterial canker",
@@ -25,7 +24,7 @@ class ScraperApsnet$Test extends FlatSpec with Matchers {
       pathogenId = "NCBITaxon:205918",
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica var. nucipersica",
-      hostId = "no:match",
+      hostId = "NCBITaxon:3760",
       //hostId = "NCBITaxon:323851",
       citation = expectedCitations.peachAndNectarine))
 
@@ -35,9 +34,9 @@ class ScraperApsnet$Test extends FlatSpec with Matchers {
       pathogenId = "NCBITaxon:61186",
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica",
-      hostId = "no:match",
-      //hostId = "NCBITaxon:3760",
+      hostId = "NCBITaxon:3760",
       citation = expectedCitations.peachAndNectarine))
+
 
     diseases should contain(Disease(name = "Alfalfa witches’-broom",
       verbatimPathogen = "‘Candidatus Phytoplasma asteris’",
@@ -45,7 +44,7 @@ class ScraperApsnet$Test extends FlatSpec with Matchers {
       pathogenId = "NCBITaxon:1414854",
       verbatimHost = "Diseases of Alfalfa (Medicago sativa L.)",
       host = "Medicago sativa L.",
-      hostId = "no:match",
+      hostId = "NCBITaxon:36902",
       //hostId = "NCBITaxon:3879",
       citation = expectedCitations.alfalfa))
 
