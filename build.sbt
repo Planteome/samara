@@ -46,7 +46,7 @@ lazy val root = (project in file(".")).
       "com.github.scopt" %% "scopt" % "3.5.0",
       "org.mapdb" % "mapdb" % "1.0.9",
       taxonCacheModule,
-      "org.scalatest" %% "scalatest" % "2.2.5" % "test"
+      "org.scalatest" %% "scalatest" % "3.0.0" % "test"
     ),
     resourceGenerators in Compile += installTaxonCache.taskValue,
     test in assembly := {}

@@ -3,7 +3,7 @@ package org.planteome.samara
 import net.ruippeixotog.scalascraper.model.Document
 
 
-object ScraperGrin extends Scraper with ResourceUtil with NameFinderTaxonCacheMapDB {
+object ScraperGrin extends Scraper with ResourceUtil with NCBITaxonFinder {
 
   object Parser extends ParserGrin
 
@@ -17,8 +17,12 @@ object ScraperGrin extends Scraper with ResourceUtil with NameFinderTaxonCacheMa
 
         obs.foreach(ob => {
           val taxon = ob.accession.detail.taxa.head
-          val lines = findNames(taxon.name).map(resolvedTaxonId => {
-            Seq(s"GRINTaxon:${taxon.id}", taxon.name, resolvedTaxonId,
+          val ncbiTaxon = findId(taxon.id) match {
+            case Some(id) => s"NCBITaxon:$id"
+            case _ => s"no:match"
+          }
+          val lines = {
+            Seq(s"GRINTaxon:${taxon.id}", taxon.name, ncbiTaxon,
               s"GRINDesc:${ob.descriptor.id}", ob.descriptor.name.getOrElse(""), ob.descriptor.definition.getOrElse(""),
               s"GRINMethod:${ob.method.id}", ob.method.name.getOrElse(""),
               ob.value,
@@ -27,7 +31,7 @@ object ScraperGrin extends Scraper with ResourceUtil with NameFinderTaxonCacheMa
               ob.accession.detail.name,
               ob.accession.detail.collectedFrom.getOrElse(""),
               ob.accession.detail.references.mkString("|"))
-          })
+          }
           lines.foreach(line => println(line.mkString("\t")))
         })
       })

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE eLinkResult PUBLIC "-//NLM//DTD elink 20101123//EN"
+        "https://eutils.ncbi.nlm.nih.gov/eutils/dtd/20101123/elink.dtd">
+<!-- accessed at 2016-11-19 at https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi?dbfrom=taxonomy&id=3879&cmd=llinks&retmode=xml&holding=GRINTAX -->
+<eLinkResult>
+    <LinkSet>
+        <DbFrom>taxonomy</DbFrom>
+        <IdUrlList>
+            <IdUrlSet>
+                <Id>3879</Id>
+                <ObjUrl>
+                    <Url>https://npgsweb.ars-grin.gov/gringlobal/taxonomydetail.aspx?300359</Url>
+                    <LinkName>Medicago sativa subsp. sativa</LinkName>
+                    <SubjectType>taxonomy/phylogenetic</SubjectType>
+                    <Category>Molecular Biology Databases</Category>
+                    <Attribute>free resource</Attribute>
+                    <Provider>
+                        <Name>USDA-ARS GRIN Taxonomy</Name>
+                        <NameAbbr>GRINTAX</NameAbbr>
+                        <Id>4372</Id>
+                        <Url LNG="EN">https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomyquery.aspx</Url>
+                    </Provider>
+                </ObjUrl>
+                <ObjUrl>
+                    <Url>https://npgsweb.ars-grin.gov/gringlobal/taxonomydetail.aspx?23676</Url>
+                    <LinkName>Medicago sativa L.</LinkName>
+                    <SubjectType>taxonomy/phylogenetic</SubjectType>
+                    <Category>Molecular Biology Databases</Category>
+                    <Attribute>free resource</Attribute>
+                    <Provider>
+                        <Name>USDA-ARS GRIN Taxonomy</Name>
+                        <NameAbbr>GRINTAX</NameAbbr>
+                        <Id>4372</Id>
+                        <Url LNG="EN">https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomyquery.aspx</Url>
+                    </Provider>
+                </ObjUrl>
+            </IdUrlSet>
+        </IdUrlList>
+    </LinkSet>
+</eLinkResult>

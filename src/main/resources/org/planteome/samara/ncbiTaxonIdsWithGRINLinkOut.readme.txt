@@ -1,0 +1,7 @@
+18 November 2016
+
+List of ncbi taxon ids with GRINTAXON linkout references was obtained by accessing:
+
+https://www.ncbi.nlm.nih.gov/taxonomy/?term=loprovGRINTAX%5BSB%5D
+
+on 18 November 2016 and downloading the results as a file with taxon ids.
