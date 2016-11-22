@@ -1,10 +1,44 @@
 lazy val commonSettings = Seq(
   organization := "org.planteome",
-  version := "0.1.9",
+  version := "0.1.10",
   scalaVersion := "2.11.8"
 )
 
-val taxonCacheModule = "org.eol" % "eol-globi-datasets" % "0.6" artifacts Artifact("eol-globi-datasets", "zip", "zip").copy(classifier = Some("taxa")) 
+
+
+val taxonCacheModule = "org.eol" % "eol-globi-datasets" % "0.6" artifacts Artifact("eol-globi-datasets", "zip", "zip").copy(classifier = Some("taxa"))
+val ncbiLinkOutModule = "org.planteome.samara" % "ncbi-linkout-map" % "0.1.8" artifacts Artifact("ncbi-linkout-map", "gz", "tsv.gz").copy(url = Some(new java.net.URL("https://github.com/jhpoelen/samara/releases/download/v0.1.9/grin-ncbi_linkout.tsv.gz")))
+
+lazy val installLinkOutMap = taskKey[Seq[java.io.File]]("install LinkOut map in resources")
+
+installLinkOutMap := {
+  val log: Logger = streams.value.log
+  log.info("NCBI Taxonomy LinkOut installing...")
+  val targetDir = (resourceManaged in Compile).value / "org" / "planteome" / "samara"
+  val targetModule = ncbiLinkOutModule
+
+  IO.createDirectory(targetDir)
+
+  val taxonArchive = (update in Compile).value
+    .filter { (module: ModuleID) => {
+      module.toString() == targetModule.toString()
+    }
+    }.select(configurationFilter("compile")).headOption
+
+  val extracted = taxonArchive match {
+    case Some(archiveFilename) => {
+      val targetFile = new java.io.File(targetDir, "taxonMap.tsv.gz")
+      log.info(s"copying [$archiveFilename] to [$targetFile]...")
+      IO.copy(Seq((archiveFilename, targetFile)))
+    }
+    case None => {
+      toError(Some(s"no archive found for [$targetModule]."))
+      Set()
+    }
+  }
+  log.info("NCBI Taxonomy LinkOut installed.")
+  extracted.toSeq
+}
 
 lazy val installTaxonCache = taskKey[Seq[java.io.File]]("install taxon cache in resources")
 
@@ -12,21 +46,23 @@ installTaxonCache := {
   val log: Logger = streams.value.log
   log.info("taxon cache installing...")
   val targetDir = (resourceManaged in Compile).value / "org" / "eol" / "globi" / "taxon"
+  val targetModule = taxonCacheModule
+
   IO.createDirectory(targetDir)
 
   val taxonArchive = (update in Compile).value
     .filter { (module: ModuleID) => {
-      module.toString() == taxonCacheModule.toString()
+      module.toString() == targetModule.toString()
     }
     }.select(configurationFilter("compile")).headOption
 
   val extracted = taxonArchive match {
     case Some(archiveFilename) => {
-      log.info(s"[$taxonCacheModule] unpacking to [$targetDir]...")
+      log.info(s"[$targetModule] unpacking to [$targetDir]...")
       IO.unzip(archiveFilename, targetDir)
     }
     case None => {
-      toError(Some(s"no archive found for [$taxonCacheModule]."))
+      toError(Some(s"no archive found for [$targetModule]."))
       Set()
     }
   }
@@ -46,8 +82,10 @@ lazy val root = (project in file(".")).
       "com.github.scopt" %% "scopt" % "3.5.0",
       "org.mapdb" % "mapdb" % "1.0.9",
       taxonCacheModule,
+      ncbiLinkOutModule,
       "org.scalatest" %% "scalatest" % "3.0.0" % "test"
     ),
     resourceGenerators in Compile += installTaxonCache.taskValue,
+    resourceGenerators in Compile += installLinkOutMap.taskValue,
     test in assembly := {}
   )
