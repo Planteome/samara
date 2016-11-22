@@ -6,23 +6,23 @@ import java.net.URL
 import scala.io.Source
 import scala.xml.{NodeSeq, XML}
 
-trait NCBITaxonFinder extends IdFinder {
+trait NCBILinkOut {
 
   lazy val idMap = buildIdMap(findNCBITaxonIdsWithGRINTaxonLinkOut)
 
-  override def findId(id: Integer): Option[Int] = {
-    idMap.get(id)
-  }
-
   def buildIdMap(ids: Seq[Int]): Map[Int, Int] = {
     Console.err.println("(GRIN Taxon->NCBI Taxon) building...")
-    val aMap = ids
-      .flatMap { ncbiId => findLinkOutForNCBITaxonId(ncbiId).map((_, ncbiId)) }
+    val aMap = collectLinkOutPairsFor(ids)
       .toMap
     Console.err.println("(GRIN Taxon->NCBI Taxon) done.")
     aMap
   }
 
+
+  def collectLinkOutPairsFor(ids: Seq[Int]): Seq[(Int, Int)] = {
+    ids
+      .flatMap { ncbiId => findLinkOutForNCBITaxonId(ncbiId).map((_, ncbiId)) }
+  }
 
   def findNCBITaxonIdsWithGRINTaxonLinkOut: Seq[Int] = {
     val ids = Source.fromInputStream(getClass.getResourceAsStream("ncbiTaxonIdsWithGRINLinkOut.txt"), "UTF8")

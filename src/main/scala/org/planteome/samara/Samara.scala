@@ -1,15 +1,14 @@
 package org.planteome.samara
 
-import java.io.File
-
-
-import java.io.File
-
 case class Config(source: String = "",
                   mode: String = "")
 
 object Samara extends App {
-  val sourceMap = Map[String, Scraper]("apsnet" -> ScraperApsnet, "grin" -> ScraperGrin)
+  val sourceMap = Map[String, Scraper](
+    "apsnet" -> ScraperApsnet,
+    "grin" -> ScraperGrin,
+    "ncbi_linkout" -> ScraperNCBILinkOut
+  )
   val supportedSources = sourceMap.keys.toSeq
 
   val parser = new scopt.OptionParser[Config]("samara") {
@@ -37,12 +36,11 @@ object Samara extends App {
   parser.parse(args, Config()) match {
     case Some(config) =>
       config.mode match {
-        case "scrape" => {
+        case "scrape" =>
           sourceMap.get(config.source) match {
             case Some(scraper) => scraper.scrape()
             case None =>
           }
-        }
         case "list" =>
           supportedSources.foreach(println)
 

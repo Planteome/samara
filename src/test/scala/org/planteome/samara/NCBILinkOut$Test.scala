@@ -9,7 +9,7 @@ import scala.io.Source
 import scala.xml.{NodeSeq, XML}
 
 
-class NCBITaxonFinder$Test extends FlatSpec with Matchers with NCBITaxonFinder {
+class NCBILinkOut$Test extends FlatSpec with Matchers with NCBILinkOut {
 
   "id finder" should "map a ncbi taxon to a grin taxon id" in {
     val ids: Seq[Int] = findLinkOutForNCBITaxonId(3879)
