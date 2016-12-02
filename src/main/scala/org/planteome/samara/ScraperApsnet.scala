@@ -5,6 +5,8 @@ import java.util.Date
 
 import net.ruippeixotog.scalascraper.model.Document
 
+import scala.util.{Failure, Success}
+
 
 object ScraperApsnet extends Scraper with ResourceUtil {
 
@@ -22,11 +24,14 @@ object ScraperApsnet extends Scraper with ResourceUtil {
   }
 
   def scrapeDiseases(): Iterable[(String, String, Disease)] = {
-    val doc: Document = get("http://www.apsnet.org/publications/commonnames/Pages/default.aspx")
-    val pages = Parser.parsePageIndex(doc)
-    pages.flatMap(page => {
-      Parser.parse(get(page)).map((page, today, _))
-    })
+    getTry("http://www.apsnet.org/publications/commonnames/Pages/default.aspx") match {
+      case Success(doc) =>
+        val pages = Parser.parsePageIndex(doc)
+        pages.flatMap(page => {
+          Parser.parse(get(page)).map((page, today, _))
+        })
+      case Failure(e) => Seq.empty[(String, String, Disease)]
+    }
   }
 
   def today: String = {
