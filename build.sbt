@@ -1,7 +1,7 @@
 lazy val commonSettings = Seq(
   organization := "org.planteome",
   version := "0.1.10",
-  scalaVersion := "2.11.8"
+  scalaVersion := "2.12.1"
 )
 
 
@@ -78,8 +78,9 @@ lazy val root = (project in file(".")).
     resolvers ++= Seq(Resolver.sonatypeRepo("public"),
       "GloBI releases" at "https://s3.amazonaws.com/globi/release/"),
     libraryDependencies ++= Seq(
-      "net.ruippeixotog" %% "scala-scraper" % "1.0.0",
+      "net.ruippeixotog" %% "scala-scraper" % "1.2.0",
       "com.github.scopt" %% "scopt" % "3.5.0",
+      "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
       "org.mapdb" % "mapdb" % "1.0.9",
       taxonCacheModule,
       ncbiLinkOutModule,
