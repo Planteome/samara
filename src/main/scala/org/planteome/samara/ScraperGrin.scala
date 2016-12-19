@@ -94,7 +94,7 @@ object ScraperGrin extends Scraper with ResourceUtil with IdFinderTaxonCache {
         }
         case None => {
           Console.err.println(s"failed to retrieve information for accession id [$accessionId].")
-          List()
+          Seq.empty[Observation]
         }
       }
     }

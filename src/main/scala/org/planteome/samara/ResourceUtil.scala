@@ -24,7 +24,8 @@ trait ResourceUtil {
       Success(get(url))
     } catch {
       case e: Throwable => {
-        Console.err.println(s"[$url] download failed because of [${e.getMessage}] .")
+        Console.err.println(s"[$url] download failed because of:")
+        e.printStackTrace(Console.err)
         Failure(e)
       }
     }
