@@ -9,13 +9,13 @@ import scala.util.{Failure, Success, Try}
 
 trait ResourceUtil {
   def get(url: String): Document = {
-    Console.err.println(s"[$url] downloading ...")
+    Console.err.print(s"[$url] downloading ...")
     val twoMinutes: Int = 1000 * 120
     val doc = JsoupDocument(JsoupBrowser()
       .requestSettings(HttpConnection
         .connect(url))
       .timeout(twoMinutes).get())
-    Console.err.println(s"[$url] downloaded.")
+    Console.err.println(" done.")
     doc
   }
 
