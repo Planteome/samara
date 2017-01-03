@@ -67,6 +67,7 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
   }
 
   "parsing malformed descriptor detail page 310094" should "None" in {
+    // see https://github.com/jhpoelen/samara/issues/34
     val doc: Document = parse("grin/descriptordetail310094.aspx")
     val methodDescriptors = ParserGrinStatic.parseAvailableMethodsForDescriptor(doc)
     methodDescriptors should be(empty)
