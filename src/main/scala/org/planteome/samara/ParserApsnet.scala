@@ -36,6 +36,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
         item._1 match {
           case ("dt", v) => v :: acc
           case ("dd", _) => acc.head :: acc
+          case _ => acc
         }
       }).reverse
 

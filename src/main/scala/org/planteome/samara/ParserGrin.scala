@@ -5,6 +5,7 @@ import net.ruippeixotog.scalascraper.scraper.ContentExtractors._
 import net.ruippeixotog.scalascraper.model.{Document, Element}
 import net.ruippeixotog.scalascraper.util.Validated._
 
+import scala.util.Success
 import scala.util.matching.Regex
 
 abstract class GRINTerm
@@ -49,20 +50,28 @@ abstract class ParserGrin extends Scrubber {
   }
 
   def parseAvailableMethodsForDescriptor(doc: Document): Iterable[MethodDescriptor] = {
-    val descriptorName = doc >> element("table.detail") >> text("h1")
+    val descriptorNameTry = doc >?> element("table.detail") >?> text("h1")
 
-    val urls: Iterable[String] = doc >> elements("li") >> attrs("href")("a")
-    val methodDetails: Regex = """(methodaccession.aspx\?id1=)(\d+)(&id2=)(\d+)""".r
-    urls
-      .flatMap(
-        methodDetails findFirstIn _ match {
-          case Some(methodDetails(_, descriptorId, _, methodId)) => {
-            Some(MethodDescriptor(descriptor = Descriptor(id = Integer.parseInt(descriptorId),
-              name = Some(descriptorName.replace("Descriptor: ", ""))),
-              id = Integer.parseInt(methodId)))
-          }
-          case _ => None
-        })
+    descriptorNameTry match {
+      case Some(Some(descriptorName)) => {
+        val urls: Iterable[String] = doc >> elements("li") >> attrs("href")("a")
+        val methodDetails: Regex = """(methodaccession.aspx\?id1=)(\d+)(&id2=)(\d+)""".r
+        urls
+          .flatMap(
+            methodDetails findFirstIn _ match {
+              case Some(methodDetails(_, descriptorId, _, methodId)) => {
+                Some(MethodDescriptor(descriptor = Descriptor(id = Integer.parseInt(descriptorId),
+                  name = Some(descriptorName.replace("Descriptor: ", ""))),
+                  id = Integer.parseInt(methodId)))
+              }
+              case _ => None
+            })
+      }
+      case _ => {
+        None
+      }
+    }
+
   }
 
   def parseAvailableAccessionsForDescriptorAndMethod(doc: Document): Iterable[Int] = {

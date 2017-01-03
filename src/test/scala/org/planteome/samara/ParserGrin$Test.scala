@@ -66,6 +66,12 @@ class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with 
     taxonIds should be(None)
   }
 
+  "parsing malformed descriptor detail page 310094" should "None" in {
+    val doc: Document = parse("grin/descriptordetail310094.aspx")
+    val methodDescriptors = ParserGrinStatic.parseAvailableMethodsForDescriptor(doc)
+    methodDescriptors should be(empty)
+  }
+
   "parsing assession observations page" should "list all observations for assession" in {
     val doc: Document = parse("grin/AccessionObservation.aspx")
     val observations: Iterable[(Descriptor, Method, String)] = ParserGrinStatic.parseObservationsForAccession(doc)
