@@ -119,21 +119,25 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     }._2.reverse
   }
 
-  lazy val nameMap: Map[String, String] = Source.fromInputStream(getClass.getResourceAsStream("apsnetNameMap.tsv"))
+  lazy val nameMap: Map[String, String] = Source
+    .fromInputStream(getClass.getResourceAsStream("apsnet/nameMap.tsv"))
     .getLines()
     .foldLeft(Map[String, String]()) {
       (agg, line) =>
         val split = line.split('\t')
-        agg ++ Map(split(0) -> split(1))
+        if (split.length < 2) {
+          agg
+        } else {
+          agg ++ Map(split(0) -> split(1))
+        }
     }
 
   def extractHostNames(targetTaxon: String): Seq[String] = {
     val scrubbedHost: String = scrub(targetTaxon)
 
     nameMap.get(scrubbedHost) match {
-      case Some(name) => {
-        name.split('|').toSeq
-      }
+      case Some("no:name") => Seq()
+      case Some(name) => name.split('|').toSeq
       case _ => singleHostname(scrubbedHost)
     }
   }
@@ -142,6 +146,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     val scrubbedName: String = scrub(sourceTaxon)
     val names: Seq[String] = pathogenNames(scrubbedName)
     names.flatMap { someName => nameMap.get(someName) match {
+      case Some("no:name") => None
       case Some(name) => name.split('|')
       case None => Seq(someName)
     }

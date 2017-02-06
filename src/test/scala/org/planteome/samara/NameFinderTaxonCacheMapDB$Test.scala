@@ -2,16 +2,12 @@ package org.planteome.samara
 
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
-import scala.io.Source
-
 
 class NameFinderTaxonCacheMapDB$Test extends FlatSpec with Matchers with BeforeAndAfter with NameFinderTaxonCacheMapDB {
 
-  override def taxonMapLines: Iterator[String] = {
-    Source.fromInputStream(taxonMapStream)
-      .getLines()
+  override def resourceNames: Seq[String] = {
+    Seq("/org/planteome/samara/apsnet/taxonMap.tsv", "/org/planteome/samara/apsnet/testTaxonMap.tsv")
   }
-
 
   "name finder" should "have access to taxon map" in {
     taxonMapStream should not(be(null))
@@ -24,8 +20,16 @@ class NameFinderTaxonCacheMapDB$Test extends FlatSpec with Matchers with BeforeA
 
   "name finder" should "resolve NCBI id for Homo sapiens" in {
     val humans = findNames("Homo sapiens")
-    humans should contain("NCBITaxon:9606").or(contain("NCBITaxon:741158"))
+    humans should contain("NCBITaxon:9606")
+    humans.size should be(1)
   }
+
+  "name finder" should "resolve NCBI id for bean leafroll virus" in {
+    val wheat = findNames("Bean leafroll virus (BLRV)")
+    wheat should contain("NCBITaxon:12041")
+    wheat.size should be(1)
+  }
+
 
   "name finder" should "resolve to no:match for Donald Duck" in {
     val humans = findNames("Donald duck")

@@ -20,6 +20,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     val doc: Document = parse("apsnet/Alfalfa.aspx")
     val interactions: Iterable[Disease] = ParserApsnetStatic$.parse(doc)
 
+    interactions.foreach(println)
+
     interactions should contain(Disease(name = "Alfalfa witches’-broom",
       verbatimPathogen = "‘Candidatus Phytoplasma asteris’",
       pathogen = "Candidatus Phytoplasma asteris",
@@ -222,6 +224,10 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     ParserApsnetStatic$.extractPathogenNames("          (syns. Pestalotia sydowiana Bres.; Pestalotiopsis rhododendri           Y. M. Zhang, Maharachch., & K. D. Hyde)") should contain("Pestalotia sydowiana Bres.")
     ParserApsnetStatic$.extractPathogenNames("          (syns. Pestalotia sydowiana Bres.; Pestalotiopsis rhododendri           Y. M. Zhang, Maharachch., & K. D. Hyde)") should contain("Pestalotiopsis rhododendri Y. M. Zhang")
     ParserApsnetStatic$.extractPathogenNames("‘Candidatus Phytoplasma asteris’") should contain("Candidatus Phytoplasma asteris")
+  }
+
+  "extract names" should "and ignore null mappings" in {
+    ParserApsnetStatic$.extractPathogenNames("Slippers") should be(empty)
   }
 
   "expand prefixes" should "fill in genus names of previously mentioned species" in {

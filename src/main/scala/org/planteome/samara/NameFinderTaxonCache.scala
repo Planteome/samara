@@ -11,13 +11,9 @@ case class TaxonMap(providedId: String, providedName: String, resolvedId: String
 
 trait NameFinderTaxonCache extends NameFinder {
 
-  def taxonMapStream: InputStream = {
-    new GZIPInputStream(Samara.getClass.getResourceAsStream("/org/eol/globi/taxon/taxonMap.tsv.gz"))
-  }
-
   def reducedTaxonMap: Iterator[(String, List[Integer])] = {
     taxonMapLines
-      .filter(_.contains("NCBI:"))
+      .filter(s => s.contains("NCBI:") || s.contains("NCBITaxon:"))
       .flatMap(line => {
         val parts = line.split("\t", -1).toList
         if (parts.size > 3) {
@@ -26,14 +22,30 @@ trait NameFinderTaxonCache extends NameFinder {
           None
         }
       })
-      .filter(_.resolvedId startsWith "NCBI:")
-      .map(entry => (entry.providedName, List(new Integer(entry.resolvedId.replace("NCBI:", "")))))
+      .filter(map => (map.resolvedId startsWith "NCBI:") || (map.resolvedId startsWith "NCBITaxon:"))
+      .map(entry => (entry.providedName, List(new Integer(entry.resolvedId.replace("NCBI:", "").replace("NCBITaxon:", "")))))
   }
 
+  def taxonMapStream: InputStream = {
+    new GZIPInputStream(Samara.getClass.getResourceAsStream("/org/eol/globi/taxon/taxonMap.tsv.gz"))
+  }
+
+  def resourceNames: Seq[String] = {
+    Seq("/org/planteome/samara/apsnet/taxonMap.tsv", "/org/eol/globi/taxon/taxonMap.tsv.gz")
+  }
 
   def taxonMapLines: Iterator[String] = {
-    Source.fromInputStream(taxonMapStream)
-      .getLines()
+    resourceNames
+      .map(resourceName => {
+        val is = Samara.getClass.getResourceAsStream(resourceName)
+        val is2 = if (resourceName.endsWith("gz")) {
+          new GZIPInputStream(is)
+        } else {
+          is
+        }
+        Source.fromInputStream(is2).getLines()
+      })
+      .reduce(_ ++ _)
   }
 
   lazy val taxonCacheNCBI: collection.Map[String, List[Integer]] = {
