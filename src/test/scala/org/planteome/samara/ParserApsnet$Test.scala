@@ -20,8 +20,6 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     val doc: Document = parse("apsnet/Alfalfa.aspx")
     val interactions: Iterable[Disease] = ParserApsnetStatic$.parse(doc)
 
-    interactions.foreach(println)
-
     interactions should contain(Disease(name = "Alfalfa witches’-broom",
       verbatimPathogen = "‘Candidatus Phytoplasma asteris’",
       pathogen = "Candidatus Phytoplasma asteris",
@@ -178,9 +176,9 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
   }
 
   "extract names" should "produce a list of extracted pathogens with hyphens" in {
-    val pathogenNames: String = "Genus Luteovirus; Barley yellow dwarf virus–kerII, Barley yellow dwarf virus–kerIII, Barley yellow dwarf virus–MAV, Barley yellow dwarf virus–PAS, Barley yellow dwarf virus–PAV"
-    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Barley yellow dwarf virus–kerIII")
-    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Barley yellow dwarf virus–PAV")
+    val pathogenNames: String = "Genus Luteovirus; some virus–kerII, some virus–kerIII, some virus–MAV,some virus–PAS, some virus–PAV"
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("some virus–kerIII")
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("some virus–PAV")
   }
 
   "extract names" should "produce a list of extracted pathogens lower case" in {
