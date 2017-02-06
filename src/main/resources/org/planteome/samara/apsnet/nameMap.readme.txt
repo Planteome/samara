@@ -1,4 +1,0 @@
-The file nameMap.tsv maps names that are produced by apsnet parser (first column)
-and maps them to preferred names. If a name is mapped to 'no:name', then the name is
-ignored. Also, if the first column contains multiple names, the pipe character '|' can
-be used to make to multiple preferred names.
