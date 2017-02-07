@@ -15,10 +15,10 @@ the following process is currently implemented:
 
 ### Files
 
-nameMap.tsv: a two column maps name strings to no (i.e. "no:name"), one (e.g. "Homo sapiens"),
+[nameMap.tsv](nameMap.tsv): a two column maps name strings to no (i.e. "no:name"), one (e.g. "Homo sapiens"),
 or more pipe delimited name strings (e.g. "Homo sapiens|Homo ludens").
 
-taxonMap.tsv: a four column taxon map (provided id/name, resolved id/name) to map given id/name pairs
+[taxonMap.tsv](taxonMap.tsv): a four column taxon map (provided id/name, resolved id/name) to map given id/name pairs
 to desired id/name pairs. Id prefixes are currently inspired by http://api.globalbioticinteractions.org/prefixes
 and also uses the commonly used NCBITaxon: prefix.
 
