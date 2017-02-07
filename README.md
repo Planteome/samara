@@ -5,6 +5,8 @@ A commandline tool to extract plant trait data from [open data sources](sources.
 
 Plants trait data from recent automated scrapes are available at [APSNet](https://build.berkeleybop.org/view/Planteome/job/extract-apsnet-diseases/) or [ARS-GRIN](https://build.berkeleybop.org/view/Planteome/job/extract-grin-traits/). 
 
+For more information about APSNet scraping process, please go [here](src/main/resources/org/planteome/samara/apsnet).
+
 *A samara is a winged achene, a type of fruit in which a flattened wing of fibrous, papery tissue develops from the ovary wall. (from https://en.wikipedia.org/wiki/Samara_(fruit) accessed at 2016-06-10).
 
 ## prerequisites
