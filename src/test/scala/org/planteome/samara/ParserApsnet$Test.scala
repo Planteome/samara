@@ -162,8 +162,6 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     ParserApsnetStatic$.extractHostNames(hostNames) should contain("Prunus persica")
     ParserApsnetStatic$.extractHostNames(hostNames) should contain("Prunus persica var. nucipersica")
     ParserApsnetStatic$.extractHostNames("Diseases of Almond (Prunus dulcis (Mill.) Webb)") should contain("Prunus dulcis")
-    ParserApsnetStatic$.extractHostNames("Diseases of Geranium (Pelargonium) Pelargonium × domesticum Bailey (regal geranium or Lady Washington or Martha Washington geranium; interspecific hybrids) Pelargonium × hortorum Bailey (florists' or zonal geranium; interspecific hybrids) Pelargonium graveolens L'Her. ex Aiton (scented geranium) Pelargonium peltatum (L.) L'Her. ex Aiton (ivy geranium)") should contain("Pelargonium peltatum")
-
   }
 
   "extract names" should "produce a list of extracted pathogens" in {
