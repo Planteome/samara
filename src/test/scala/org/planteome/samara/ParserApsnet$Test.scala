@@ -161,6 +161,9 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
     val hostNames: String = expectedHosts.verbatimPeachHost
     ParserApsnetStatic$.extractHostNames(hostNames) should contain("Prunus persica")
     ParserApsnetStatic$.extractHostNames(hostNames) should contain("Prunus persica var. nucipersica")
+    ParserApsnetStatic$.extractHostNames("Diseases of Almond (Prunus dulcis (Mill.) Webb)") should contain("Prunus dulcis")
+    ParserApsnetStatic$.extractHostNames("Diseases of Geranium (Pelargonium) Pelargonium × domesticum Bailey (regal geranium or Lady Washington or Martha Washington geranium; interspecific hybrids) Pelargonium × hortorum Bailey (florists' or zonal geranium; interspecific hybrids) Pelargonium graveolens L'Her. ex Aiton (scented geranium) Pelargonium peltatum (L.) L'Her. ex Aiton (ivy geranium)") should contain("Pelargonium peltatum")
+
   }
 
   "extract names" should "produce a list of extracted pathogens" in {
@@ -208,9 +211,9 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
   }
 
   "extract names" should "and parse candidate" in {
-    ParserApsnetStatic$.extractPathogenNames("unassigned genus, Purple granadilla mosaic virus (PGMV)") should contain("Purple granadilla mosaic virus (PGMV)")
+    ParserApsnetStatic$.extractPathogenNames("unassigned genus, Purple granadilla mosaic virus (PGMV)") should contain("Purple granadilla mosaic virus")
     val pathogenNames: String = "candidate Rhabdoviridae (unassigned genus), Passion fruit green spot virus (PGSV)"
-    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Passion fruit green spot virus (PGSV)")
+    ParserApsnetStatic$.extractPathogenNames(pathogenNames) should contain("Passion fruit green spot virus")
   }
 
   "extract names" should "and parse synonyms" in {
@@ -226,6 +229,7 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
 
   "extract names" should "and ignore null mappings" in {
     ParserApsnetStatic$.extractPathogenNames("Slippers") should be(empty)
+    ParserApsnetStatic$.extractPathogenNames("Mill.) Webb") should be(empty)
   }
 
   "expand prefixes" should "fill in genus names of previously mentioned species" in {

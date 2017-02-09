@@ -133,18 +133,16 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     }
 
   def extractHostNames(targetTaxon: String): Seq[String] = {
-    val scrubbedHost: String = scrub(targetTaxon)
-
-    nameMap.get(scrubbedHost) match {
-      case Some("no:name") => Seq()
-      case Some(name) => name.split('|').toSeq
-      case _ => singleHostname(scrubbedHost)
-    }
+    val scrubbedHosts = mapNames(Seq(targetTaxon)).map(scrub)
+    mapNames(scrubbedHosts.flatMap(singleHostname))
   }
 
   def extractPathogenNames(sourceTaxon: String): Seq[String] = {
-    val scrubbedName: String = scrub(sourceTaxon)
-    val names: Seq[String] = pathogenNames(scrubbedName)
+    val scrubbedNames = mapNames(Seq(sourceTaxon)).map(scrub)
+    mapNames(scrubbedNames.flatMap(pathogenNames))
+  }
+
+  def mapNames(names: Seq[String]): Seq[String] = {
     names.flatMap { someName => nameMap.get(someName) match {
       case Some("no:name") => None
       case Some(name) => name.split('|')
