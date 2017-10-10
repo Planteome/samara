@@ -11,3 +11,5 @@ available since [v0.1.0](../../releases/v0.1.0) | https://npgsweb.ars-grin.gov/g
 ... | https://eurisco.ipk-gatersleben.de/apex/f?p=103:47:::NO: | EURISCO - European crop data dump available at https://eurisco.ipk-gatersleben.de/apex/EURISCO_WEB.download_file?p_id=67 
 ... | http://data.kew.org/sid/ | Seed Information Database — SID at Kew Gardens traits like Taxonomy, Storage Behaviour, Mean 1000 Seed Weight, Seed Dispersal, Germination, Oil Content, Protein Content, Morphology, Salt Tolerance
 ... | http://brahmsonline.kew.org/msbp?_ga=1.56984874.1448806027.1447673052 | The Millennium Seed Bank Partnership includes Seed accession data and Germination test data 
+... | https://ipmdata.ipmcenters.org/index.cfm | Search the Integrated Pest Management database for commodities grown in the United States
+... | http://ecoport.org/ep?searchType=begins&searchAreaCriteria=DP | EcoPort provides a data hub that provides open access to ecological knowledge. Link provides records of plant disease
