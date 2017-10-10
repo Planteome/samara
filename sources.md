@@ -13,3 +13,7 @@ available since [v0.1.0](../../releases/v0.1.0) | https://npgsweb.ars-grin.gov/g
 ... | http://brahmsonline.kew.org/msbp?_ga=1.56984874.1448806027.1447673052 | The Millennium Seed Bank Partnership includes Seed accession data and Germination test data 
 ... | https://ipmdata.ipmcenters.org/index.cfm | Search the Integrated Pest Management database for commodities grown in the United States
 ... | http://ecoport.org/ep?searchType=begins&searchAreaCriteria=DP | EcoPort provides a data hub that provides open access to ecological knowledge. Link provides records of plant disease
+... | http://pest.ceris.purdue.edu/index.php | National Agricultural Pest Information System (NAPIS):  Public Access Site
+Host:  U.S. Department of Agriculture, Animal and Plant Health Inspection Service; Purdue University, Entomology Department, Center for Environmental and Regulatory Information Systems
+... | https://tidcf.nrcan.gc.ca/en/ | Natural Resources Canada. Canadian Forest Service.
+Scope: Trees, insects and diseases of Canada's forests (TIDCF) 
