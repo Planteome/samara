@@ -16,3 +16,12 @@ available since [v0.1.0](../../releases/v0.1.0) | https://npgsweb.ars-grin.gov/g
 ... | http://pest.ceris.purdue.edu/index.php | National Agricultural Pest Information System (NAPIS):  Public Access Site Host:  U.S. Department of Agriculture, Animal and Plant Health Inspection Service; Purdue University, Entomology Department, Center for Environmental and Regulatory Information Systems
 ... | https://tidcf.nrcan.gc.ca/en/ | Natural Resources Canada. Canadian Forest Service. Scope: Trees, insects and diseases of Canada's forests (TIDCF)
 ... | https://sesto.nordgen.org/sesto/index.php?scp=ngb&thm=char_eval&mod=brws_trait | SESTO is a genebank management tool developed by the Nordic Gene Bank (today Nordic Genetic Resource Center, NordGen). The application has gradually been developed into a more generic PGR information system and is now adopted for management and presentation of data from other genebanks in other parts of the world. This work is still in progress. 
+... | http://ebdb.ipk-gatersleben.de/apps/ebdb/ (no longer accessible) | European Barley Database - documented in http://www.epgris3.eu/docs/activities/2-05/HK%20-%20C&E%20in%20the%20EBDB.pdf 
+... | http://ealldb.ipk-gatersleben.de/ | European Allium Database
+... | http://eadb.jki.bund.de/eadb/ | European Avena Database 
+... | http://www.ecpgr.cgiar.org/resources/germplasm-databases/ecpgr-central-crop-databases/ | meta-database of central crop databases (see [ecpgr-central-crop-databases.tsv](./src/main/resources/org/planteome/samara/ecpgr-central-crop-databases.tsv)
+
+
+References 
+
+2014 Survey of Central Crop Databases http://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/upload/GERMPLASM_DBs/CCDB_survey_results_ALL_questionnaires_final.pdf .

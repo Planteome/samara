@@ -1,0 +1,78 @@
+url	database name	manager	institution	country
+http://golo.cirad.fr/CRB_T_WEB/FR/CRB_T_Collections_Coton.awp	Cotton (Gossypium)			
+http://ealldb.ipk-gatersleben.de/	ECPGR Allium Database 	Joachim Keller	Leibniz Institute of Plant Genetics and Crop Plant Research (IPK)	Germany
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/annual_medicago.html	ECPGR Annual Medicago Database	Valentin Maya Blanco	Centro de Investigaciones Científicas y Tecnológicas de Extremadura (CICYTEX), Instituto de Investigaciones Agrarias Finca “La Orden – Valdesequera”, Departamento de Produccion Forestal y Pastos	Spain
+http://eadb.jki.bund.de	ECPGR Avena Database (EADB)	Christoph Germeier	Julius Kühn-Institute (JKI) - Federal Centre for Cultivated Plants, Institute for Breeding Research on Agricultural Crops	Germany
+http://ebdb.ipk-gatersleben.de/apps/ebdb/	ECPGR Barley Database	Helmut Knüpffer	Leibniz Institute of Plant Genetics and Crop Plant Research (IPK)	Germany
+http://ecpgr.cgn.wur.nl/Brasedb/	ECPGR Brassica Database	Noor Bas	Centre for Genetic Resources, the Netherlands (CGN), Wageningen University and Research Centre	Netherlands
+		Frank Menting	Centre for Genetic Resources, the Netherlands (CGN), Wageningen University and Research Centre	Netherlands
+http://www.iniav.pt/gca/index.php?id=1334	ECPGR Cicer Database	Graça Mendonça Pereira	Instituto Nacional de Investigação Agrária e Veterinária (INIAV), Polo de Elvas	Portugal
+http://www.comav.upv.es/index.php?option=com_wrapper&view=wrapper&Itemid=281&lang=en	ECPGR Cucurbits Database	Maria José Díez Niclós	Instituto de Conservación y Mejora de la Agrodiversidad Valenciana (COMAV), Universidad Politécnica de Valencia	Spain
+		José Miguel Blanca Postigo	Instituto Universitario de Conservacion y Mejora de la Agrodiversidad Valenciana (COMAV), Universidad Politecnica de Valencia (UPV)	Spain
+http://www.europotato.org/menu.php	ECPGR Cultivated Potato Database	Heather Campbell	Potato Section, Science and Advice for Scottish Agriculture (SASA)	United Kingdom
+https://www.google.com/fusiontables/DataSource?docid=14k3aRANVFuDN7_PFjNLDICvYXgVO5SxKe1p0NR8#rows:id=1	ECPGR Dactylis Database	Bartosz Tomaszewski	Plant Breeding and Acclimatization Institute, National Research Institute, Botanical Garden of National Centre for Plant Genetic Resources	Poland
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/eggplant.html	ECPGR Eggplant Database	Gerard M. van der Weerden	Experimental Garden and Genebank, Radboud University Nijmegen	Netherlands
+https://www.google.com/fusiontables/DataSource?docid=1Lcsf7_nAJbViL14dnp1PR4Eu9mY8EMmoC1n1kZY#chartnew:id=10	ECPGR Festuca Database	Bartosz Tomaszewski	Plant Breeding and Acclimatization Institute, National Research Institute, Botanical Garden of National Centre for Plant Genetic Resources	Poland
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/flax.html	ECPGR Flax Database	Martin Pavelek	AGRITEC, výzkum, šlechtění, služby s.r.o., AGRITEC, Ltd.	Czech Republic
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/glycine.html	ECPGR Glycine Database	Margarita Vishnyakova	N.I. Vavilov Institute of Plant Industry (VIR)	Russian Federation
+http://www.comav.upv.es/index.php?option=com_wrapper&view=wrapper&Itemid=280&lang=en	ECPGR Groundcherry Database	José Vicente Valcárcel Germes	Instituto de Conservación y Mejora de la Agrodiversidad Valenciana (COMAV), Universidad Politécnica Valencia	Spain
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/hemp.html	ECPGR Hemp Database	Gianpaolo Grassi	CRA-CIN Centro di Ricerca per le Colture Industriali	Italy
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/lens.html	ECPGR Lens Database	Lerzan Gül Aykas	PGR Department, Aegean Agricultural Research Institute	Turkey
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/Lolium&Trifolium.html	ECPGR Lolium & Trifolium  Databases 	Ian D. Thomas	Genetic Resources Unit, Institute of Biological, Environmental and Rural Sciences (IBERS)	United Kingdom
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/lupinus.html	ECPGR Lupinus Database	Pawel Barzyk	Poznanska Hodowla Roslin Sp. z o.o.	Poland
+http://www.mrizp.rs/emdb/default-en.htm	ECPGR Maize Database	Violeta Andjelkovic	Maize Research Institute Zemun Polje	Serbia
+http://www.nationalfruitcollection.org.uk/ecpgr.php	ECPGR Malus Database	Matthew Ordidge	School of Biological Sciences, Harborne Building, University of Reading	United Kingdom
+http://www.nordgen.org/ecpgr/scope/ecpgr/pages/entry_minor_grasses.html	ECPGR Minor Forage Grasses Database	Anna Palmé	Nordic Genetic Resource Center	Sweden
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/minor_forage_legumes.html	ECPGR Minor Forage Legumes Database	Lajos Horváth	Center for Plant Diversity	Hungary
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/minor_fruit_trees.html	ECPGR Minor Fruit Trees Database	Edgardo Giordani	Dip. di Ortoflorofrutticoltura, Università degli Studi di Firenze	Italy
+http://www.comav.upv.es/index.php?option=com_wrapper&view=wrapper&Itemid=283&lang=en	ECPGR Pepino Database	José Vicente Valcárcel Germes	Instituto de Conservación y Mejora de la Agrodiversidad Valenciana (COMAV), Universidad Politécnica Valencia	Spain
+		José Miguel Blanca Postigo	Instituto Universitario de Conservacion y Mejora de la Agrodiversidad Valenciana (COMAV), Universidad Politecnica de Valencia (UPV)	Spain
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/Crop_Databases/CROP-DATABASE-WINDOWS/pepper.html	ECPGR Pepper Database	Lerzan Gül Aykas	PGR Department, Aegean Agricultural Research Institute	Turkey
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/perennial_medicago.html	ECPGR Perennial Medicago Database	Aurélia Boutet	UR P3F - Unité de Recherche Pluri-disciplinaire Prairies et Plantes Fourragères 	France
+http://www.genbank.at/en/ecpgr-phaseolus.html	ECPGR Phaseolus Database	Wolfgang Kainz	Austrian Agency for Health and Food Safety (AGES), Dept for Plant Genetic Resources	Austria
+http://www.nordgen.org/ecpgr/scope/ecpgr/pages/entry_phleum.html	ECPGR Phleum Database	Anna Palmé	Nordic Genetic Resource Center	Sweden
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/pisum.html	ECPGR Pisum Database	Mike Ambrose	Department of Crop Genetics, John Innes Centre	United Kingdom
+http://poa.ipk-gatersleben.de/apps/epdb/index.jsp	ECPGR Poa Database	Evelin Willner	Leibniz Institute of Plant Genetics and Crop Plant Research (IPK), Satellite Collections North	Germany
+http://www.bordeaux.inra.fr/euprunusdb/index.html	ECPGR Prunus Database	Teresa Barreneche	INRA-UMR Biologie du Fruit et Pathologie, Equipe Adaptation du Cerisier au Changement Climatique (A3C)	France
+		Marine Delmas	INRA-Unité Expérimentale Arboricole	France
+http://www.cra.wallonie.be/fr/107/the-ecp-gr-pyrus-database	ECPGR Pyrus Database	Marc Lateur	Centre Wallon de Recherches Agronomiques (CRA-W), Department of Life Sciences, Breeding & Biodiversity Unit	Belgium
+		Patrick Houben	CRA-W (Centre Wallon de Recherches Agronomiques), Department of Life Sciences, Breeding & Biodiversity Unit	Belgium
+http://projektai.vu.lt/ribes-rubus/	ECPGR Ribes/Rubus Database	Darius Ryliškis	Vilnius University Botanical Garden	Lithuania
+http://genebank.ihar.edu.pl/rye_ccdb.php	ECPGR Secale Database	Marcin Zaczyński	Plant Breeding and Acclimatization Institute (IHAR), National Research Institute, National Centre for Plant Genetic Resources	Poland
+http://ecpgr.cgn.wur.nl/tomato	ECPGR Tomato Database	Frank Menting	Centre for Genetic Resources, the Netherlands (CGN), Wageningen University and Research Centre	Netherlands
+		Willem van Dooijeweert	Centre for Genetic Resources, the Netherlands (CGN), Wageningen University and Research Centre	Netherlands
+http://www.comav.upv.es/index.php?option=com_wrapper&view=wrapper&Itemid=282&lang=en	ECPGR Tree Tomato Database	José Vicente Valcárcel Germes	Instituto de Conservación y Mejora de la Agrodiversidad Valenciana (COMAV), Universidad Politécnica Valencia	Spain
+		José Miguel Blanca Postigo	Instituto Universitario de Conservacion y Mejora de la Agrodiversidad Valenciana (COMAV), Universidad Politecnica de Valencia (UPV)	Spain
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/trifolium_sub.html	ECPGR Trifolium subterraneum Database	Valentin Maya Blanco	Centro de Investigaciones Científicas y Tecnológicas de Extremadura (CICYTEX), Instituto de Investigaciones Agrarias Finca “La Orden – Valdesequera”, Departamento de Produccion Forestal y Pastos	Spain
+http://www.bdn.ch/etdb/	ECPGR Triticale Database	Beate Schierscher	Agroscope, Research Department in Arable Crop Plant Breeding and Genetic Resources	Switzerland
+http://www2.warwick.ac.uk/fac/sci/lifesci/wcc/gru/eudb/	ECPGR Umbellifer Database	Charlotte Allender	University of Warwick, School of Life Sciences, The University of Warwick	United Kingdom
+http://www.ecpgr.cgiar.org/Resources/germplasm_databases/list_of_germplasm_databases/crop_databases/crop_database_windows/vicia_faba.html	ECPGR Vicia faba Database	Gérard Duc	Institut National de la Recherche Agronomique (INRA), UMR agroécology, AgroSup/INRA/uB	France
+http://www.genbank.at/en/ecpgr-vigna.html	ECPGR Vigna Database	Wolfgang Kainz	Austrian Agency for Health and Food Safety (AGES), Dept for Plant Genetic Resources	Austria
+http://www.eu-vitis.de/index.php	ECPGR Vitis Database	Erika Maul	Julius Kühn-Institut (JKI) - Federal Research Centre for Cultivated Plants, Institute for Grapevine Breeding Geilweilerhof	Germany
+http://genbank.vurv.cz/ewdb/	ECPGR Wheat Database	Ludmila Papoušková	Výzkumný ústav rostlinné výroby, v.v.i. Praha (VÚRV), Crop Research Institute, Gene Bank	Czech Republic
+http://ecpgr.cgn.wur.nl/eupotato/	ECPGR Wild Potato Database	Roel Hoekstra	Centre for Genetic Resources, the Netherlands (CGN), Wageningen University and Research Centre	Netherlands
+https://www.eu-sol.wur.nl/	EU-SOL BreeDB database	Richard Finker	Wageningen UR Plant Breeding	Netherlands
+http://golo.cirad.fr/CRB_T_WEB/FR/CRB_T_Collections_Fonio.awp	Fonio (Digitaria)			
+http://golo.cirad.fr/CRB_T_WEB/FR/CRB_T_Collections_Arachide.awp	Groundnut (Arachis)			
+http://ecpgr.cgn.wur.nl/LVintro/chicory/	International Chicory Database	Pascal Coquin	Secteur d'Etude des Variétés (Variety Study Department), Groupe d'Etude et de contrôle des Variétés Et des Semences (GEVES)	France
+http://idbb.jki.bund.de/idbb/	International Database for Beta	Christoph Germeier	Julius Kühn-Institute (JKI) - Federal Centre for Cultivated Plants, Institute for Breeding Research on Agricultural Crops	Germany
+		Lothar Frese	Julius Kühn-Institut (JKI) - Federal Research Centre for Cultivated Plants, Institute for Breeding Research on Agricultural Crops	Germany
+http://ecpgr.cgn.wur.nl/LVintro/ildb/	International Lactuca Database	Rob van Treuren	Centre for Genetic Resources, the Netherlands (CGN), Wageningen University and Research Centre	Netherlands
+		Frank Menting	Centre for Genetic Resources, the Netherlands (CGN), Wageningen University and Research Centre	Netherlands
+http://ecpgr.cgn.wur.nl/LVintro/	International Leafy Vegetables Database			
+http://ecpgr.cgn.wur.nl/LVintro/minorlv/	International Minor Leafy Vegetables Database	Ulrike Lohwasser	, Leibniz Institute of Plant Genetics and Crop Plant Research (IPK)	Germany
+http://ecpgr.cgn.wur.nl/LVintro/spinach/	International Spinach Database	Frank Menting	Centre for Genetic Resources, the Netherlands (CGN), Wageningen University and Research Centre	Netherlands
+		Rob van Treuren	Centre for Genetic Resources, the Netherlands (CGN), Wageningen University and Research Centre	Netherlands
+http://data.jic.ac.uk/cgi-bin/germplasm/pisum/	JIC Pisum Collection	Mike Ambrose [DB]	Department of Crop Genetics, John Innes Centre	United Kingdom
+http://data.jic.ac.uk/cgi-bin/germplasm/triticeae/	JIC Triticeae Collection	Steve Reader	John Innes Centre	United Kingdom
+http://www.crop-diversity.org/banana/	Musa Germplasm Information System (MGIS)			
+http://www.oleadb.it/	OLEA	Giorgio Bartolini		Italy
+http://golo.cirad.fr/CRB_T_WEB/FR/CRB_T_Collections.awp	Rice (Oryza)			
+http://germinate.scri.ac.uk/germinate_cpc/app/index.pl	SCRI Commonwealth Potato Collection		SRCI	United Kingdom
+http://golo.cirad.fr/CRB_T_WEB/FR/CRB_T_Collections_Sorgho.awp	Sorghum (Sorghum)			
+http://data.jic.ac.uk/cgi-bin/germplasm/cereals.asp	The BBSRC Small Grain Cereal Collections	Mike Ambrose [DB]	Department of Crop Genetics, John Innes Centre	United Kingdom
+http://corsica.corse.inra.fr/sra/egide.htm	The EGID Citrus Network Database	EGID	SRA INRA-CIRAD	France
+http://www2.tau.ac.il/ICCI/default.asp	The Harold and Adele Lieberman Germplasm Bank	Adina Breiman	Institute for Cereals Crop Improvement (ICCI), Tel Aviv University	Israel
+http://www.icgd.reading.ac.uk/index.php	The International Cocoa Germplasm Database (ICGD)		ICGD - University of Reading, School of Biological Sciences, Harborne Building (PSL),	United Kingdom
+http://ntbg.org/breadfruit/collection/	The NTGB Breadfruit Collection		National Tropical Botanical Garden's (NTBG), Breadfruit Institute	United States
+http://www.br.fgov.be/RESEARCH/COLLECTIONS/LIVING/PHASEOLUS/index.html	Wild Bean Database (PHASEO)	Thierry Vanderborght	National Botanic Garden of Belgium	Belgium
