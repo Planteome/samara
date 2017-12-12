@@ -19,7 +19,7 @@ available since [v0.1.0](../../releases/v0.1.0) | https://npgsweb.ars-grin.gov/g
 ... | http://ebdb.ipk-gatersleben.de/apps/ebdb/ (no longer accessible) | European Barley Database - documented in http://www.epgris3.eu/docs/activities/2-05/HK%20-%20C&E%20in%20the%20EBDB.pdf 
 ... | http://ealldb.ipk-gatersleben.de/ | European Allium Database
 ... | http://eadb.jki.bund.de/eadb/ | European Avena Database 
-... | http://www.ecpgr.cgiar.org/resources/germplasm-databases/ecpgr-central-crop-databases/ | meta-database of central crop databases (see [ecpgr-central-crop-databases.tsv](./src/main/resources/org/planteome/samara/ecpgr-central-crop-databases.tsv)
+[issue #38](https://github.com/jhpoelen/samara/issues/38) | http://www.ecpgr.cgiar.org/resources/germplasm-databases/ecpgr-central-crop-databases/ | meta-database of central crop databases (see [ecpgr-central-crop-databases.tsv](./src/main/resources/org/planteome/samara/ecpgr-central-crop-databases.tsv)
 
 
 References 
