@@ -2,6 +2,7 @@
 status | location | description
 --- | --- | ---
 available since [v0.1.0](../../releases/v0.1.0) | http://www.apsnet.org/publications/commonnames/Pages/Potato.aspx | American Phytopathological Society Common Names Diseases
+see https://github.com/samara-datasets/samara-datasets-cgn-wur.nl | https://cgn.wur.nl | Centre for Genetic Resources at Wageningen University and Research, the Netherlands.
 [issue #45](https://github.com/jhpoelen/samara/issues/45), needs transcription | http://www.dpvweb.net/dpv/index.php | Over 400 individual descriptions of plant viruses or virus groups are provided. Nos 1-354 were originally published in paper form by the Association of Applied Biologists (AAB) between 1970 and 1989 ...
 [issue #46](https://github.com/jhpoelen/samara/issues/46), needs transcription | https://nematode.unl.edu | Nematology Lab at UNL University of Nebraska-Lincoln
 ... | https://globalbioticinteractions.org | species associations available in various structured digital formats
