@@ -16,7 +16,9 @@ import scala.io.Source
 
 case class Disease(name: String,
                    verbatimPathogen: String = "", pathogen: String, pathogenId: String = "",
-                   verbatimHost: String = "", host: String, hostId: String = "", citation: String = "")
+                   verbatimHost: String = "", host: String, hostId: String = "",
+                   hostPartName: String = "", hostPartId: String = "",
+                   citation: String = "")
 
 abstract class ParserApsnet extends NameFinder with Scrubber {
 
@@ -65,6 +67,11 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
                 disease => {
                   val pathogenNames: Seq[String] = extractPathogenNames(pathogenName)
                   pathogenNames.map { pathogen => disease.copy(pathogen = pathogen, verbatimPathogen = pathogenName) }
+                }
+              }.flatMap {
+                disease => {
+                  val partNames: Seq[String] = extractHostPartNames(diseaseName)
+                  partNames.map { hostPartName => disease.copy(hostPartName = hostPartName) }
                 }
               }
             }
@@ -142,6 +149,10 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     mapNames(scrubbedNames.flatMap(pathogenNames))
   }
 
+  def extractHostPartNames(diseaseName: String): Seq[String] = {
+    hostPartMapNames(Seq(diseaseName))
+  }
+
   def mapNames(names: Seq[String]): Seq[String] = {
     names.flatMap { someName => nameMap.get(someName) match {
       case Some("no:name") => None
@@ -149,6 +160,10 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
       case None => Seq(someName)
     }
     }
+  }
+
+  def hostPartMapNames(names: Seq[String]): Seq[String] = {
+    Seq("whole plant")
   }
 
   def pathogenNames(pathogenName2: String): Seq[String] = {
