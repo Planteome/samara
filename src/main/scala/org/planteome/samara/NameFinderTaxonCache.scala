@@ -23,7 +23,7 @@ trait NameFinderTaxonCache extends NameFinder {
         }
       })
       .filter(map => (map.resolvedId startsWith "NCBI:") || (map.resolvedId startsWith "NCBITaxon:"))
-      .map(entry => (entry.providedName, List(new Integer(entry.resolvedId.replace("NCBI:", "").replace("NCBITaxon:", "")))))
+      .map(entry => (entry.providedName, List(new Integer(entry.resolvedId.replace("NCBI:", "").replace("NCBITaxon:", "").trim))))
   }
 
   def taxonMapStream: InputStream = {

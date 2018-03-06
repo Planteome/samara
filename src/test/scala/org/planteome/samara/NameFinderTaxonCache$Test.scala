@@ -26,4 +26,9 @@ class NameFinderTaxonCache$Test extends FlatSpec with Matchers with NameFinderTa
     val humans = findNames("Donald duck")
     humans should contain("no:match")
   }
+
+  "name finder" should "resolve to some virus" in {
+    val humans = findNames("Barley yellow striate mosaic virus")
+    humans should contain("no:match")
+  }
 }
