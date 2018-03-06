@@ -1,22 +1,22 @@
 providedTaxonId	providedTaxonName	resolvedTaxonId	resolvedTaxonName
 	Bean leafroll virus (BLRV)	NCBITaxon:12041	Bean leafroll virus
 	Homo sapiens	NCBI:9606	Homo sapiens
-NCBITaxon:100880		NCBITaxon:1985704	Northern cereal mosaic cytorhabdovirus
-NCBITaxon:115135		NCBITaxon:105696	Epicoccum nigrum
-NCBITaxon:11613		NCBITaxon:1933298	Tomato spotted wilt orthotospovirus
-NCBITaxon:117550		NCBITaxon:1928361	Cytospora ceratosperma
-NCBITaxon:161656		NCBITaxon:1873267	Neopseudocercosporella brassicae
-NCBITaxon:1631748		NCBITaxon:2056292	Physisporinus lineatus
-NCBITaxon:172187		NCBITaxon:1904844	Coniella straminea
-NCBITaxon:237468		NCBITaxon:1873268	Neopseudocercosporella capsellae
-NCBITaxon:251304		NCBITaxon:1904842	Coniella quercicola
-NCBITaxon:33177		NCBITaxon:119933	Stemphylium vesicarium
-NCBITaxon:348105		NCBITaxon:35725	Macrophomina phaseolina
-NCBITaxon:406835		NCBITaxon:2056301	Rigidoporus corticola
-NCBITaxon:509221		NCBITaxon:252740	Valsa sordida
-NCBITaxon:522267		NCBITaxon:1940567	Juglanconis juglandina
-NCBITaxon:547107		NCBITaxon:205686	Ascochyta lentis
-NCBITaxon:62969		NCBITaxon:1859971	Paramyrothecium roridum
-NCBITaxon:648926		NCBITaxon:2059773	Zasmidium musigenum
-NCBITaxon:656083		NCBITaxon:1985699	Barley yellow striate mosaic cytorhabdovirus
-NCBITaxon:75795		NCBITaxon:1931354	Emmia latemarginata
+NCBITaxon:100880	Northern cereal mosaic virus	NCBITaxon:1985704	Northern cereal mosaic cytorhabdovirus
+NCBITaxon:115135	Phoma epicoccina Punith.	NCBITaxon:105696	Epicoccum nigrum
+NCBITaxon:11613	Tomato spotted wilt virus	NCBITaxon:1933298	Tomato spotted wilt orthotospovirus
+NCBITaxon:117550	Valsa ceratosperma (Tode	NCBITaxon:1928361	Cytospora ceratosperma
+NCBITaxon:161656	Mycosphaerella brassicicola (Duby) Lindau in Engl. and Prantl	NCBITaxon:1873267	Neopseudocercosporella brassicae
+NCBITaxon:1631748	Rigidoporus lineatus (Pers.) Ryvarden	NCBITaxon:2056292	Physisporinus lineatus
+NCBITaxon:172187	Schizoparme straminea Shear	NCBITaxon:1904844	Coniella straminea
+NCBITaxon:237468	Pseudocercosporella capsellae (Ellis and Everh.) Deighton	NCBITaxon:1873268	Neopseudocercosporella capsellae
+NCBITaxon:251304	Pilidiella quercicola (Oudem.) Petr.	NCBITaxon:1904842	Coniella quercicola
+NCBITaxon:33177	Pleospora herbarum (Pers.) Rabenh.	NCBITaxon:119933	Stemphylium vesicarium
+NCBITaxon:348105	Rhizoctonia bataticola (Taubenhaus) E.J. Butler	NCBITaxon:35725	Macrophomina phaseolina
+NCBITaxon:406835	Oxyporus corticola (Fr.	NCBITaxon:2056301	Rigidoporus corticola
+NCBITaxon:509221	Cytospora chrysosperma (Pers.	NCBITaxon:252740	Valsa sordida
+NCBITaxon:522267	Melanconium juglandinum Kunze [anamorph]	NCBITaxon:1940567	Juglanconis juglandina
+NCBITaxon:547107	Ascochyta lentis Bond. & Vassil.	NCBITaxon:205686	Ascochyta lentis
+NCBITaxon:62969	Myrothecium roridum Tode	NCBITaxon:1859971	Paramyrothecium roridum
+NCBITaxon:648926	Veronaea musae Stahel ex M. B. Ellis	NCBITaxon:2059773	Zasmidium musigenum
+NCBITaxon:656083	Barley yellow striate mosaic virus	NCBITaxon:1985699	Barley yellow striate mosaic cytorhabdovirus
+NCBITaxon:75795	Oxyporus latemarginatus (Durieu & Mont.) Donk	NCBITaxon:1931354	Emmia latemarginata
