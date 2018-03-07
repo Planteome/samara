@@ -17,14 +17,17 @@ object OwlPOLoader {
     m.read(resource.toURI.toString)
 
     //Get all po + names + synonyms
-    val queryString = "" + "Select distinct ?s ?label " + " where {  " + " {?s <http://www.w3.org/2000/01/rdf-schema#label> ?label . ?s  <http://www.w3.org/2000/01/rdf-schema#subClassOf>* <http://purl.obolibrary.org/obo/PO_0009011>}" + " UNION " + " {?s <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> ?label . }" + " UNION " + " {?s <http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym> ?label . }" + " UNION " + " {?s <http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym> ?label . }" + " " + " }"
+    val queryString =
+      """SELECT DISTINCT ?s ?label
+        | WHERE {  {?s <http://www.w3.org/2000/01/rdf-schema#label> ?label . ?s  <http://www.w3.org/2000/01/rdf-schema#subClassOf>* <http://purl.obolibrary.org/obo/PO_0009011>}
+        | UNION {?s <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> ?label . }
+        | UNION {?s <http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym> ?label . }
+        | UNION {?s <http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym> ?label . } }""".stripMargin
     extractTerms(m, queryString)
   }
 
   def extractTerms(m: OntModel, queryString: String): Iterator[(String, String)] = {
-    //crate the query
     val query = QueryFactory.create(queryString)
-    /// with local model
     val qexec = QueryExecutionFactory.create(query, m)
     try {
       val rs = qexec.execSelect()
