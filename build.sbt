@@ -65,7 +65,7 @@ installTaxonCache := {
       Set()
     }
   }
-  log.info("taxon cache installed.")
+  log.info("GloBI Taxon Cache installed.")
   extracted.toSeq.filter(_.getName.contains("taxonMap"))
 }
 lazy val installPlantOntology = taskKey[Seq[java.io.File]]("install plant ontology in resources")
@@ -94,7 +94,7 @@ installPlantOntology := {
       Set()
     }
   }
-  log.info("plant ontology installed.")
+  log.info("Plant Ontology installed.")
   extracted.toSeq.filter(_.getName.contains("po.owl"))
 }
 
@@ -110,7 +110,10 @@ lazy val root = (project in file(".")).
       "com.github.scopt" %% "scopt" % "3.5.0",
       "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
       "org.mapdb" % "mapdb" % "1.0.9",
-      "org.apache.jena" % "apache-jena-libs" % "2.13.0",
+      "org.apache.jena" % "apache-jena-libs" % "2.13.0" excludeAll(
+        ExclusionRule(organization = "commons-logging"),
+        ExclusionRule(organization = "org.slf4j")
+        ),
       taxonCacheModule,
       ncbiLinkOutModule,
       plantOntologyModule,
