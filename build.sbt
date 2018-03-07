@@ -104,7 +104,7 @@ lazy val root = (project in file(".")).
   settings(
     name := "samara",
     resolvers ++= Seq(Resolver.sonatypeRepo("public"),
-      "GloBI releases" at "https://s3.amazonaws.com/globi/release/"),
+      "GloBI releases" at "https://depot.globalbioticinteractions.org/release/"),
     libraryDependencies ++= Seq(
       "net.ruippeixotog" %% "scala-scraper" % "1.2.0" excludeAll(
         ExclusionRule(organization = "commons-logging"),

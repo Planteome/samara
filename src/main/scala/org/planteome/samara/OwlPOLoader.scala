@@ -10,11 +10,11 @@ object OwlPOLoader {
   def plantOntology: Iterator[(String, String)] = {
     val m = ModelFactory.createOntologyModel()
     //load onto file (assuming that is has been installed through sbt
-    val resource = this.getClass.getResource("/org/planteome/plant-ontology/plant-ontology-master/po.owl")
+    val resource = this.getClass.getResourceAsStream("/org/planteome/plant-ontology/plant-ontology-master/po.owl")
     if (resource == null) {
       throw new RuntimeException("please load plant-ontology using sbt")
     }
-    m.read(resource.toURI.toString)
+    m.read(resource, null)
 
     //Get all po + names + synonyms
     val queryString =
