@@ -13,16 +13,9 @@ class NameFinderTaxonCacheMapDB$Test extends FlatSpec with Matchers with BeforeA
     taxonMapStream should not(be(null))
   }
 
-  "name finder" should "resolve NCBI id for wheat (Triticum)" in {
-    val wheat = findNames("Triticum")
-    wheat should not be empty
-    wheat should not be List("no:match")
-  }
-
   "name finder" should "resolve NCBI id for Homo sapiens" in {
     val humans = findNames("Homo sapiens")
-    humans should contain("NCBITaxon:9606")
-    humans.size should be(1)
+    humans should be(List("NCBITaxon:9606"))
   }
 
   "name finder" should "resolve NCBI id for bean leafroll virus" in {
