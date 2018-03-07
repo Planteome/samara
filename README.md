@@ -10,7 +10,7 @@ For more information about APSNet scraping process, please go [here](src/main/re
 *A samara is a winged achene, a type of fruit in which a flattened wing of fibrous, papery tissue develops from the ovary wall. (from https://en.wikipedia.org/wiki/Samara_(fruit) accessed at 2016-06-10).
 
 ## prerequisites
-sbt 0.13.8+/java jdk 8+/git
+sbt 0.13.8+/java jdk 8+/git/maven 3.3+
 
 ## build/test
 1. clone this repo
