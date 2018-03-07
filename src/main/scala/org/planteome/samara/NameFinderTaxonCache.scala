@@ -53,8 +53,11 @@ trait NameFinderTaxonCache extends NameFinder {
     val taxonCache = reducedTaxonMap
       .foldLeft(HashMap[String, List[Integer]]()) {
         (agg, entry) => {
-          val targetTaxonIds: List[Integer] = agg.getOrElse(entry._1, List())
-          agg + (entry._1 -> (entry._2 ++ targetTaxonIds).distinct)
+          if (agg.contains(entry._1)) {
+            agg
+          } else {
+            agg + (entry._1 -> entry._2)
+          }
         }
       }
     Console.err.println("taxonCache ready.")

@@ -12,6 +12,7 @@ class NameFinderTaxonCacheMapDBStatic$Test extends FlatSpec with Matchers with B
   "name finder" should "resolve NCBI id for wheat (Triticum)" in {
     val wheat = findNames("Triticum")
     wheat should not be empty
+    wheat should not be List("no:match")
   }
 
   "name finder" should "resolve to no:match for Donald Duck" in {
