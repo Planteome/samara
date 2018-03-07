@@ -106,14 +106,14 @@ lazy val root = (project in file(".")).
     resolvers ++= Seq(Resolver.sonatypeRepo("public"),
       "GloBI releases" at "https://s3.amazonaws.com/globi/release/"),
     libraryDependencies ++= Seq(
-      "net.ruippeixotog" %% "scala-scraper" % "1.2.0",
+      "net.ruippeixotog" %% "scala-scraper" % "1.2.0" excludeAll(
+        ExclusionRule(organization = "commons-logging"),
+        ExclusionRule(organization = "org.slf4j")
+      ),
       "com.github.scopt" %% "scopt" % "3.5.0",
       "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
       "org.mapdb" % "mapdb" % "1.0.9",
-      "org.apache.jena" % "apache-jena-libs" % "2.13.0" excludeAll(
-        ExclusionRule(organization = "commons-logging"),
-        ExclusionRule(organization = "org.slf4j")
-        ),
+      "org.apache.jena" % "apache-jena-libs" % "2.13.0" ,
       taxonCacheModule,
       ncbiLinkOutModule,
       plantOntologyModule,
