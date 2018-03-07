@@ -9,6 +9,11 @@ class NameFinderProxy$Test extends FlatSpec with Matchers with NameFinderProxy {
     aWholePlantTerm should be(List("PO:0000003"))
   }
 
+  "name finder" should "resolve PO id for a leaf" in {
+    val aWholePlantTerm = findNames("leaf")
+    aWholePlantTerm should be(List("PO:0025034"))
+  }
+
   "name finder" should "resolve NCBI id for humans" in {
     val aWholePlantTerm = findNames("Homo sapiens")
     aWholePlantTerm should be(List("NCBITaxon:9606"))
