@@ -8,12 +8,17 @@ import scala.io.Source
 
 case class TaxonMap(providedId: String, providedName: String, resolvedId: String, resolvedName: String)
 
+case class TaxonMapCache(name: String
+                         , lineFilter: (String) => Boolean
+                         , prefixFilter: (TaxonMap) => Boolean
+                         , prefixMap: (TaxonMap) => (String, List[Integer])
+                         , expandId: (Integer) => String)
 
 trait NameFinderTaxonCache extends NameFinder {
 
   def reducedTaxonMap: Iterator[(String, List[Integer])] = {
     taxonMapLines
-      .filter(s => s.contains("NCBI:") || s.contains("NCBITaxon:"))
+      .filter(taxonMapCacheConfig.lineFilter)
       .flatMap(line => {
         val parts = line.split("\t", -1).toList
         if (parts.size > 3) {
@@ -22,8 +27,8 @@ trait NameFinderTaxonCache extends NameFinder {
           None
         }
       })
-      .filter(map => (map.resolvedId startsWith "NCBI:") || (map.resolvedId startsWith "NCBITaxon:"))
-      .map(entry => (entry.providedName, List(new Integer(entry.resolvedId.replace("NCBI:", "").replace("NCBITaxon:", "").trim))))
+      .filter(taxonMapCacheConfig.prefixFilter)
+      .map(taxonMapCacheConfig.prefixMap)
   }
 
   def taxonMapStream: InputStream = {
@@ -48,9 +53,9 @@ trait NameFinderTaxonCache extends NameFinder {
       .reduce(_ ++ _)
   }
 
-  lazy val taxonCacheNCBI: collection.Map[String, List[Integer]] = {
+  def initTaxonCache: collection.Map[String, List[Integer]] = {
     Console.err.println("taxonCache building...")
-    val taxonCache = reducedTaxonMap
+    lazy val taxonCache = reducedTaxonMap
       .foldLeft(HashMap[String, List[Integer]]()) {
         (agg, entry) => {
           if (agg.contains(entry._1)) {
@@ -64,9 +69,20 @@ trait NameFinderTaxonCache extends NameFinder {
     taxonCache
   }
 
+  def taxonMapCacheConfig: TaxonMapCache = {
+    val name: String =  "NCBI"
+    val lineFilter: (String) => Boolean = { (s: String) => s.contains("NCBI:") || s.contains("NCBITaxon:") }
+    val prefixFilter: (TaxonMap) => Boolean = { (map: TaxonMap) => (map.resolvedId startsWith "NCBI:") || (map.resolvedId startsWith "NCBITaxon:") }
+    val prefixMap: (TaxonMap) => (String, List[Integer]) = { (entry: TaxonMap) => (entry.providedName, List(new Integer(entry.resolvedId.replace("NCBI:", "").replace("NCBITaxon:", "").trim))) }
+    val expandId: (Integer) => String = { (id: Integer) => s"NCBITaxon:$id" }
+    TaxonMapCache(name = name, lineFilter = lineFilter, prefixFilter = prefixFilter, prefixMap = prefixMap, expandId = expandId)
+  }
+
+  lazy val taxonCache: collection.Map[String, List[Integer]] = initTaxonCache
+
   def findNames(text: String): List[String] = {
-    taxonCacheNCBI.get(text) match {
-      case Some(ids) => ids.map(id => s"NCBITaxon:$id")
+    taxonCache.get(text) match {
+      case Some(ids) => ids.map(taxonMapCacheConfig.expandId)
       case None => List("no:match")
     }
   }

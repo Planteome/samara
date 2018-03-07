@@ -23,6 +23,11 @@ class NameFinderTaxonCache$Test extends FlatSpec with Matchers with NameFinderTa
     humans should contain("NCBITaxon:9606")
   }
 
+  "name finder" should "resolve PO id for whole plant" in {
+    val humans = findNames("whole plant")
+    humans should be(List("PO:0000003"))
+  }
+
   "name finder" should "resolve to no:match for Donald Duck" in {
     val humans = findNames("Donald duck")
     humans should contain("no:match")

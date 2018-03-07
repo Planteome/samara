@@ -14,19 +14,19 @@ trait NameFinderTaxonCacheMapDB extends NameFinderTaxonCache {
       .make()
   }
 
-  override lazy val taxonCacheNCBI: collection.Map[String, List[Integer]] = {
-    Console.err.println("taxonCache building...")
+  override lazy val taxonCache: collection.Map[String, List[Integer]] = {
+    Console.err.println(s"taxonCache for [${taxonMapCacheConfig.name}] building...")
     val start = System.currentTimeMillis()
     val firstFewLines: Iterator[Fun.Tuple2[String, List[Integer]]] = mapdbIterator
 
-    val taxonCache = db.createTreeMap("map")
+    val taxonCache = db.createTreeMap(s"map${taxonMapCacheConfig.name}")
       .pumpSource(firstFewLines.asJava)
       .pumpIgnoreDuplicates()
       .pumpPresort(100000000) // for presorting data we could also use this method
       .make[String, List[Integer]].asScala
 
     val end = System.currentTimeMillis()
-    Console.err.println(s"taxonCache ready [took ${(end - start) / 1000} s].")
+    Console.err.println(s"taxonCache for [${taxonMapCacheConfig.name}] ready [took ${(end - start) / 1000} s].")
 
     taxonCache
   }

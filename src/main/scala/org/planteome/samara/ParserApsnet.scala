@@ -82,15 +82,21 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
       case ((disease, pathogenExpanded)) => disease.copy(pathogen = pathogenExpanded, citation = citation)
     }
 
-    val resolvedDiseases = expandedDiseases.flatMap {
-      disease => {
-        val hostIds = findNames(disease.host)
-        hostIds.map(hostId => disease.copy(hostId = hostId))
-      }
-    }.flatMap {
+    val resolvedDiseases = expandedDiseases
+      .flatMap {
+        disease => {
+          val hostIds = findNames(disease.host)
+          hostIds.map(hostId => disease.copy(hostId = hostId))
+        }
+      }.flatMap {
       disease => {
         val pathogenIds = findNames(disease.pathogen)
         pathogenIds.map(pathogenId => disease.copy(pathogenId = pathogenId))
+      }
+    }.flatMap {
+      disease => {
+        val hostPartIds = findNames(disease.hostPartName)
+        hostPartIds.map(hostPartId => disease.copy(hostPartId = hostPartId))
       }
     }
 
@@ -154,11 +160,12 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
   }
 
   def mapNames(names: Seq[String]): Seq[String] = {
-    names.flatMap { someName => nameMap.get(someName) match {
-      case Some("no:name") => None
-      case Some(name) => name.split('|')
-      case None => Seq(someName)
-    }
+    names.flatMap { someName =>
+      nameMap.get(someName) match {
+        case Some("no:name") => None
+        case Some(name) => name.split('|')
+        case None => Seq(someName)
+      }
     }
   }
 
