@@ -11,8 +11,8 @@ case class TaxonMap(providedId: String, providedName: String, resolvedId: String
 
 trait NameFinderTaxonCache extends NameFinder {
 
-  def reducedTaxonMap: Iterator[(String, List[Integer])] = {
-    taxonMapLines
+  def reducedTaxonMap(resourceName: String): Iterator[(String, List[Integer])] = {
+    taxonMapLines(resourceName)
       .filter(s => s.contains("NCBI:") || s.contains("NCBITaxon:"))
       .flatMap(line => {
         val parts = line.split("\t", -1).toList
@@ -34,38 +34,37 @@ trait NameFinderTaxonCache extends NameFinder {
     Seq("/org/planteome/samara/apsnet/taxonMap.tsv", "/org/eol/globi/taxon/taxonMap.tsv.gz")
   }
 
-  def taxonMapLines: Iterator[String] = {
-    resourceNames
-      .map(resourceName => {
-        val is = Samara.getClass.getResourceAsStream(resourceName)
-        val is2 = if (resourceName.endsWith("gz")) {
-          new GZIPInputStream(is)
-        } else {
-          is
-        }
-        Source.fromInputStream(is2).getLines()
-      })
-      .reduce(_ ++ _)
+  def taxonMapLines(resourceName: String): Iterator[String] = {
+    val is = Samara.getClass.getResourceAsStream(resourceName)
+    val is2 = if (resourceName.endsWith("gz")) {
+      new GZIPInputStream(is)
+    } else {
+      is
+    }
+    Source.fromInputStream(is2).getLines()
   }
 
-  lazy val taxonCacheNCBI: collection.Map[String, List[Integer]] = {
+  lazy val taxonCachesNCBI: Seq[collection.Map[String, List[Integer]]] = {
     Console.err.println("taxonCache building...")
-    val taxonCache = reducedTaxonMap
-      .foldLeft(HashMap[String, List[Integer]]()) {
-        (agg, entry) => {
-          val targetTaxonIds: List[Integer] = agg.getOrElse(entry._1, List())
-          agg + (entry._1 -> (entry._2 ++ targetTaxonIds).distinct)
+    val taxonCaches = resourceNames.map(resourceName => {
+      reducedTaxonMap(resourceName)
+        .foldLeft(HashMap[String, List[Integer]]()) {
+          (agg, entry) => {
+            val targetTaxonIds: List[Integer] = agg.getOrElse(entry._1, List())
+            agg + (entry._1 -> (entry._2 ++ targetTaxonIds).distinct)
+          }
         }
-      }
+    })
     Console.err.println("taxonCache ready.")
-    taxonCache
+    taxonCaches
   }
 
   def findNames(text: String): List[String] = {
-    taxonCacheNCBI.get(text) match {
+    // first taxonCache to match gets to do the mapping, all other taxonCaches are ignored
+    taxonCachesNCBI.map(taxonCache => taxonCache.get(text) match {
       case Some(ids) => ids.map(id => s"NCBITaxon:$id")
-      case None => List("no:match")
-    }
+      case None => List()
+    }).filter(_.nonEmpty).head
   }
 }
 
