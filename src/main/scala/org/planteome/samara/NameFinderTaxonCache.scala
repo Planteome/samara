@@ -47,13 +47,16 @@ trait NameFinderTaxonCache extends NameFinder {
   lazy val taxonCachesNCBI: Seq[collection.Map[String, List[Integer]]] = {
     Console.err.println("taxonCache building...")
     val taxonCaches = resourceNames.map(resourceName => {
-      reducedTaxonMap(resourceName)
+      Console.err.print(s"loading [$resourceName]...")
+      val taxonCache = reducedTaxonMap(resourceName)
         .foldLeft(HashMap[String, List[Integer]]()) {
           (agg, entry) => {
             val targetTaxonIds: List[Integer] = agg.getOrElse(entry._1, List())
             agg + (entry._1 -> (entry._2 ++ targetTaxonIds).distinct)
           }
         }
+      Console.err.print(" done.")
+      taxonCache
     })
     Console.err.println("taxonCache ready.")
     taxonCaches
@@ -64,7 +67,7 @@ trait NameFinderTaxonCache extends NameFinder {
     taxonCachesNCBI.map(taxonCache => taxonCache.get(text) match {
       case Some(ids) => ids.map(id => s"NCBITaxon:$id")
       case None => List()
-    }).filter(_.nonEmpty).head
+    }).find(_.nonEmpty).getOrElse(List())
   }
 }
 

@@ -19,12 +19,15 @@ trait NameFinderTaxonCacheMapDB extends NameFinderTaxonCache {
     val start = System.currentTimeMillis()
     val caches: Seq[collection.Map[String, List[Integer]]] = resourceNames.map(resourceName => {
       val firstFewLines: Iterator[Fun.Tuple2[String, List[Integer]]] = mapdbIterator(resourceName)
+      Console.err.println(s"loading [$resourceName]...")
 
-      db.createTreeMap(resourceName)
+      val taxonCache = db.createTreeMap(resourceName)
         .pumpSource(firstFewLines.asJava)
         .pumpIgnoreDuplicates()
         .pumpPresort(100000000) // for presorting data we could also use this method
         .make[String, List[Integer]].asScala
+      Console.err.println(s"loading [$resourceName] done.")
+      taxonCache
     })
     val end = System.currentTimeMillis()
     Console.err.println(s"taxonCache ready [took ${(end - start) / 1000} s].")
