@@ -4,7 +4,7 @@ import org.mapdb.{DBMaker, Fun}
 
 import scala.collection.JavaConverters._
 
-trait NameFinderTaxonCacheMapDB extends NameFinderTaxonCache {
+trait TermFinderTaxonCacheMapDB extends TermFinderTaxonCache {
 
   lazy val db = {
     DBMaker

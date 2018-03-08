@@ -1,7 +1,7 @@
 package org.planteome.samara
 
-trait NameFinderOwlPO extends NameFinderTaxonCache {
-  override def taxonMapCacheConfig: TaxonMapCache = {
+trait TermFinderOwlPO extends TermFinder {
+  def taxonMapCacheConfig: TaxonMapCache = {
     val prefix = "PO:"
     val lineFilter: (String) => Boolean = { (s: String) => s.contains(prefix) }
     val prefixFilter: (TaxonMap) => Boolean = { (map: TaxonMap) => map.resolvedId startsWith prefix }
@@ -10,16 +10,24 @@ trait NameFinderOwlPO extends NameFinderTaxonCache {
     TaxonMapCache(name = "OwlPO", lineFilter = lineFilter, prefixFilter = prefixFilter, prefixMap = prefixMap, expandId = expandId)
   }
 
-  override def reducedTaxonMap: Iterator[(String, List[Integer])] = {
+  def labelIdPairs: Iterator[(String, Integer)] = {
     val prefix = "http://purl.obolibrary.org/obo/PO_"
     OwlPOLoader
       .plantOntology
       .filter(t => {
-        t._1.startsWith(prefix)
+        t._1.startsWith(prefix) && !t._2.equalsIgnoreCase("ray")
       }).map(t => {
       (t._1.replace("http://purl.obolibrary.org/obo/PO_", ""), t._2)
     })
-      .map(t => (t._2, List(new Integer(t._1))))
+      .map(t => (t._2, new Integer(t._1)))
+  }
+
+  def findTerms(text: String): List[Term] = {
+    lazy val labelId = labelIdPairs
+    labelId
+      .filter(p => text.toLowerCase.contains(p._1))
+      .map(p => Term(p._1, taxonMapCacheConfig.expandId(p._2)))
+      .toList
   }
 
 }

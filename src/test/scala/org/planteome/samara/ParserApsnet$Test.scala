@@ -4,7 +4,7 @@ import net.ruippeixotog.scalascraper.model.Document
 import org.scalatest._
 
 
-object ParserApsnetStatic$ extends ParserApsnet with NameFinderStatic
+object ParserApsnetStatic$ extends ParserApsnet with TermFinderStatic
 
 object expectedCitations {
   val alfalfa = "D. A. Samac, L. H. Rhodes, and W. O. Lamp, primary collators (Last update: 6/25/14). Diseases of Alfalfa (Medicago sativa L.). The American Phytopathological Society."
@@ -15,7 +15,7 @@ object expectedHosts {
   val verbatimPeachHost: String = "Diseases of Peach and Nectarine Peach: Prunus persica (L.) Batsch Nectarine: P. persica var. nucipersica (Suckow) C.K. Schneid."
 }
 
-class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic with ParseTestUtil {
+class ParserApsnet$Test extends FlatSpec with Matchers with TermFinderStatic with ParseTestUtil {
 
   "Parsing Alfalfa" should "result in pathogen-host interactions for disease" in {
     val doc: Document = parse("apsnet/Alfalfa.aspx")
@@ -28,8 +28,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = "Diseases of Alfalfa (Medicago sativa L.)",
       host = "Medicago sativa L.",
       hostId = "id[Medicago sativa L.]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Alfalfa witches’-broom",
+      hostPartId = "id[Alfalfa witches’-broom]",
       citation = expectedCitations.alfalfa))
 
     interactions should contain(Disease(name = "Red clover vein mosaic",
@@ -39,8 +39,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = "Diseases of Alfalfa (Medicago sativa L.)",
       host = "Medicago sativa L.",
       hostId = "id[Medicago sativa L.]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Red clover vein mosaic",
+      hostPartId = "id[Red clover vein mosaic]",
       citation = expectedCitations.alfalfa))
   }
 
@@ -52,8 +52,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica",
       hostId = "id[Prunus persica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Bacterial canker",
+      hostPartId = "id[Bacterial canker]",
       citation = expectedCitations.peachAndNectarine))
   }
 
@@ -65,8 +65,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica var. nucipersica",
       hostId = "id[Prunus persica var. nucipersica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Bacterial canker",
+      hostPartId = "id[Bacterial canker]",
       citation = expectedCitations.peachAndNectarine))
   }
 
@@ -78,8 +78,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica",
       hostId = "id[Prunus persica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Bacterial canker",
+      hostPartId = "id[Bacterial canker]",
       citation = expectedCitations.peachAndNectarine))
   }
 
@@ -91,8 +91,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica var. nucipersica",
       hostId = "id[Prunus persica var. nucipersica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Bacterial canker",
+      hostPartId = "id[Bacterial canker]",
       citation = expectedCitations.peachAndNectarine))
   }
 
@@ -106,8 +106,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica",
       hostId = "id[Prunus persica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Green fruit rot",
+      hostPartId = "id[Green fruit rot]",
       citation = expectedCitations.peachAndNectarine))
   }
 
@@ -122,8 +122,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica var. nucipersica",
       hostId = "id[Prunus persica var. nucipersica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Green fruit rot",
+      hostPartId = "id[Green fruit rot]",
       citation = expectedCitations.peachAndNectarine))
   }
 
@@ -138,8 +138,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica",
       hostId = "id[Prunus persica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Green fruit rot",
+      hostPartId = "id[Green fruit rot]",
       citation = expectedCitations.peachAndNectarine))
   }
 
@@ -151,8 +151,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica var. nucipersica",
       hostId = "id[Prunus persica var. nucipersica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Green fruit rot",
+      hostPartId = "id[Green fruit rot]",
       citation = expectedCitations.peachAndNectarine))
   }
 
@@ -164,8 +164,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica",
       hostId = "id[Prunus persica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Line pattern",
+      hostPartId = "id[Line pattern]",
       citation = expectedCitations.peachAndNectarine))
   }
 
@@ -177,8 +177,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica var. nucipersica",
       hostId = "id[Prunus persica var. nucipersica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Line pattern",
+      hostPartId = "id[Line pattern]",
       citation = expectedCitations.peachAndNectarine))
 
   }
@@ -191,8 +191,8 @@ class ParserApsnet$Test extends FlatSpec with Matchers with NameFinderStatic wit
       verbatimHost = expectedHosts.verbatimPeachHost,
       host = "Prunus persica var. nucipersica",
       hostId = "id[Prunus persica var. nucipersica]",
-      hostPartName = "whole plant",
-      hostPartId = "id[whole plant]",
+      hostPartName = "Rosette and decline",
+      hostPartId = "id[Rosette and decline]",
       citation = expectedCitations.peachAndNectarine))
   }
 

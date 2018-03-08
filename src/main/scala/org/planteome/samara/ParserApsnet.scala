@@ -20,7 +20,7 @@ case class Disease(name: String,
                    hostPartName: String = "", hostPartId: String = "",
                    citation: String = "")
 
-abstract class ParserApsnet extends NameFinder with Scrubber {
+abstract class ParserApsnet extends TermFinder with Scrubber {
 
   def parsePageIndex(doc: Document): Iterable[String] = {
     doc >> elements(".link-item") >> attrs("href")("a")
@@ -68,11 +68,6 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
                   val pathogenNames: Seq[String] = extractPathogenNames(pathogenName)
                   pathogenNames.map { pathogen => disease.copy(pathogen = pathogen, verbatimPathogen = pathogenName) }
                 }
-              }.flatMap {
-                disease => {
-                  val partNames: Seq[String] = extractHostPartNames(diseaseName)
-                  partNames.map { hostPartName => disease.copy(hostPartName = hostPartName) }
-                }
               }
             }
           }
@@ -85,18 +80,18 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     val resolvedDiseases = expandedDiseases
       .flatMap {
         disease => {
-          val hostIds = findNames(disease.host)
-          hostIds.map(hostId => disease.copy(hostId = hostId))
+          matchIfNCBI(disease.host, findTerms(disease.host))
+            .map(term => disease.copy(hostId = term.id))
         }
       }.flatMap {
       disease => {
-        val pathogenIds = findNames(disease.pathogen)
-        pathogenIds.map(pathogenId => disease.copy(pathogenId = pathogenId))
+        matchIfNCBI(disease.pathogen, findTerms(disease.pathogen))
+          .map(pathogen => disease.copy(pathogenId = pathogen.id))
       }
     }.flatMap {
       disease => {
-        val hostPartIds = findNames(disease.hostPartName)
-        hostPartIds.map(hostPartId => disease.copy(hostPartId = hostPartId))
+        noMatchIfEmpty(disease.name, findTerms(disease.name))
+          .map(hostPart => disease.copy(hostPartName = hostPart.name, hostPartId = hostPart.id))
       }
     }
 
@@ -105,6 +100,14 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
         disease.copy(pathogen = canonize(disease.pathogen), host = canonize(disease.host))
       }
     }
+  }
+
+  private def noMatchIfEmpty(text: String, terms: List[Term]): List[Term] = {
+    if (terms.nonEmpty) terms else List(Term(text, "no:match"))
+  }
+
+  private def matchIfNCBI(text: String, terms: List[Term]): List[Term] = {
+    if (terms.nonEmpty && terms.exists(term => term.id.startsWith("NCBI"))) terms else List(Term(text, "no:match"))
   }
 
   def canonize(name: String): String = {
@@ -155,10 +158,6 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     mapNames(scrubbedNames.flatMap(pathogenNames))
   }
 
-  def extractHostPartNames(diseaseName: String): Seq[String] = {
-    hostPartMapNames(Seq(diseaseName))
-  }
-
   def mapNames(names: Seq[String]): Seq[String] = {
     names.flatMap { someName =>
       nameMap.get(someName) match {
@@ -169,12 +168,7 @@ abstract class ParserApsnet extends NameFinder with Scrubber {
     }
   }
 
-  def hostPartMapNames(names: Seq[String]): Seq[String] = {
-    Seq("whole plant")
-  }
-
   def pathogenNames(pathogenName2: String): Seq[String] = {
-
     val synonymSplit = """^\(=(.*)\)$""".r
     val synonymSplit3 = """^\(=(.*)$""".r
     val synonymSplit2 = """^=(.*)""".r

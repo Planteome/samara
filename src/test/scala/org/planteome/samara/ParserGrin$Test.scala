@@ -5,9 +5,9 @@ import org.scalatest._
 
 import scala.util.matching.Regex
 
-object ParserGrinStatic extends ParserGrin with NameFinderStatic
+object ParserGrinStatic extends ParserGrin with TermFinderStatic
 
-class ParserGrin$Test extends FlatSpec with Matchers with NameFinderStatic with ParseTestUtil {
+class ParserGrin$Test extends FlatSpec with Matchers with TermFinderStatic with ParseTestUtil {
 
   "parsing descriptors page" should "generate a list of species ids" in {
     val doc: Document = parse("grin/descriptors.aspx")

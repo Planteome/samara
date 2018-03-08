@@ -10,7 +10,7 @@ import scala.util.{Failure, Success}
 
 object ScraperApsnet extends Scraper with ResourceUtil {
 
-  object Parser extends ParserApsnet with NameFinderProxy
+  object Parser extends ParserApsnet with TermFinderProxy
 
   override def scrape() = {
     println("disease_name\tsource_taxon_verbatim_name\tsource_taxon_name\tsource_taxon_id\tinteraction_type_label\tinteraction_type_id\ttarget_taxon_verbatim_name\ttarget_taxon_name\ttarget_taxon_id\ttarget_part_name\ttarget_part_id\tsource_citation\tsource_url\tsource_accessed_at")

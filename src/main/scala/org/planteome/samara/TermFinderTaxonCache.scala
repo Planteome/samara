@@ -14,7 +14,7 @@ case class TaxonMapCache(name: String
                          , prefixMap: (TaxonMap) => (String, List[Integer])
                          , expandId: (Integer) => String)
 
-trait NameFinderTaxonCache extends NameFinder {
+trait TermFinderTaxonCache extends TermFinder {
 
   def reducedTaxonMap: Iterator[(String, List[Integer])] = {
     taxonMapLines
@@ -80,10 +80,10 @@ trait NameFinderTaxonCache extends NameFinder {
 
   lazy val taxonCache: collection.Map[String, List[Integer]] = initTaxonCache
 
-  def findNames(text: String): List[String] = {
+  def findTerms(text: String): List[Term] = {
     taxonCache.get(text) match {
-      case Some(ids) => ids.map(taxonMapCacheConfig.expandId)
-      case None => List("no:match")
+      case Some(ids) => ids.map(id => Term(text, taxonMapCacheConfig.expandId(id)))
+      case None => List()
     }
   }
 }

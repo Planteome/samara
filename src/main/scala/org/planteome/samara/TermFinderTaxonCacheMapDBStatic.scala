@@ -5,7 +5,7 @@ import org.mapdb.{DBMaker, Fun}
 import scala.collection.JavaConverters._
 import scala.util.Random
 
-trait NameFinderTaxonCacheMapDBStatic extends NameFinderTaxonCacheMapDB {
+trait TermFinderTaxonCacheMapDBStatic extends TermFinderTaxonCacheMapDB {
 
   override lazy val mapdbIterator: Iterator[Fun.Tuple2[String, List[Integer]]] = {
     val iter = new Iterator[Fun.Tuple2[String, List[Integer]]] {
