@@ -107,7 +107,7 @@ abstract class ParserApsnet extends TermFinder with Scrubber {
   }
 
   private def matchIfNCBI(text: String, terms: List[Term]): List[Term] = {
-    if (terms.nonEmpty && terms.exists(term => term.id.startsWith("NCBI"))) terms else List(Term(text, "no:match"))
+    if (terms.nonEmpty) terms else List(Term(text, "no:match"))
   }
 
   def canonize(name: String): String = {
