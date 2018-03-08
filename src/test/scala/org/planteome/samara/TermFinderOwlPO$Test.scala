@@ -25,7 +25,12 @@ class TermFinderOwlPO$Test extends FlatSpec with Matchers with TermFinderOwlPO {
   }
 
   "name finder" should "resolve parts in description 2" in {
-    findTerms("Acrocalymma root and crown rot") should be(List(Term("root","PO:0009005"), Term("root","PO:0025025")))
+    findTerms("Acrocalymma root and crown rot") should be(List(Term("root", "PO:0009005"), Term("root", "PO:0025025")))
+  }
+
+  "name finder" should "resolve parts in species" in {
+    findTerms("Erysiphe cichoracearum DC") should not be List(Term("ear", "PO:0020136"))
+    findTerms("Erysiphe cichoracearum DC") should be(List())
   }
 
 }

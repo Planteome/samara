@@ -27,11 +27,17 @@ trait TermFinderOwlPO extends TermFinder {
     Console.err.println(s"taxonCache for [${taxonMapCacheConfig.name}] ready [took ${(end - start) / 1000} s].")
     pairs
   }
-  lazy val labelId = labelIdPairs
+
+  lazy val labelId: List[(String, Integer)] = labelIdPairs
+
+  private def toPipedLowerCaseWords(s: String) = {
+    val a = s.toLowerCase.replaceAll("|", " ")
+    s"|$a|".split(" ").mkString("|")
+  }
 
   def findTerms(text: String): List[Term] = {
     labelId
-      .filter(p => text.toLowerCase.contains(p._1))
+      .filter(p => toPipedLowerCaseWords(text).contains(toPipedLowerCaseWords(p._1)))
       .map(p => Term(p._1, taxonMapCacheConfig.expandId(p._2)))
   }
 
