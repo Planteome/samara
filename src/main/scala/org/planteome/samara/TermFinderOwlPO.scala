@@ -10,24 +10,29 @@ trait TermFinderOwlPO extends TermFinder {
     TaxonMapCache(name = "OwlPO", lineFilter = lineFilter, prefixFilter = prefixFilter, prefixMap = prefixMap, expandId = expandId)
   }
 
-  def labelIdPairs: Iterator[(String, Integer)] = {
+  def labelIdPairs: List[(String, Integer)] = {
+    Console.err.println(s"taxonCache for [${taxonMapCacheConfig.name}] building...")
+    val start = System.currentTimeMillis()
+
     val prefix = "http://purl.obolibrary.org/obo/PO_"
-    OwlPOLoader
+    val pairs = OwlPOLoader
       .plantOntology
       .filter(t => {
         t._1.startsWith(prefix) && !t._2.equalsIgnoreCase("ray")
       }).map(t => {
       (t._1.replace("http://purl.obolibrary.org/obo/PO_", ""), t._2)
     })
-      .map(t => (t._2, new Integer(t._1)))
+      .map(t => (t._2, new Integer(t._1))).toList
+    val end = System.currentTimeMillis()
+    Console.err.println(s"taxonCache for [${taxonMapCacheConfig.name}] ready [took ${(end - start) / 1000} s].")
+    pairs
   }
+  lazy val labelId = labelIdPairs
 
   def findTerms(text: String): List[Term] = {
-    lazy val labelId = labelIdPairs
     labelId
       .filter(p => text.toLowerCase.contains(p._1))
       .map(p => Term(p._1, taxonMapCacheConfig.expandId(p._2)))
-      .toList
   }
 
 }
