@@ -300,4 +300,9 @@ class ParserApsnet$Test extends FlatSpec with Matchers with TermFinderStatic wit
     ParserApsnetStatic$.canonize("Fr.") should be("")
   }
 
+  "map a name" should "map a name" in {
+    val diseaseName = """Diseases of Sorghum (Sorghum bicolor (L.) Moench)"""
+    ParserApsnetStatic$.mapNames(Seq(diseaseName)) should be(List("Sorghum bicolor"))
+  }
+
 }

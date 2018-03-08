@@ -19,6 +19,21 @@ class TermFinderTaxonCache$Test extends FlatSpec with Matchers with TermFinderTa
     humans should contain(Term("Homo sapiens", "NCBITaxon:9606"))
   }
 
+  "name finder" should "resolve NCBI id for Glycine max" in {
+    val humans = findTerms("Glycine max")
+    humans should contain(Term("Glycine max", "NCBITaxon:3847"))
+  }
+
+  "name finder" should "resolve NCBI id for Glycine max 2" in {
+    val humans = findTerms("Glycine max [L.] Merr.")
+    humans should contain(Term("Glycine max [L.] Merr.", "NCBITaxon:3847"))
+  }
+
+  "name finder" should "resolve NCBI id for Sorghum bicolor" in {
+    val humans = findTerms("Diseases of Sorghum (Sorghum bicolor (L.) Moench)")
+    humans should contain(Term("Glycine max [L.] Merr.", "NCBITaxon:3847"))
+  }
+
   "name finder" should "resolve to no:match for Donald Duck" in {
     val humans = findTerms("Donald duck")
     humans should be(List())
