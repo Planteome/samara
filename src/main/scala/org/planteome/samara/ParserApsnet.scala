@@ -103,7 +103,7 @@ abstract class ParserApsnet extends TermFinder with Scrubber {
   }
 
   private def noMatchIfEmpty(text: String, terms: List[Term]): List[Term] = {
-    if (terms.nonEmpty) terms else List(Term(text, "no:match"))
+    if (terms.nonEmpty) terms else List(Term("whole plant", "PO:0000003"))
   }
 
   private def matchIfNCBI(text: String, terms: List[Term]): List[Term] = {
