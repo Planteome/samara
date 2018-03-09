@@ -25,3 +25,749 @@ NCBITaxon:75795	Oxyporus latemarginatus (Durieu & Mont.) Donk	NCBITaxon:1931354	
 	Beet curly top geminivirus	NCBITaxon:10840 	Beet curly top virus
 	Beet Western yellows virus	NCBITaxon:12042	Beet western yellows virus
 	whole plant	PO:0000003	whole plant
+	Absidia spp.	NCBI:4828	Absidia
+	Acetobacter aceti (Pasteur) DeLey & Frateur	NCBI:435	Acetobacter aceti
+	Acetobacter peroxydans Visser't Hooft	NCBI:104098	Acetobacter peroxydans
+	Acetobacter spp. (bacteria)	NCBI:434	Acetobacter
+	Acetobacter spp.	NCBI:434	Acetobacter
+	Acidovorax avenae (Manns) Willems et al. subsp. avenae (Manns	NCBI:80870	Acidovorax avenae avenae
+	Acidovorax avenae (Manns) Willems et al. subsp. avenae (Manns) Willems et al. comb. nov.	NCBI:80870	Acidovorax avenae avenae
+	Acidovorax avenae subsp. avenae (Manns) Willems et al.	NCBI:80870	Acidovorax avenae avenae
+	Acidovorax citrulli Schaad et al.	NCBI:80869	Acidovorax citrulli
+	Acremonium sp.	NCBI:1835592	Acremonium
+	Acrocalymma vagum (D. F. Farr) Crous & Trakun.	NCBI:1589764	Acrocalymma vagum
+	Acrophialophora fusispora (Saksena) M. B. Ellis	NCBI:391091	Acrophialophora fusispora
+	Agrobacterium rhizogenes (Riker et al. 1930) Conn 1942	NCBI:359	Agrobacterium rhizogenes
+	Agrobacterium rhizogenes (Riker et al. 1930) Conn 1942 (rare)	NCBI:359	Agrobacterium rhizogenes
+	Agrobacterium rhizogenes (Riker et al.) Conn	NCBI:359	Agrobacterium rhizogenes
+	Agrobacterium rubi (Hildebrand 1940) Starr and Weiss 1943	NCBI:28099	Agrobacterium rubi
+	Agrobacterium rubi (Hildebrand) Starr & Weiss	NCBI:28099	Agrobacterium rubi
+	Agrobacterium tumefaciens (Smith & Townshend) Conn	NCBI:358	Agrobacterium tumefaciens
+	Agrobacterium vitis (Ophel & Kerr 1990)	NCBI:373	Agrobacterium vitis
+	Albugo occidentalis G. W. Wilson	NCBI:226325	Albugo occidentalis
+	Allantophomopsis lycopodina (Höhn.) Carris	NCBI:334518	Allantophomopsis lycopodina
+	Alternaria alternata (Fr.) Keissl.	NCBI:187734	Alternaria alternata
+	Alternaria cucumerina (Ellis & Everh.) J. A. Elliott	NCBI:283358	Alternaria cucumerina
+	Alternaria geophila Deszew.	NCBI:1579461	Alternaria geophila
+	Alternaria leucanthemi Nelen	NCBI:167737	Alternaria leucanthemi
+	Alternaria limicola E. G. Simmons & M. E. Palm	NCBI:232087	Alternaria limicola
+	Alternaria padwickii (Ganguly) M. B. Ellis	NCBI:714880	Alternaria padwickii
+	Alternaria protenta E. G. Simmons	NCBI:160390	Alternaria protenta
+	Alternaria radicina Meier	NCBI:119925	Alternaria radicina
+	Alternaria smyrnii (P. Crouan) E. G. Simmons)	NCBI:119926	Alternaria smyrnii
+	Alternaria sonchi Davis	NCBI:283360	Alternaria sonchi
+	Alternariaster helianthi (Hansf.) E. G. Simmons	NCBI:1342371	Alternariaster helianthi
+	Alternaria tenuissima (Kunze) Wiltshire	NCBI:119927	Alternaria tenuissima
+	Alternaria tenuissima (Nees & T. Nees	NCBI:119927	Alternaria tenuissima
+	Ammonia (NH3) release from fertilizing practices	NCBI:29189	Ammonia
+	Amycosphaerella africana (Crous & M. J. Wingf.) Quaedvl. & Crous (syn. Mycosphaerella africana Crous & M. J. Wingf.)	NCBI:1431932	Amycosphaerella africana
+	Aphanomyces cladogamus Drechs.	NCBI:253176	Aphanomyces cladogamus
+	Aphanomyces cochlioides Drechsler	NCBI:112091	Aphanomyces cochlioides
+	Apium virus Y	NCBI:168135	Potyvirus
+	Aristastoma guttulosum B. Sutton	NCBI:1090493	Aristastoma guttulosum
+	Armillaria fuscipes Petch	NCBI:108572	Armillaria fuscipes
+	Armillaria gallica Marxm. & Romagn.	NCBI:47427	Armillaria gallica
+	Armillaria heimii Pegler	NCBI:108573	Armillaria heimii
+	Armillaria ostoyae (Romagn.) Herink	NCBI:47428	Armillaria ostoyae
+	Ascochyta boni-henrici)	NCBI:5453	Ascochyta
+	Ascochyta pisi Lib.	NCBI:749586	Ascochyta pisi
+	Ascochyta rabiei (Pass.) Labr.	NCBI:5454	Ascochyta rabiei
+	Ascochyta sorghi Sacc.	NCBI:1430313	Ascochyta sorghi
+	Aspergillus candidus Link	NCBI:41067	Aspergillus candidus
+	Aspergillus carbonarius (Bainier) Thom	NCBI:40993	Aspergillus carbonarius
+	Aspergillus fumigatus Fresen.	NCBI:746128	Aspergillus fumigatus
+	Aspergillus glaucus (L.) Link	NCBI:41413	Aspergillus glaucus
+	Aspergillus niger van Tiegh.	NCBI:5061	Aspergillus niger
+	Aspergillus ochraceus G. Wilh.	NCBI:40380	Aspergillus ochraceus
+	Aspergillus oryzae (Ahlb.) Cohn	NCBI:5062	Aspergillus oryzae
+	Aspergillus parasiticus Speare	NCBI:5067	Aspergillus parasiticus
+	Aspergillus restrictus G. Sm.	NCBI:5064	Aspergillus restrictus
+	Aspergillus tamarii Kita	NCBI:41984	Aspergillus tamarii
+	Aspergillus versicolor (Vuill.) Tirab.	NCBI:46472	Aspergillus versicolor
+	Aspergillus wentii Wehmer	NCBI:5066	Aspergillus wentii
+	Athelia rolfsii (C.C. Curzi) Tu & Kimbr.	NCBI:39291	Athelia rolfsii
+	Athelia rolfsii (Curzi) Tu & Kimbr.	NCBI:39291	Athelia rolfsii
+	Athelia rolfsii [Curzi] Tu & Kimbrough	NCBI:39291	Athelia rolfsii
+	Aureobasidium zeae (Narita & Y. Hirats.) Dingley	NCBI:1592451	Aureobasidium zeae
+	Bacteria	NCBI:2	Bacteria
+	Bacterium (unidentified)	NCBI:1491714	Bacterium
+	Bakernema inaequale (Taylor) Mehta & Raski	NCBI:869712	Bakernema inaequale
+	Barley yellow dwarf virus-MAV	NCBI:12038	Luteovirus
+	Barley yellow dwarf virus-PAV	NCBI:12040	Luteovirus
+	Bean leafroll virus	NCBI:12041	Luteovirus
+	Beet chlorosis virus	NCBI:131082	Polerovirus
+	Beet mild yellowing virus	NCBI:156690	Polerovirus
+	Beet soil-borne virus	NCBI:46436	Pomovirus
+	Beet virus Q	NCBI:71972	Pomovirus
+	Bipolaris cookei (Sacc.) Shoemaker	NCBI:74410	Bipolaris cookei
+	Bipolaris maydis (Y. Nisik. & C. Miyake) Shoemaker	NCBI:5016	Bipolaris maydis
+	Bipolaris oryzae (Breda de Haan) Shoemaker	NCBI:101162	Bipolaris oryzae
+	Bipolaris setariae (Saw.) Shoem	NCBI:74419	Bipolaris setariae
+	Bipolaris sorghicola (Lefebvre & Sherwin) Alcorn	NCBI:95732	Bipolaris sorghicola
+	Bipolaris spp.	NCBI:33194	Bipolaris
+	Bipolaris zeicola (G. L. Stout) Shoemaker	NCBI:5017	Bipolaris zeicola
+	Boeremia exigua (Desm.) Aveskamp	NCBI:749465	Boeremia exigua
+	Boeremia exigua var. exigua (Desm.) Aveskamp et al.	NCBI:79605	Boeremia exigua exigua
+	Boeremia exigua var. exigua (Desm.) Aveskamp	NCBI:79605	Boeremia exigua exigua
+	Botryosphaeria corticis (Demaree & M. S. Wilcox) Arx & E. Müll.	NCBI:120389	Botryosphaeria corticis
+	Botryosphaeria dothidea (Moug. ex Fr.) Ces. & de Not.	NCBI:55169	Botryosphaeria dothidea
+	Botryosphaeria vaccinii (Shear) M. E. Barr	NCBI:120392	Botryosphaeria vaccinii
+	Broad bean true mosaic virus	NCBI:649890	Comovirus
+	Broad bean wilt virus 1	NCBI:50817	Fabavirus
+	Broad bean wilt virus 2	NCBI:76875	Fabavirus
+	Buckland Valley grapevine yellows phytoplasma	NCBI:190869	Buckland
+	Burkholderia gladioli (Severini) Yabuuchi et al.	NCBI:28095	Burkholderia gladioli
+	Burkholderia glumae (Kurita & Tabei) Urakami et al.	NCBI:337	Burkholderia glumae
+	Burkholderia plantarii (Azegami et al.) Urakami et al. comb. nov.	NCBI:41899	Burkholderia plantarii
+	Cadophora gregata (Allington & D. W. Chamb.) T. C. Harr. & McNew	NCBI:51156	Cadophora gregata
+	Calonectria colhounii Peerally	NCBI:131350	Calonectria colhounii
+	Calonectria pyrochroa (Desmaz.) Sacc.	NCBI:57139	Calonectria pyrochroa
+	Calonectria quinqueseptata Figueiredo & Namekata	NCBI:165069	Calonectria quinqueseptata
+	Campylocarpon fasciculare Schroers	NCBI:307939	Campylocarpon fasciculare
+	Campylocarpon pseudofasciculare Halleen	NCBI:307969	Campylocarpon pseudofasciculare
+	Candida sp.	NCBI:742133	Candida
+	Candidatus Phytoplasma asteri	NCBI:1462422	Candidatus
+	Candidatus Phytoplasma	NCBI:1462422	Candidatus
+	Candidatus Phytoplasma oryzae	NCBI:1462422	Candidatus
+	Capsicum chlorosis virus	NCBI:163325	Tospoviridae
+	Capsicum L.	NCBI:4071	Capsicum
+	Cephaleuros parasiticus Karsten	NCBI:173370	Cephaleuros parasiticus
+	Cephaleuros virescens Kunze ex Fries	NCBI:173371	Cephaleuros virescens
+	Cercospora capsici Heald & Wolf	NCBI:438341	Cercospora capsici
+	Cercospora kikuchii (T. Matsumoto & Tomoy.) M. W. Gardner	NCBI:84275	Cercospora kikuchii
+	Cercospora lactucae-sativae Sawada	NCBI:357752	Cercospora lactucae-sativae
+	Cercospora longissima Cugini ex Trav.	NCBI:1150412	Cercospora longissima
+	Cercospora sojina Hara	NCBI:438356	Cercospora sojina
+	Cercospora sorghi Ellis & Everh.	NCBI:135778	Cercospora sorghi
+	Cercospora zeae-maydis Tehon & E. Y. Daniels	NCBI:135779	Cercospora zeae-maydis
+	Cercospora zeina Crous & U. Braun	NCBI:348901	Cercospora zeina
+	Cereal yellow dwarf virus-RPV	NCBI:191217	Polerovirus
+	Chaetomium elatum Kunze	NCBI:5150	Chaetomium elatum
+	Chaetomium spp.	NCBI:5149	Chaetomium
+	Choanephora infundibulifera (Curr.) Sacc.	NCBI:127959	Choanephora infundibulifera
+	Citrullus, Cucumis, Cucurbita spp. and  s	NCBI:3653	Citrullus
+	Citrus bark cracking viroid	NCBI:12898	Cocadviroid
+	Citrus exocortis viroid	NCBI:12890	Pospiviroid
+	Citrus leprosis virus	NCBI:242130	Rhabdoviridae
+	Citrus psorosis virus	NCBI:73561	Ophiovirus
+	Citrus sudden death-associated virus	NCBI:312008	Marafivirus
+	Citrus yellow mosaic virus	NCBI:174178	Badnavirus
+	Cladosporium cladosporioides (Fres.) de Vries	NCBI:29917	Cladosporium cladosporioides
+	Cladosporium cladosporioides (Fresen.) G.A. de Vries	NCBI:29917	Cladosporium cladosporioides
+	Cladosporium cucumerinum Ellis & Arthur	NCBI:166633	Cladosporium cucumerinum
+	Cladosporium oxysporum Berk. & M.A. Curtis	NCBI:29919	Cladosporium oxysporum
+	Cladosporium variabile (Cooke) G. A. de Vries (syn.	NCBI:219599	Cladosporium variabile
+	Clavibacter michiganensis (Smith) Davis et al. subsp. nebraskensis (Vidaver & Mandel) Davis et al.	NCBI:31963	Clavibacter michiganensis nebraskensis
+	Clavibacter michiganensis subsp. michiganensis (Smith) Davis et al.	NCBI:33013	Clavibacter michiganensis michiganensis
+	Claviceps africana Frederickson	NCBI:83212	Claviceps africana
+	Claviceps fusiformis Loveless	NCBI:40602	Claviceps fusiformis
+	Claviceps gigantea S. F. Fuentes	NCBI:89175	Claviceps gigantea
+	Clonostachys rosea (Link.	NCBI:29856	Clonostachys rosea
+	Colletotrichum acutatum sensu lato J. H. Simmonds	NCBI:27357	Colletotrichum acutatum
+	Colletotrichum camelliae Massee)	NCBI:538528	Colletotrichum camelliae
+	Colletotrichum capsici (Syd.) E. J. Butler & Bisby	NCBI:5456	Colletotrichum capsici
+	Colletotrichum chlorophyti S. Chandra & Tandon	NCBI:708187	Colletotrichum chlorophyti
+	Colletotrichum crassipes (Speg.) v. Arx	NCBI:218121	Colletotrichum crassipes
+	Colletotrichum dematium (Pers.) Grove (syn.	NCBI:34405	Colletotrichum dematium
+	Colletotrichum fioriniae (J. A. P. Marcelino & S. Gouli) R. G. Shivas & Y. P. Tan	NCBI:710243	Colletotrichum fioriniae
+	Colletotrichum gloeosporioides (Penz.) Penz. & Sacc. (syn. Glomerella cingulata (Stoneman) Spauld. & H. Schrenk)	NCBI:474922	Colletotrichum gloeosporioides
+	Colletotrichum graminicola (Ces.) G. W. Wilson	NCBI:31870	Colletotrichum graminicola
+	Colletotrichum lagenaria (Pass.) Ellis & Halst.	NCBI:5462	Colletotrichum lagenaria
+	Colletotrichum magnum (S. F. Jenkins & Winstead) Rossman & W. C. Allen (on fruit)	NCBI:90344	Colletotrichum magnum
+	Colletotrichum nymphaeae (Pass.) Aa	NCBI:306554	Colletotrichum nymphaeae
+	Colletotrichum orbiculare Damm	NCBI:5465	Colletotrichum orbiculare
+	Colletotrichum simmondsii R. G. Shivas & Y. P. Tan	NCBI:703756	Colletotrichum simmondsii
+	Colletotrichum spinaciae Ellis & Halst.)	NCBI:145974	Colletotrichum spinaciae
+	Colletotrichum sublineola Henn. ex Kabát & Bubák	NCBI:1173701	Colletotrichum sublineola
+	Colletotrichum truncatum (Schwein.) Andrus & W.D. Moore	NCBI:5467	Colletotrichum truncatum
+	Coniothyrium glycines (R. B. Stewart) Verkley & Gruyter)	NCBI:1077358	Coniothyrium glycines
+	Coriolopsis rigida (Berk. & Mont.) Murrill	NCBI:664182	Coriolopsis rigida
+	Cotton leaf curl Kokhran virus	NCBI:222464	Begomovirus
+	Cowpea mosaic virus	NCBI:12264	Comovirus
+	Cowpea mottle virus	NCBI:12627	Tombusviridae
+	Curtobacterium flaccumfaciens pv. betae (Keyworth et al.) Collins & Jones	NCBI:2035	Curtobacterium flaccumfaciens
+	Curtobacterium flaccumfaciens pv. flaccumfaciens (Hedges) Collins & Jones	NCBI:2035	Curtobacterium flaccumfaciens
+	Curvularia aeria (Bat.	NCBI:1203437	Curvularia aeria
+	Curvularia affinis Boedijn	NCBI:95741	Curvularia affinis
+	Curvularia clavata B. L. Jain	NCBI:95742	Curvularia clavata
+	Curvularia fallax Boedijn	NCBI:215128	Curvularia fallax
+	Curvularia geniculata (Tracy & Earle) Boedijn	NCBI:418126	Curvularia geniculata
+	Curvularia lunata (Wakker) Boedijn	NCBI:5503	Curvularia lunata
+	Curvularia oryzae Bugnic.	NCBI:131384	Curvularia oryzae
+	Curvularia senegalensis (Speg.) Subram.	NCBI:215132	Curvularia senegalensis
+	Curvularia tuberculata P. C. Jain	NCBI:1056642	Curvularia tuberculata
+	Curvularia uncinata Bugnic.	NCBI:1424303	Curvularia uncinata
+	Curvularia verruculosa Tandon & Bilgrami ex M. B. Ellis	NCBI:95740	Curvularia verruculosa
+	Cuscuta campestris Yunck	NCBI:132261	Cuscuta campestris
+	Cuscuta cephalanthi Engelm.	NCBI:267556	Cuscuta cephalanthi
+	Cuscuta compacta Juss. ex Choisy	NCBI:267558	Cuscuta compacta
+	Cycas necrotic stunt virus	NCBI:173976	Nepovirus
+	Cylindrocladiella camelliae (Venkataramani & Venkata Ram) Boesewinkel	NCBI:147885	Cylindrocladiella camelliae
+	Cylindrocladiella parva (P. J. Anderson) Boesewinkel	NCBI:137496	Cylindrocladiella parva
+	Cylindrocladiella peruviana (Batista	NCBI:147881	Cylindrocladiella peruviana
+	Cylindrocladium clavatum C. S. Hodges & L. C. May	NCBI:78399	Cylindrocladium clavatum
+	Cylindrocladium clavatum C. S. Hodges & L.C. May	NCBI:78399	Cylindrocladium clavatum
+	Dandelion yellow mosaic virus	NCBI:393603	Sequivirus
+	Diachea leucopodia (Bull.) Rostr.	NCBI:385471	Diachea leucopodia
+	Diaporthe aspalathi E. Jansen et al.	NCBI:626713	Diaporthe aspalathi
+	Diaporthe caulivora [Athow & Caldwell] J. M. Santos et al.	NCBI:60444	Diaporthe caulivora
+	Diaporthe citri (H. S. Fawc.) F. A. Wolf (syn. Phomopsis citri H. Fawc.)	NCBI:83186	Diaporthe citri
+	Diaporthe citri (H. S. Fawc.) F. A. Wolf (syn. Phomopsis citri H. S. Fawc.	NCBI:83186	Diaporthe citri
+	Diaporthe cucurbitae (McKeen) Udayanga & Castl.*	NCBI:1590087	Diaporthe cucurbitae
+	Diaporthe gulyae R. G. Shivas et al.	NCBI:1116854	Diaporthe gulyae
+	Diaporthe helianthi Munt.-Cvetk. et al.	NCBI:158607	Diaporthe helianthi
+	Diaporthe kochmanii R. G. Shivas et al.	NCBI:1116855	Diaporthe kochmanii
+	Diaporthe kongii R. G. Shivas et al.	NCBI:1116856	Diaporthe kongii
+	Diaporthe longicolla (Hobbs) J. M. Santos	NCBI:54899	Diaporthe longicolla
+	Diaporthe masirevicii R. G. Shivas et al.	NCBI:1537732	Diaporthe masirevicii
+	Diaporthe melonis Beraha & M. J. O’Brien	NCBI:222581	Diaporthe melonis
+	Diaporthe miriciae R. G. Shivas et al.	NCBI:1537734	Diaporthe miriciae
+	Diaporthe novem J. M. Santos et al.	NCBI:1035935	Diaporthe novem
+	Diaporthe phaseolorum var. meridionalis F. A. Fernández	NCBI:87642	Diaporthe phaseolorum meridionalis
+	Diaporthe sackstonii R. G. Shivas et al.	NCBI:1537735	Diaporthe sackstonii
+	Diaporthe sclerotioides (Kesteren) Udayanga	NCBI:1214577	Diaporthe sclerotioides
+	Diaporthe serafiniae R. G. Shivas et al.	NCBI:1537736	Diaporthe serafiniae
+	Diaporthe sojae Lehman	NCBI:165439	Diaporthe sojae
+	Diaporthe vaccinii Shear	NCBI:105482	Diaporthe vaccinii
+	Dickeya chrysanthemi (Burkholder et al.)	NCBI:556	Dickeya chrysanthemi
+	Dickeya chrysanthemi (Burkholder	NCBI:556	Dickeya chrysanthemi
+	Dickeya chrysanthemi R. Samson et al.	NCBI:556	Dickeya chrysanthemi
+	Didymella maydis (Arny & R. R. Nelson) Qian Chen & O. Cai	NCBI:259522	Didymella maydis
+	Diplodia cajani Raychaudhuri	NCBI:371120	Diplodia cajani
+	Diplodia corticola A. J. L. Phillips	NCBI:236234	Diplodia corticola
+	Diplodia seriata De Not.	NCBI:420778	Diplodia seriata
+	Discostroma spp.	NCBI:63198	Discostroma
+	Ditylenchus dipsaci (J. G. Kühn) Filipjev	NCBI:166011	Ditylenchus dipsaci
+	Dothiorella americana J. R. Úrbez-Torres	NCBI:1046587	Dothiorella americana
+	Dothiorella gregaria Sacc.)	NCBI:509222	Dothiorella gregaria
+	Dothiorella iberica A. J. L. Phillips	NCBI:286282	Dothiorella iberica
+	Dothiorella neclivorem W. M. Pitt & J. R. Úrbez-Torres	NCBI:1740602	Dothiorella neclivorem
+	Dothiorella vidmadera W. M. Pitt	NCBI:1766648	Dothiorella vidmadera
+	Drechslera dematioidea (Bubak & Wroblewski) Subram. & Jain	NCBI:139229	Drechslera dematioidea
+	Drechslera gigantea (Heald & Wolf) Ito	NCBI:1937655	Drechslera gigantea
+	Drechslera gigantea	NCBI:1937655	Drechslera gigantea
+	Drechslera gigantea S. Ito	NCBI:1937655	Drechslera gigantea
+	Eballistra oryzae (Syd. & P. Syd.) R. Bauer	NCBI:127114	Eballistra oryzae
+	Eggplant mosaic virus	NCBI:12151	Tymovirus
+	Elsinöe ampelina (de Bary) Shear	NCBI:302913	Elsinoe ampelina
+	Elsinoë australis Bitanc. & Jenkins (syn. Sphaceloma australis Bitanc. & Jenkins)	NCBI:40998	Elsinoe australis
+	Elsinoë fawcettii Bitanc. & Jenkins (syn. Sphaceloma fawcettii Jenkins)	NCBI:40997	Elsinoe fawcettii
+	Elsinoe rosarum Jenk. & Bitancourt	NCBI:1803861	Elsinoe rosarum
+	Elsinoe theae Bitancourt & Jenkins	NCBI:1979390	Elsinoe theae
+	Entyloma compositarum Farl.	NCBI:189591	Entyloma compositarum
+	Entyloma gaillardianum Vánky	NCBI:62641	Entyloma gaillardianum
+	Entyloma polysporum (Peck) Farl.	NCBI:62643	Entyloma polysporum
+	Epicoccum sorghinum (Sacc.) Aveskamp	NCBI:749593	Epicoccum sorghinum
+	Eremothecium ashbyi Guillierm.	NCBI:33171	Eremothecium ashbyi
+	Eremothecium coryli (Peglion) Kurtzman	NCBI:33173	Eremothecium coryli
+	Eremothecium gossypii (S. F. Ashby & W. Nowell) Kurtzman	NCBI:33169	Eremothecium gossypii
+	Erwinia rhapontici (Millard) Burkholder	NCBI:55212	Erwinia rhapontici
+	Erysiphe diffusa (Cooke & Peck) U. Braun & S. Takam.	NCBI:293983	Erysiphe diffusa
+	Erysiphe glycines F. L. Tai	NCBI:79286	Erysiphe glycines
+	Erysiphe necator Schw.	NCBI:52586	Erysiphe necator
+	Eutypa sp.	NCBI:97095	Eutypa
+	Exobasidium maculosum M. T. Brewer	NCBI:1493668	Exobasidium maculosum
+	Exobasidium perenne N. L. Nick.	NCBI:1493664	Exobasidium perenne
+	Exobasidium reticulatum Ito & Sawada	NCBI:190093	Exobasidium reticulatum
+	Exobasidium sp.	NCBI:5406	Exobasidium
+	Exobasidium vexans Massee	NCBI:84745	Exobasidium vexans
+	Exserohilum sp.	NCBI:91493	Exserohilum
+	Faba bean phyllody phytoplasma group	NCBI:33928	Faba bean phyllody phytoplasma
+	Fiji disease virus	NCBI:77698	Fijivirus
+	Fomitiporia mediterranea M. Fischer	NCBI:208960	Fomitiporia mediterranea
+	Fomitopsis meliae (Underw.) Gilb. & Ryvarden	NCBI:383679	Fomitopsis meliae
+	Fomitopsis meliae (Underw.) R. L. Gilbertson and Ryvarden	NCBI:383679	Fomitopsis meliae
+	Fomitopsis nivosa (Berk.) Gilb. & Ryvarden	NCBI:1836667	Fomitopsis nivosa
+	Fusarium acuminatum Ellis & Kellerm.	NCBI:5515	Fusarium acuminatum
+	Fusarium acuminatum	NCBI:5515	Fusarium acuminatum
+	Fusarium andiyazi Marasas et al.	NCBI:520446	Fusarium andiyazi
+	Fusarium boothii O’Donnell et al.	NCBI:282271	Fusarium boothii
+	Fusarium brasiliense T. Aoki & O’Donnell	NCBI:235270	Fusarium brasiliense
+	Fusarium cerealis (Cooke) Sacc.	NCBI:56641	Fusarium cerealis
+	Fusarium crassistipitatum Scandiani et al.	NCBI:1094157	Fusarium crassistipitatum
+	Fusarium fujikuroi Nirenberg	NCBI:171627	Fusarium fujikuroi
+	Fusarium haematococcum Nalim	NCBI:984957	Fusarium haematococcum
+	Fusarium incarnatum (Desm.) Sacc.	NCBI:298378	Fusarium incarnatum
+	Fusarium meridionale T. Aoki et al.	NCBI:282269	Fusarium meridionale
+	Fusarium nygamai Burgess & Trimboli	NCBI:42673	Fusarium nygamai
+	Fusarium oxysporum f. sp. betae (D. Stewart) W. C. Snyder & H. N. Hansen	NCBI:171631	Fusarium oxysporum
+	Fusarium oxysporumf. sp. lactucae Matuo & Motohashi	NCBI:5506	Fusarium
+	Fusarium oxysporum f. sp. melonis (Smith & Bryan) Young et al.	NCBI:171631	Fusarium oxysporum
+	Fusarium oxysporum f. sp. radicis-betae Harv. & Rush	NCBI:171631	Fusarium oxysporum
+	Fusarium oxysporum Schdl.	NCBI:171631	Fusarium oxysporum
+	Fusarium poae (Peck) Wollenw.	NCBI:36050	Fusarium poae
+	Fusarium proliferatum (Matsush.) Gerlach & Nirenberg	NCBI:948311	Fusarium proliferatum
+	Fusarium solani f. sp. glycines	NCBI:232080	Fusarium solani
+	Fusarium solani (Mart.) Sacc. f. sp. cucurbitae W. C. Snyder & H. N. Hansen race 1	NCBI:232080	Fusarium solani
+	Fusarium solani (Mart.) Sacc. f. sp. pisi (F. R. Jones) Snyd. & Hans.	NCBI:232080	Fusarium solani
+	Fusarium solani (Mart.) Sacc. (syn.	NCBI:232080	Fusarium solani
+	Fusarium sporotrichioides Sherb.	NCBI:5514	Fusarium sporotrichioides
+	Fusarium subglutinans (Wollenw. & Reinking) P. E. Nelson	NCBI:42677	Fusarium subglutinans
+	Fusarium temperatum Scaufl. & Munaut	NCBI:767483	Fusarium temperatum
+	Fusarium tucumaniae T. Aoki et al.	NCBI:232081	Fusarium tucumaniae
+	Fusarium udum E.J. Butler	NCBI:42665	Fusarium udum
+	Fusarium verticillioides (Sacc.) Nirenberg	NCBI:117187	Fusarium verticillioides
+	Fusarium virguliforme O’Donnell & T. Aoki	NCBI:232082	Fusarium virguliforme
+	Gaeumannomyces graminis (Sacc.) Arx & D. L. Olivier	NCBI:29850	Gaeumannomyces graminis
+	Galea & Price	NCBI:10145	Galea
+	Ganoderma orbiforme (Fr.) Ryvarden (and   basidiomycetes)	NCBI:1236583	Ganoderma orbiforme
+	Ganoderma philippii (Bresad. & P. Henn.) Bresad.	NCBI:256320	Ganoderma philippii
+	Geotrichum candidum Link (syn. Galactomyces geotrichum (E. E. Butler & L. J. Petersen) Redhead & Malloch)	NCBI:1173061	Geotrichum candidum
+	Geotrichum citri-aurantii (Ferraris) E. E. Butler (syn. Galactomyces citri-aurantii (E. E. Butler)	NCBI:58640	Geotrichum citri-aurantii
+	Gibellina cerealis (Pass.) Pass. (syn. Gibellia cerealis Pass.)	NCBI:1769965	Gibellina cerealis
+	Glomerella glycines Lehman & F. A. Wolf	NCBI:51633	Glomerella glycines
+	Gluconobacter oxydans (Henneberg) DeLey	NCBI:442	Gluconobacter oxydans
+	Gluconobacter spp. (bacteria)	NCBI:441	Gluconobacter
+	Glycine max [L.] Merr.	NCBI:3847	Glycine max
+	Godronia cassandrae Peck f. sp. vaccinii	NCBI:269065	Godronia cassandrae
+	Golovinomyces cichoracearum (DC.) V. P. Heluta	NCBI:62708	Golovinomyces cichoracearum
+	Grapevine asteroid mosaic-associated virus	NCBI:103724	Marafivirus
+	Grapevine berry inner necrosis virus	NCBI:81877	Trichovirus
+	Grapevine fleck virus	NCBI:103722	Maculavirus
+	Grapevine leafroll-associated virus 2	NCBI:64003	Closterovirus
+	Grapevine leafroll-associated virus 7	NCBI:217615	Closteroviridae
+	Grapevine rupestris stem pitting-associated virus	NCBI:196400	Foveavirus
+	Grapevine rupestris vein feathering virus	NCBI:204933	Marafivirus
+	Grapevine virus A	NCBI:35288	Vitivirus
+	Grapevine virus B	NCBI:35289	Vitivirus
+	Greeneria uvicola (Berk. & M. A. Curtis) Punith.	NCBI:172198	Greeneria uvicola
+	Groundnut ringspot virus	NCBI:12675	Tospoviridae
+	Guignardia camelliae (Cooke) E.J. Butler	NCBI:580929	Guignardia camelliae
+	Hanseniaspora uvarum (Niehaus) Shehata et al.	NCBI:29833	Hanseniaspora uvarum
+	Helicobasidium purpureum (Tul.) Pat.	NCBI:5574	Helicobasidium purpureum
+	Helicobasidium sp.	NCBI:48120	Helicobasidium
+	Helicotylenchus digonicus Perry	NCBI:364633	Helicotylenchus digonicus
+	Helicotylenchus dihystera (Cobb) Sher.	NCBI:344381	Helicotylenchus dihystera
+	Helicotylenchus microlobus Perry	NCBI:1582522	Helicotylenchus microlobus
+	Helicotylenchus pseudorobustus Steiner	NCBI:293583	Helicotylenchus pseudorobustus
+	Hemicriconemoides kanayaensis Nakasono & Ichinone	NCBI:416317	Hemicriconemoides kanayaensis
+	Hemicycliophora gracilis Thorne	NCBI:1515042	Hemicycliophora gracilis
+	Hemicycliophora similis Thorne	NCBI:1515050	Hemicycliophora similis
+	Hemicycliophora uniformis Thorne	NCBI:1305601	Hemicycliophora uniformis
+	Hemicycliophora vidua Raski	NCBI:1262433	Hemicycliophora vidua
+	Hemicycliophora zuckermani Brzeski	NCBI:1262434	Hemicycliophora zuckermani
+	Henbane mosaic virus	NCBI:369762	Potyvirus
+	Heterodera cajani Koshy	NCBI:157846	Heterodera cajani
+	Heterodera elachista Ohshima	NCBI:204065	Heterodera elachista
+	Heterodera oryzicola Rao & Jayaprakash	NCBI:157859	Heterodera oryzicola
+	Heterodera sacchari Luc & Merny	NCBI:157861	Heterodera sacchari
+	Heterodera zeae Koshy	NCBI:57558	Heterodera zeae
+	Hirschmanniella imamuri Sher	NCBI:622976	Hirschmanniella imamuri
+	Hirschmanniella mucronata (Das) Luc & Goodey	NCBI:405600	Hirschmanniella mucronata
+	Hirschmanniella oryzae (van Breda de Haan) Luc & Goodey	NCBI:362338	Hirschmanniella oryzae
+	Hoplolaimus magnistylus Robbins	NCBI:521386	Hoplolaimus magnistylus
+	Hoplolaimus seinhorsti Luc	NCBI:364629	Hoplolaimus seinhorsti
+	Hoplolaimus stephanus Sher	NCBI:1048748	Hoplolaimus stephanus
+	Hormonema spp.	NCBI:46635	Hormonema
+	India	NCBI:563780	India
+	Indian citrus ringspot virus	NCBI:104664	Mandarivirus
+	Indian peanut clump virus	NCBI:32629	Pecluvirus
+	Johnsongrass mosaic virus	NCBI:31742	Potyvirus
+	Khuskia oryzae H. J. Huds.	NCBI:668251	Khuskia oryzae
+	Kretzschmaria deusta (Hoffm.) P. M. D. Martin (syns. Nodulisporium sp.	NCBI:110526	Kretzschmaria deusta
+	Lasiodiplodia crassispora T. I. Burgess & Barber	NCBI:336254	Lasiodiplodia crassispora
+	Lasiodiplodia missouriana J. R. Úrbez-Torres	NCBI:1046588	Lasiodiplodia missouriana
+	Lasiodiplodia spp.	NCBI:66739	Lasiodiplodia
+	Lasiodiplodia theobromae (Pat.) Griff. & Maubl.	NCBI:45133	Lasiodiplodia theobromae
+	Lasiodiplodia theobromae (Pat.) Griff. & Maubl. (syns. Botryosphaeria rhodina (Berk. & M. A. Curtis) Arx	NCBI:45133	Lasiodiplodia theobromae
+	Lasiodiplodia theobromae (Pat) Griffon & Maubl. (possibly)	NCBI:45133	Lasiodiplodia theobromae
+	Lasiodiplodia viticola J. R. Úrbez-Torres	NCBI:1046589	Lasiodiplodia viticola
+	Lettuce big-vein associated virus	NCBI:311413	Varicosavirus
+	Lettuce chlorosis virus	NCBI:642478	Crinivirus
+	Lettuce mottle virus	NCBI:332934	Picornavirales
+	Leveillula taurica (Lév.) Arnaud)	NCBI:62718	Leveillula taurica
+	Leveillula taurica (Lev.) G. Arnaud (syn.	NCBI:62718	Leveillula taurica
+	Libertella blepharis A. L. Smith [syn. Cytosporina sp.]	NCBI:280324	Libertella blepharis
+	Longidorus breviannulatus Norton & Hoffmann	NCBI:208515	Longidorus breviannulatus
+	Longidorus spp. (pathogenicity not determined)	NCBI:70230	Longidorus
+	Lophodermium oxycocci	NCBI:932633	Lophodermium oxycocci
+	Lychnis ringspot virus	NCBI:44421	Hordeivirus
+	Macrophoma theicola Petch	NCBI:1609051	Macrophoma theicola
+	Macrophomina phaseolina Goid.	NCBI:35725	Macrophomina phaseolina
+	Magnaporthe oryzae B. C. Couch	NCBI:318829	Magnaporthe oryzae
+	Magnaporthiopsis maydis (Samra	NCBI:80373	Magnaporthiopsis maydis
+	Maize bushy stunt phytoplasma	NCBI:202462	Maize bushy stunt phytoplasma
+	Maize chlorotic dwarf virus	NCBI:51354	Waikavirus
+	Maize chlorotic mottle virus	NCBI:12138	Machlomovirus
+	Maize dwarf mosaic virus	NCBI:12203	Potyvirus
+	Maize necrotic streak virus	NCBI:137556	Tombusviridae
+	Maize rayado fino virus	NCBI:59749	Marafivirus
+	Maize white line mosaic virus	NCBI:445227	Aureusvirus
+	Mal de Rio Cuarto virus	NCBI:185954	Fijivirus
+	Marasmius tenuissimus (Junghuhn) Singer	NCBI:585030	Marasmius tenuissimus
+	Meloidogyne arenaria (Neal) Chit.	NCBI:6304	Meloidogyne arenaria
+	Meloidogyne hapla Chit.	NCBI:6305	Meloidogyne hapla
+	Meloidogyne incognita (Kofoid & White) Chit.	NCBI:654580	Meloidogyne incognita
+	Meloidogyne javanica (Treub) Chit.	NCBI:6303	Meloidogyne javanica
+	Meloidogyne oryzae Mass	NCBI:325757	Meloidogyne oryzae
+	Merlinius joctus (Thorne) Sher	NCBI:650259	Merlinius joctus
+	Mesocriconema curvatum (Raski) Loof & De Grisse	NCBI:312904	Mesocriconema curvatum
+	Mesocriconema ornatum Raski	NCBI:313715	Mesocriconema ornatum
+	Mesocriconema xenoplax (Raski) Loof & De Grisse	NCBI:211171	Mesocriconema xenoplax
+	Metschnikowia pulcherrima Miller and van Uden	NCBI:27326	Metschnikowia pulcherrima
+	Microcyclospora spp.	NCBI:766053	Microcyclospora
+	Microdochium albescens (Thüm.) Hern.-Restr. & Crous	NCBI:1682384	Microdochium albescens
+	Microdochium sorghi (D. C. Bain & Edgerton ex Deighton) U. Braun	NCBI:1682391	Microdochium sorghi
+	Milk vetch dwarf virus	NCBI:67585	Nanovirus
+	Mirafiori lettuce big-vein virus	NCBI:200255	Ophiovirus
+	Monilia spp.	NCBI:254394	Monilia
+	Monilinia urnula (Weinm.) Whetzel	NCBI:61188	Monilinia urnula
+	Monilinia vaccinii-corymbosi (J. M. Reade) Honey	NCBI:61207	Monilinia vaccinii-corymbosi
+	Monographella albescens	NCBI:87749	Monographella albescens
+	Monographella albescens (Thüm.) V. O. Parkinson	NCBI:87749	Monographella albescens
+	Monographella nivalis (Schaffnit) E. Mull.	NCBI:101483	Monographella nivalis
+	Monosporascus eutypoides (Petr.) Arx	NCBI:1267397	Monosporascus eutypoides
+	Moroccan pepper virus	NCBI:208086	Tombusvirus
+	Mucor fragilis Bainier	NCBI:64491	Mucor fragilis
+	Mungbean yellow mosaic India virus	NCBI:223287	Begomovirus
+	Mungbean yellow mosaic virus	NCBI:33726	Begomovirus
+	Mycocentrospora acerina (R. Hartig) Deighton (syn.	NCBI:227734	Mycocentrospora acerina
+	Nacobbus aberrans (Thorne)	NCBI:46008	Nacobbus aberrans
+	Nakataea oryzae (Catt.) J. Luo & N. Zhang	NCBI:165778	Nakataea oryzae
+	Nakataea sigmoidea (Cavara) Hara	NCBI:1930697	Nakataea sigmoidea
+	Naohidemyces vaccinii (G. Winter) S. Sato	NCBI:190636	Naohidemyces vaccinii
+	Naohidemyces vaccinii (Jørst) S. Sato	NCBI:190636	Naohidemyces vaccinii
+	Nectria haematococca Berk. & Broome MP I	NCBI:140110	Nectria haematococca
+	Nectria haematococca Berk. & Broome MP V)	NCBI:140110	Nectria haematococca
+	Nectria haematococca	NCBI:140110	Nectria haematococca
+	Nectria sp.	NCBI:1081373	Nectria
+	Nectria spp.	NCBI:1081373	Nectria
+	Neocosmospora ornamentata M. A. F. Barbosa	NCBI:131368	Neocosmospora ornamentata
+	Neofusicoccum australe (Slippers	NCBI:240362	Neofusicoccum australe
+	Neofusicoccum luteum (Pennycook & Samuels) Crous	NCBI:120395	Neofusicoccum luteum
+	Neofusicoccum macroclavatum T. I. Burgess	NCBI:333526	Neofusicoccum macroclavatum
+	Neofusicoccum mediterraneum Crous	NCBI:467987	Neofusicoccum mediterraneum
+	Neofusicoccum parvum (Pennycook & Samuels) Crous	NCBI:310453	Neofusicoccum parvum
+	Neofusicoccum ribis (Slippers	NCBI:45134	Neofusicoccum ribis
+	Neofusicoccum spp.	NCBI:407951	Neofusicoccum
+	Neofusicoccum viticlavatum (Van Niekerk & Crous) Crous	NCBI:240342	Neofusicoccum viticlavatum
+	Neofusicoccum vitifusiforme (Van Niekerk & Crous) Crous	NCBI:240343	Neofusicoccum vitifusiforme
+	Neoscytalidium dimidiatum (Penz.) Crous & Slippers (and   unknown agents)	NCBI:108428	Neoscytalidium dimidiatum
+	Neoscytalidium dimidiatum (Penz.) Crous & Slippers (syn. Hendersonula toruloidea Nattrass)	NCBI:108428	Neoscytalidium dimidiatum
+	Neoscytalidium spp.	NCBI:463684	Neoscytalidium
+	Okra mottle virus	NCBI:619599	Begomovirus
+	Orobanche crenata Forssk.	NCBI:223102	Orobanche crenata
+	Orobanche minor Sm.	NCBI:36748	Orobanche minor
+	Panagrolaimus spp.	NCBI:55784	Panagrolaimus
+	Pantoea agglomerans (Ewing & Fife) Gavini et al.	NCBI:1654067	Pantoea agglomerans
+	Pantoea agglomerans pv. betae (Beijerinck) Gavin et al.	NCBI:1654067	Pantoea agglomerans
+	Pantoea ananatis pv. ananatis (Serrano) Mergaert	NCBI:553	Pantoea ananatis
+	Pantoea ananatis Serrano) Mergaert	NCBI:553	Pantoea ananatis
+	Pantoea stewartii (Smith) Mergaert et al. subsp. stewartii (Smith) Mergaert et al.	NCBI:66271	Pantoea stewartii stewartii
+	Paprika mild mottle virus	NCBI:35281	Tobamovirus
+	Paraburkholderia andropogonis (Gillis et al.) Sawana et al.	NCBI:28092	Paraburkholderia andropogonis
+	Paraphaeosphaeria michotii> (Westend.) O. E. Erikss.	NCBI:125369	Paraphaeosphaeria
+	Paratrichodorus porosus (Allen) Siddiqi	NCBI:189297	Paratrichodorus porosus
+	Paratrichodorus renifer Siddiqi	NCBI:546470	Paratrichodorus renifer
+	Paratylenchus minutus Lindford	NCBI:416312	Paratylenchus minutus
+	Passalora capsicicola (Vassiljevsky) Braun & Freire	NCBI:1481126	Passalora capsicicola
+	Passalora fusimaculans (G. F. Atk.) U. Braun & Crous	NCBI:1350542	Passalora fusimaculans
+	Passalora	NCBI:131316	Passalora
+	Passion fruit green spot virus	NCBI:989895	Cilevirus
+	Peanut clump virus	NCBI:28355	Pecluvirus
+	Pectobacterium atrosepticum (van Hall) Gardan et al.	NCBI:29471	Pectobacterium atrosepticum
+	Pectobacterium betavasculorum (Thomson et al.) Gardan et al.	NCBI:55207	Pectobacterium betavasculorum
+	Pectobacterium carotovorum (Jones) Waldee	NCBI:554	Pectobacterium carotovorum
+	Pectobacterium carotovorum subsp. carotovorum (Jones) Hauben et al. emend. Gardan et al. (syn.	NCBI:555	Pectobacterium carotovorum carotovorum
+	Pectobacterium carotovorum subsp. carotovorum (Jones) Hauben et al.	NCBI:555	Pectobacterium carotovorum carotovorum
+	Pectobacterium	NCBI:122277	Pectobacterium
+	Penicillium brevicompactum Diercks.	NCBI:5074	Penicillium brevicompactum
+	Penicillium cyclopium West.	NCBI:60167	Penicillium cyclopium
+	Penicillium stoloniferum Thom	NCBI:1343417	Penicillium stoloniferum
+	Penicillium ulaiense Hseichj Su & Tzean	NCBI:293377	Penicillium ulaiense
+	Penicillium verrucosum Dierckx	NCBI:60171	Penicillium verrucosum
+	Penicillium viridicatum Westling	NCBI:60134	Penicillium viridicatum
+	Pepper golden mosaic virus	NCBI:223301	Begomovirus
+	Pepper huasteco yellow vein virus	NCBI:223303	Begomovirus
+	Periconia byssoides Pers.	NCBI:1382551	Periconia byssoides
+	Peronosclerospora maydis (Racib.) C. G. Shaw	NCBI:886949	Peronosclerospora maydis
+	Peronosclerospora miscanthi (T. Miyake) C. G. Shaw	NCBI:1081076	Peronosclerospora miscanthi
+	Peronosclerospora philippinensis (W. Weston) C. G. Shaw	NCBI:886948	Peronosclerospora philippinensis
+	Peronosclerospora sacchari (T. Miyake) C. G. Shaw	NCBI:467161	Peronosclerospora sacchari
+	Peronosclerospora sorghi (W. Weston & Uppal) C. G. Shaw	NCBI:230839	Peronosclerospora sorghi
+	Peronospora effusa (Grev.) Rabenh. (syn.	NCBI:542832	Peronospora effusa
+	Peronospora farinosa f. sp. betae Byford	NCBI:134698	Peronospora farinosa
+	Peronospora farinosa f. sp. spinaciae Byford)	NCBI:134698	Peronospora farinosa
+	Peronospora manshurica (Naumov) Syd.	NCBI:86334	Peronospora manshurica
+	Peronospora schachtii Fuckel	NCBI:1484365	Peronospora schachtii
+	Peronospora spp.	NCBI:70742	Peronospora
+	Peronospora tabacina Adam	NCBI:230439	Peronospora tabacina
+	Peru tomato mosaic virus	NCBI:187978	Potyvirus
+	Pestalotia spp.	NCBI:63205	Pestalotia
+	Pestalotiopsis adusta Ellis & Everh.	NCBI:173179	Pestalotiopsis adusta
+	Pestalotiopsis longiseta (Spegazzini) Dai et Kobayashi	NCBI:554969	Pestalotiopsis longiseta
+	Phacidium	NCBI:66517	Phacidium
+	Phacidium vaccinii Fr.	NCBI:1484969	Phacidium vaccinii
+	Phaeoacremonium spp.	NCBI:65412	Phaeoacremonium
+	Phaeocytostroma ambiguum (Mont.) Petr.	NCBI:935936	Phaeocytostroma ambiguum
+	Phaeoisariopsis griseola (Sacc.) Ferraris	NCBI:131320	Phaeoisariopsis griseola
+	Phaeomoniella chlamydospora (W. Gams	NCBI:158046	Phaeomoniella chlamydospora
+	Phakopsora euvitis Y. Ono	NCBI:460369	Phakopsora euvitis
+	Phakopsora meibomiae (Arthur) Arthur	NCBI:169999	Phakopsora meibomiae
+	Phelipanche aegyptiaca (Per.) Pomel	NCBI:99112	Phelipanche aegyptiaca
+	Phelipanche aegyptiaca (Pers.) Pomel	NCBI:99112	Phelipanche aegyptiaca
+	Phelipanche ramosa (L.) Pomel	NCBI:46066	Phelipanche ramosa
+	Phellinus noxius (Corner) G.H. Cunningham	NCBI:418867	Phellinus noxius
+	Phellinus punctatus [P. Karst.]	NCBI:271459	Phellinus punctatus
+	Phoma betae A. B. Frank)	NCBI:137527	Phoma betae
+	Phomopsis columnaris D. F. Farr & Castl.	NCBI:193000	Phomopsis columnaris
+	Phomopsis theae Petch	NCBI:509235	Phomopsis theae
+	Phragmidium potentillae (Pers.	NCBI:1739572	Phragmidium potentillae
+	Phyllosticta ampelicida [Engleman] Van der Aa	NCBI:115983	Phyllosticta ampelicida
+	Phyllosticta citricarpa (McAlpine) Aa (syn. Guignardia citricarpa Kiely)	NCBI:55181	Phyllosticta citricarpa
+	Phyllosticta elongata Weid.	NCBI:121619	Phyllosticta elongata
+	Physalis mottle virus	NCBI:72539	Tymovirus
+	Physalospora vaccinii (Shear) Arx & E. Müll.	NCBI:186529	Physalospora vaccinii
+	Phytophthora cactorum (Leb. & Cohn) Schroet.	NCBI:29920	Phytophthora cactorum
+	Phytophthora cryptogea Pethyb. & Laff.	NCBI:4786	Phytophthora cryptogea
+	Phytophthora drechsleri Tucker f. sp. cajani (Mahendra Pal	NCBI:4794	Phytophthora drechsleri
+	Phytophthora lactucae Bertier	NCBI:1320217	Phytophthora lactucae
+	Phytophthora medicaginis E. M. Hans & D. P. Maxwell	NCBI:54510	Phytophthora medicaginis
+	Phytophthora nicotianae Breda de Haan (syns. P. nicotianae Breda de Haan var. parasitica (Dastur) G. M. Waterhouse	NCBI:4790	Phytophthora nicotianae
+	Phytophthora nicotianae Breda de Haanvar. parasitica (Dastur) G.M. Waterhouse	NCBI:4791	Phytophthora nicotianae parasitica
+	Phytophthora parasitica Dastur)	NCBI:4792	Phytophthora parasitica
+	Phytophthora plurivora T. Jung & T. I. Burgess	NCBI:639000	Phytophthora plurivora
+	Phytophthora ramorum Werres	NCBI:164328	Phytophthora ramorum
+	Phytophthora sansomeana E. M. Hansen	NCBI:555429	Phytophthora sansomeana
+	Phytophthora sojae Kaufm. & Gerd.	NCBI:67593	Phytophthora sojae
+	Phytophthora syringae (Burk.) Kleb.	NCBI:67594	Phytophthora syringae
+	Phytopythium helicoides (Drechsler) Abad et al.	NCBI:126844	Phytopythium helicoides
+	Phytopythium vexans (de Bary) Abad et al.	NCBI:907947	Phytopythium vexans
+	Phytopythium vexans (De Bary) Abad et al.	NCBI:907947	Phytopythium vexans
+	Pichia kluyveri (Bedford)	NCBI:36015	Pichia kluyveri
+	Pilidiella diplodiella (Speg.) Crous & Van Niekerk	NCBI:251300	Pilidiella diplodiella
+	Plasmodiophora brassicae Woronin	NCBI:37360	Plasmodiophora brassicae
+	Plasmopara halstedii (Farl.) Berl. & De Toni	NCBI:4781	Plasmopara halstedii
+	Plasmopara penniseti Kenneth & Kranz.	NCBI:436701	Plasmopara penniseti
+	Plasmopara viticola (Berk. & M. A. Curt.) Berl. & De Toni	NCBI:143451	Plasmopara viticola
+	Plectosphaerella cucumerina (Lindf.) W. Gams	NCBI:40658	Plectosphaerella cucumerina
+	Plectosphaerella melonis (Ts. Watan. & Mas. Sato) A. J. L. Phillips	NCBI:936077	Plectosphaerella melonis
+	Plenodomus lindquistii (Frezzi) Gruyter et al.	NCBI:301713	Plenodomus lindquistii
+	Plenodomus tracheiphilus (Petri) Gruyter	NCBI:1077377	Plenodomus tracheiphilus
+	Pleospora bjoerlingii Byford	NCBI:318712	Pleospora bjoerlingii
+	Pleospora tarda E. G. Simmons	NCBI:120510	Pleospora tarda
+	Podosphaera sp.	NCBI:62701	Podosphaera
+	Podosphaera xanthii (Castagne) U. Braun & Shishkoff	NCBI:135283	Podosphaera xanthii
+	Polymyxa graminis Ledingham	NCBI:70182	Polymyxa graminis
+	Pratylenchus agilis Thorne & Malek	NCBI:110512	Pratylenchus agilis
+	Pratylenchus alleni Ferris	NCBI:623027	Pratylenchus alleni
+	Pratylenchus brachyurus (Godfrey) Filip. & Sch. Stek.	NCBI:45938	Pratylenchus brachyurus
+	Pratylenchus coffeae (Zimmerman) Filip. & Sch. Stek.	NCBI:45937	Pratylenchus coffeae
+	Pratylenchus jaehni Inserra	NCBI:623067	Pratylenchus jaehni
+	Pratylenchus loosi Loof	NCBI:101210	Pratylenchus loosi
+	Pratylenchus mediterraneus Corbett	NCBI:223368	Pratylenchus mediterraneus
+	Pratylenchus neglectus (Rencsh) Filip. & Sch. Stek.	NCBI:222096	Pratylenchus neglectus
+	Pratylenchus neglectus (Rensch) Filipjev Schuurmanns & Stekhoven	NCBI:222096	Pratylenchus neglectus
+	Pratylenchus neglectus (Rensch) Filipjev & Schuurmans-Stekhoven	NCBI:222096	Pratylenchus neglectus
+	Pratylenchus penetrans (Cobb) Chitwood & Oteifa	NCBI:45929	Pratylenchus penetrans
+	Pratylenchus penetrans (Cobb.) Filipjev Schuurmans & Stekhoven	NCBI:45929	Pratylenchus penetrans
+	Pratylenchus penetrans (Cobb) Filip. & Sch. Stek.	NCBI:45929	Pratylenchus penetrans
+	Pratylenchus penetrans (Cobb)	NCBI:45929	Pratylenchus penetrans
+	Pratylenchus pratensis (de Man) Filip.	NCBI:293588	Pratylenchus pratensis
+	Pratylenchus scribneri Steiner in Sherbakoff & Stanley	NCBI:45936	Pratylenchus scribneri
+	Pratylenchus teres Khan & Singh	NCBI:110513	Pratylenchus teres
+	Protoventuria barriae Carris & A. P. Poole	NCBI:415595	Protoventuria barriae
+	Pseudocercospora angolensis (T. Carvalho & O. Mendes) Crous & U. Braun (syn. Phaeoramularia angolensis (de Carvallo & O. Mendes) P. M. Kirk)	NCBI:133175	Pseudocercospora angolensis
+	Pseudocercospora spp.	NCBI:131324	Pseudocercospora
+	Pseudocercospora theae (Cavara) Deighton	NCBI:858824	Pseudocercospora theae
+	Pseudocercospora vitis (Lév) Speg.	NCBI:337446	Pseudocercospora vitis
+	Pseudomonas coronafaciens (ex Elliott) Schaad & Cunfer pv. zeae Ribeiro et al.	NCBI:53409	Pseudomonas coronafaciens
+	Pseudomonas fuscovaginae (ex Tanii	NCBI:50340	Pseudomonas fuscovaginae
+	Pseudomonas marginalis pv. marginalis(Brown) Stevens	NCBI:298	Pseudomonas marginalis
+	Pseudomonas marginalis pv. marginalis	NCBI:298	Pseudomonas marginalis
+	Pseudomonas savastanoi pv. glycinea (Coerper) Gardan et al.	NCBI:29438	Pseudomonas savastanoi
+	Pseudomonas syringae pv. glycinea [Coerper] Young et al.	NCBI:136849	Pseudomonas syringae
+	Pseudomonas syringae pv. helianthi (Kawamura) Dye et al.	NCBI:136849	Pseudomonas syringae
+	Pseudomonas syringae pv. phaseolicola (Burkholder) Young	NCBI:136849	Pseudomonas syringae
+	Pseudomonas syringae pv. Spinaciae van Hall	NCBI:136849	Pseudomonas syringae
+	Pseudomonas syringae pv. syringae (van Hall)	NCBI:136849	Pseudomonas syringae
+	Pseudomonas syringae pv. tabaci (Wolf & Forster) Young et al.	NCBI:136849	Pseudomonas syringae
+	Pseudomonas syringae pv. theae (Hori) Young	NCBI:136849	Pseudomonas syringae
+	Pseudomonas syringae van Hall pv. coronafaciens (Elliott) Young et al.	NCBI:136849	Pseudomonas syringae
+	Pseudomonas syringae van Hall pv. oryzae (ex Kuwata) Young et al.	NCBI:136849	Pseudomonas syringae
+	Pseudomonas syringae van Hall pv. panici (Elliott) Young et al.	NCBI:136849	Pseudomonas syringae
+	Pseudomonas syringae van Hall pv. syringae van Hall	NCBI:136849	Pseudomonas syringae
+	Pseudoperonospora cubensis (Berk. & M. A. Curtis) Rostovzev	NCBI:143453	Pseudoperonospora cubensis
+	Pseudorobillarda sojae Uecker & Kulik	NCBI:635206	Pseudorobillarda sojae
+	Puccinia canaliculata (Schwein.) Lagerh.	NCBI:942846	Puccinia canaliculata
+	Puccinia graminis f. sp. oryzae Gonz. Frag.	NCBI:5297	Puccinia graminis
+	Puccinia graminis Pers. f. sp. secalis Eriks. & E. Henn.	NCBI:5297	Puccinia graminis
+	Puccinia helianthi Schwein.	NCBI:652029	Puccinia helianthi
+	Puccinia purpurea Cooke	NCBI:684838	Puccinia purpurea
+	Pucciniastrum goeppertianum (J. G. Kühn) Kleb.	NCBI:60205	Pucciniastrum goeppertianum
+	Puccinia xanthii Schwein.	NCBI:469762	Puccinia xanthii
+	Punctodera chalcoensis Stone	NCBI:191062	Punctodera chalcoensis
+	Pustula helianthicola C. Rost & Thines	NCBI:1005363	Pustula helianthicola
+	Pustula tragopogonis (Pers.) Thines	NCBI:572139	Pustula tragopogonis
+	Pyrenochaeta acicola (Moug. & Lév.) Sacc.	NCBI:565433	Pyrenochaeta acicola
+	Pythium adhaerens Sparrow	NCBI:289596	Pythium adhaerens
+	Pythium angustatum Sparrow	NCBI:289598	Pythium angustatum
+	Pythium arrhenomanes Drechsler	NCBI:82932	Pythium arrhenomanes
+	Pythium arrhenomanes Drechsl.	NCBI:82932	Pythium arrhenomanes
+	Pythium butleri Subram.	NCBI:140045	Pythium butleri
+	Pythium catenulatum V. D. Matthews	NCBI:83917	Pythium catenulatum
+	Pythium debaryanum R. Hesse (syn.	NCBI:231958	Pythium debaryanum
+	Pythium graminicola Subram.	NCBI:82937	Pythium graminicola
+	Pythium heterothallicum W. A. Campbell & F. F. Hendrix	NCBI:115416	Pythium heterothallicum
+	Pythium inflatum V. D. Matthews	NCBI:82938	Pythium inflatum
+	Pythium irregulare Buisman (syn.	NCBI:36331	Pythium irregulare
+	Pythium lutarium Ali-Shtayeh	NCBI:289618	Pythium lutarium
+	Pythium oligandrum Drechsler	NCBI:41045	Pythium oligandrum
+	Pythium polymastum Dreschsler	NCBI:140046	Pythium polymastum
+	Pythium sylvaticum W. A. Campbell & F. F. Hendrix	NCBI:82950	Pythium sylvaticum
+	Pythium sylvaticum W. A. Camp. & F. F. Hendrix	NCBI:82950	Pythium sylvaticum
+	Pythium tardicrescens Vanterp.	NCBI:944638	Pythium tardicrescens
+	Pythium ultimum (Trow)	NCBI:65071	Pythium ultimum
+	Pythium ultimum Trow (syn.	NCBI:65071	Pythium ultimum
+	Pythium uncinulatum Plaats-Niterink & I. Blok	NCBI:147706	Pythium uncinulatum
+	Radopholus spp.	NCBI:46011	Radopholus
+	Ramularia beticola Fautrey & Lambotte	NCBI:1074005	Ramularia beticola
+	Ramularia macrospora Fresen.	NCBI:1873292	Ramularia macrospora
+	Rhizoctonia bataticola (Taubenhaus) E. J. Butler	NCBI:348105	Rhizoctonia bataticola
+	Rhizoctonia bataticola (Taubenh.) E. J. Butler	NCBI:348105	Rhizoctonia bataticola
+	Rhizoctonia	NCBI:5573	Rhizoctonia
+	Rhizoctonia solani J. G. Kuhn (syn.	NCBI:456999	Rhizoctonia solani
+	Rhizoctonia solani J. G. Kühn (syn.	NCBI:456999	Rhizoctonia solani
+	Rhizoctonia solani Kϋhn	NCBI:456999	Rhizoctonia solani
+	Rhizopus oryzae Went & Prins. Geerl.	NCBI:64495	Rhizopus oryzae
+	Rhizorhapis suberifaciens et al.	NCBI:13656	Rhizorhapis suberifaciens
+	Rhizosphaera spp.	NCBI:1191179	Rhizosphaera
+	Rhynchosia golden mosaic virus	NCBI:117198	Begomovirus
+	Rhytidhysteron rufulum (Spreng.) Speg.	NCBI:37885	Rhytidhysteron rufulum
+	Rosellinia arcuata Petch	NCBI:82694	Rosellinia arcuata
+	Rosellinia necatrix Prill. (syn. Dematophora necatrix R. Hartig)	NCBI:77044	Rosellinia necatrix
+	Rosellinia necatrix Prill.v	NCBI:77044	Rosellinia necatrix
+	Rosellinia subiculata (Schwein.	NCBI:323536	Rosellinia subiculata
+	Rotylenchulus parvus Sher	NCBI:1771353	Rotylenchulus parvus
+	Rotylenchulus parvus (Williams) Sher	NCBI:1771353	Rotylenchulus parvus
+	Rotylenchus goodeyi Loof & Oostenbrink	NCBI:293586	Rotylenchus goodeyi
+	Saccharomyces cerevisiae Kreger-van Rij	NCBI:4932	Saccharomyces cerevisiae
+	Saccharomycopsis crataegensis Kurtzman and Wickerham	NCBI:43959	Saccharomycopsis crataegensis
+	Saccharomycopsis vini	NCBI:44085	Saccharomycopsis vini
+	Sarocladium attenuatum W. Gams & D. Hawksw.	NCBI:284136	Sarocladium attenuatum
+	Sarocladium oryzae (Sawada) W. Gams & D. Hawksw.	NCBI:284135	Sarocladium oryzae
+	Sarocladium strictum (W. Gams) Summerb.	NCBI:5046	Sarocladium strictum
+	Satsuma dwarf virus	NCBI:47416	Sadwavirus
+	Sclerospora graminicola (Sacc.) Schroet.	NCBI:162130	Sclerospora graminicola
+	Scutellonema brachyurum (Steiner) Andrássy	NCBI:363723	Scutellonema brachyurum
+	Seimatosporium vaccinii (Fuckel) B. Erikss.	NCBI:162421	Seimatosporium vaccinii
+	Selenophoma spp.	NCBI:242511	Selenophoma
+	Septobasidium pilosum Boedijn & B.A. Steinman	NCBI:357018	Septobasidium pilosum
+	Septoria albopunctata Cooke	NCBI:333100	Septoria albopunctata
+	Septoria apiicola Speg.	NCBI:215473	Septoria apiicola
+	Septoria glycines Hemmi	NCBI:215477	Septoria glycines
+	Septoria helianthicola Cooke & Harkn.	NCBI:266400	Septoria helianthicola
+	Serratia marcescens Bizio	NCBI:615	Serratia marcescens
+	Setophoma terrestris (H. N. Hansen) Gruyter	NCBI:798162	Setophoma terrestris
+	Setosphaeria rostrata K. J. Leonard)	NCBI:45150	Setosphaeria rostrata
+	Setosphaeria rostrata K. J. Leonard	NCBI:45150	Setosphaeria rostrata
+	Setosphaeria turcica (Luttrell) K. J. Leonard & E. G. Suggs	NCBI:93612	Setosphaeria turcica
+	Setosphaeria turcica (Luttr.)	NCBI:93612	Setosphaeria turcica
+	Sida micrantha mosaic virus	NCBI:228897	Begomovirus
+	Sida mottle virus	NCBI:191460	Begomovirus
+	Sorghum chlorotic spot virus	NCBI:107804	Furovirus
+	Sorghum mosaic virus	NCBI:32619	Potyvirus
+	Soybean blistering mosaic virus	NCBI:408136	Begomovirus
+	Soybean chlorotic mottle virus	NCBI:10651	Soymovirus
+	Soybean chlorotic spot virus	NCBI:1221206	Begomovirus
+	Soybean crinkle leaf virus	NCBI:85753	Begomovirus
+	Soybean dwarf virus	NCBI:12049	Luteovirus
+	Soybean mild mottle virus	NCBI:761701	Begomovirus
+	Soybean yellow mottle mosaic virus	NCBI:578361	Tombusviridae
+	Sphaeropsis porosa (Van Niekerk & Crous) A. J. L. Phillips & A. Alves	NCBI:240344	Sphaeropsis porosa
+	Spinach curly top virus	NCBI:270342	Curtovirus
+	Spinach severe curly top virus	NCBI:873160	Curtovirus
+	Spiroplasma citri Saglio	NCBI:2133	Spiroplasma citri
+	Spongospora subterranea (Wallr.) Lagerh. f. sp. subterranea Tomlinson	NCBI:70186	Spongospora subterranea
+	Sporisorium cruentum (Kühn) K. Vánky	NCBI:185361	Sporisorium cruentum
+	Sporisorium	NCBI:63265	Sporisorium
+	Sporisorium reilianum (J. G. Kühn Langdon & Full.	NCBI:72558	Sporisorium reilianum
+	Sporisorium reilianum (Kühn) Langdon & Fullerton	NCBI:72558	Sporisorium reilianum
+	Sporisorium sorghi Ehrenb. ex Link	NCBI:63387	Sporisorium sorghi
+	Sporisorium sorghi Link in Willd.	NCBI:63387	Sporisorium sorghi
+	Stachybotrys chartarum (Ehrenb.) S. Hughes	NCBI:74722	Stachybotrys chartarum
+	Stagonosporopsis caricae (Sydow & P. Sydow) Aveskamp	NCBI:749887	Stagonosporopsis caricae
+	Stemonitis spp.	NCBI:137616	Stemonitis
+	Stemphylium lycopersici (Enjoji) Yamamoto	NCBI:183478	Stemphylium lycopersici
+	Stemphylium solani Weber	NCBI:110364	Stemphylium solani
+	Stemphylium vesicarium (Wallr.) E. G. Simmons	NCBI:119933	Stemphylium vesicarium
+	Stenocarpella macrospora (Earle) B. Sutton	NCBI:371126	Stenocarpella macrospora
+	Stenocarpella maydis (Berk.) B. Sutton	NCBI:238245	Stenocarpella maydis
+	Stenocarpella maydis(Berk.) B. Sutton	NCBI:238245	Stenocarpella maydis
+	Strasseria geniculata (Berk. & Broome) Höhn.	NCBI:1395782	Strasseria geniculata
+	Streptomyces scabiei corr. (ex Thaxter) Lambert & Loria	NCBI:1930	Streptomyces scabiei
+	Striga hermonthica Benth.	NCBI:68872	Striga hermonthica
+	Subplenodomus apiicola (Kleb.) Gruyter	NCBI:749645	Subplenodomus apiicola
+	Sugarcane streak mosaic virus	NCBI:53954	Poacevirus
+	Sunflower chlorotic mottle virus	NCBI:129732	Potyvirus
+	Sunflower mild mosaic virus	NCBI:715480	Potyviridae
+	Sunflower mosaic virus	NCBI:185017	Potyvirus
+	Syncephalastrum spp.	NCBI:13705	Syncephalastrum
+	Tapinanthus spp.	NCBI:50164	Tapinanthus
+	Thanatephorus cucumeris [A. B. Frank)] Donk	NCBI:107832	Thanatephorus cucumeris
+	Thanatephorus cucumeris (Frank) Donk	NCBI:107832	Thanatephorus cucumeris
+	Thekopsora minima P. Syd. & Syd.	NCBI:761846	Thekopsora minima
+	Thielaviopsis basicola (Berk. & Broome) Ferraris (syn. Chalara elegans Nag Raj & W. B. Kendr.)	NCBI:124036	Thielaviopsis basicola
+	Thielaviopsis paradoxa (De Seyn.) Hohn.	NCBI:13001	Thielaviopsis paradoxa
+	Thyrostroma compactum (Sacc.) Hohn.	NCBI:1871393	Thyrostroma compactum
+	Tilletia barclayana (Bref.) Sacc. & Syd.	NCBI:157178	Tilletia barclayana
+	Tilletia horrida Takah.	NCBI:155126	Tilletia horrida
+	Tobacco leaf curl	NCBI:587314	Tobacco leaf curl
+	Tomato big bud phytoplasma (‘Candidatus Phytoplasma australasia’)	NCBI:1735985	Tomato big bud phytoplasma
+	Tomato chlorotic spot virus	NCBI:12851	Tospoviridae
+	Tomato necrotic dwarf virus	NCBI:1481465	Torradovirus
+	Trichoderma spp.	NCBI:5543	Trichoderma
+	Trichothecium roseum (Pers.) Link	NCBI:47278	Trichothecium roseum
+	Trochila sp. [teleomorph]	NCBI:1792691	Trochila
+	Tuberculina sp.	NCBI:232893	Tuberculina
+	Turnip mosaic virus	NCBI:12230	Potyvirus
+	Tylenchorhynchus brassicae Siddiqi	NCBI:1544705	Tylenchorhynchus brassicae
+	Tylenchorhynchus clarus Allen	NCBI:1544706	Tylenchorhynchus clarus
+	Tylenchorhynchus zeae Sethi & Swarup	NCBI:436456	Tylenchorhynchus zeae
+	Tyromyces fissilis (Berk. & M. A. Curtis) Donk	NCBI:1040649	Tyromyces fissilis
+	Urocystis hispanica (Syd.) Zundel)	NCBI:1983700	Urocystis hispanica
+	Urocystis occulta (Wallr.) Rabenh. ex Fuckel	NCBI:1983702	Urocystis occulta
+	Urocystis tritici Körn. (syns. Tuburcinia hispanica Syd.	NCBI:1983703	Urocystis tritici
+	Uromyces ciceris-arietini Jacz.	NCBI:652030	Uromyces ciceris-arietini
+	Uromyces coronatus Miyabe & Nishida ex Dietel	NCBI:860301	Uromyces coronatus
+	Uromyces junci (Desm.) Tul.	NCBI:190630	Uromyces junci
+	Ustilago maydis (DC.) Corda	NCBI:5270	Ustilago maydis
+	Vaccinium spp.	NCBI:13749	Vaccinium
+	Valdensinia heterodoxa Peyronel	NCBI:54691	Valdensinia heterodoxa
+	Verticillium isaacii Inderb. et al.	NCBI:1051614	Verticillium isaacii
+	Verticillium klebahnii Inderb. et al.	NCBI:1051615	Verticillium klebahnii
+	Verticillium spp.	NCBI:301152	Verticillium
+	Vitis vinifera L.	NCBI:29760	Vitis vinifera
+	Vittatidera zeaphila Bernard et al.	NCBI:1031276	Vittatidera zeaphila
+	Xanthomonas alfalfae subsp. citrumelonis Schaad et al. (syns. X. axonopodis pv. citrumelo (Gabriel et al.) Vauterin et al.	NCBI:189396	Xanthomonas alfalfae citrumelonis
+	Xanthomonas axonopodis pv. glycines (Nakano) Vauterin et al.	NCBI:53413	Xanthomonas axonopodis
+	Xanthomonas campestris (Pammel) Dowson pv. oryzae (Ishiyama) Dye	NCBI:339	Xanthomonas campestris
+	Xanthomonas campestris (Pammel) Dowson pv. oryzicola (Fang et al.) Dye	NCBI:339	Xanthomonas campestris
+	Xanthomonas campestris (Pammel) Dowson pv. pennamericanum	NCBI:339	Xanthomonas campestris
+	Xanthomonas campestris pv. cassiae (Kulkarni et al.) Dye	NCBI:339	Xanthomonas campestris
+	Xanthomonas campestris pv. citri (Hasse) Dye)	NCBI:339	Xanthomonas campestris
+	Xanthomonas campestris pv. citrumelo (Hasse))	NCBI:339	Xanthomonas campestris
+	Xanthomonas campestris pv.	NCBI:339	Xanthomonas campestris
+	Xanthomonas campestris pv. theicola Uehara	NCBI:339	Xanthomonas campestris
+	Xanthomonas campestris pv. vesicatoria (ex Doidge) Vauterin et al.	NCBI:339	Xanthomonas campestris
+	Xanthomonas citri subsp. citri (ex Hasse) Gabriel et al. (syns. X. axonopodis pv. citri Hasse	NCBI:611301	Xanthomonas citri citri
+	Xanthomonas cucurbitae (ex Bryan) Vauterin et al.	NCBI:56453	Xanthomonas cucurbitae
+	Xanthomonas euvesicatoria Jones et al.	NCBI:456327	Xanthomonas euvesicatoria
+	Xanthomonas gardneri (ex Šutić) Jones et al.	NCBI:90270	Xanthomonas gardneri
+	Xanthomonas oryzae (ex Ishiyama) Swings et al. pv. oryzae (ex Ishiyama) Swings et al.	NCBI:347	Xanthomonas oryzae
+	Xanthomonas oryzae (ex Ishiyama) Swings et al. pv. oryzicola (Fang et al.) Swings et al.	NCBI:347	Xanthomonas oryzae
+	Xanthomonas perforans Jones et al.	NCBI:442694	Xanthomonas perforans
+	Xanthomonas vasicola pv. holcicola (Elliott) Vauterin et al.	NCBI:56459	Xanthomonas vasicola
+	Xanthomonas vasicola pv. vasculorum (Cobb) comb. nov.	NCBI:56459	Xanthomonas vasicola
+	Xanthomonas vesicatoria (ex Doidge) Vauterin et al.	NCBI:56460	Xanthomonas vesicatoria
+	Xiphinema brevicolle Lordello & Da Costa	NCBI:243734	Xiphinema brevicolle
+	Xiphinema chambersi Thorne	NCBI:208520	Xiphinema chambersi
+	Xiphinema citricolum Lamberti & Bleve-Zacheo	NCBI:346528	Xiphinema citricolum
+	Xiphinema insigne Loos	NCBI:266784	Xiphinema insigne
+	Xiphinema laevistriatum Lamberti & Bleve-Zacheo	NCBI:360274	Xiphinema laevistriatum
+	Xiphinema vuittenezi Luc	NCBI:191821	Xiphinema vuittenezi
+	Xiphinema vulgare Tarjan	NCBI:360275	Xiphinema vulgare
+	Xylella fastidiosa Wells et al. subsp. multiplex Schaad et al.	NCBI:644357	Xylella fastidiosa multiplex
+	Xylophilus ampelinus (Panagopoulos 1969) Williams et al.	NCBI:54067	Xylophilus ampelinus
+	Yeast	NCBI:293968	Yeast
+	Zasmidium citri-griseum (F. E. Fisher) U. Braun (syns. Cercospora citri-grisea F. E. Fisher	NCBI:1629917	Zasmidium citri-griseum
