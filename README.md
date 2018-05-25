@@ -1,7 +1,7 @@
 # samara*
 A commandline tool to extract plant trait data from [open data sources](sources.md).
 
-[![Build Status](https://travis-ci.org/jhpoelen/samara.svg?branch=master)](https://travis-ci.org/jhpoelen/samara) [![DOI](https://zenodo.org/badge/60880220.svg)](https://zenodo.org/badge/latestdoi/60880220)
+[![Build Status](https://travis-ci.org/Planteome/samara.svg?branch=master)](https://travis-ci.org/Planteome/samara) [![DOI](https://zenodo.org/badge/60880220.svg)](https://zenodo.org/badge/latestdoi/60880220)
 
 Plants trait data from recent automated scrapes are available at [APSNet](https://build.berkeleybop.org/view/Planteome/job/extract-apsnet-diseases/) or [ARS-GRIN](https://build.berkeleybop.org/view/Planteome/job/extract-grin-traits/). 
 
@@ -18,7 +18,7 @@ sbt 0.13.8+/java jdk 8+/git/maven 3.3+
 3. run tests by ```sbt test```
 
 ## download
-Don't like building your own jar? Go to [releases](https://github.com/jhpoelen/samara/releases), pick a release and download the jar from there. 
+Don't like building your own jar? Go to [releases](https://github.com/Planteome/samara/releases), pick a release and download the jar from there. 
 
 
 ## usage
