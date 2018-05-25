@@ -44,8 +44,16 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
       accession = expectedAccession)
 
     objs.size should be > 0
-    objs should contain(obs)
-    objs.foreach(println)
+    val actualMatchingAccessions = objs.filter(_.accession.id == accessionId)
+    actualMatchingAccessions should not be empty
+    val actualAccession = actualMatchingAccessions.head
+    actualAccession.descriptor should be(expectedDescriptor)
+    actualAccession.method should be(expectedMethod)
+    actualAccession.accession.detail.name should be(expectedAccessionDetails.name)
+    actualAccession.accession.detail.number should be(expectedAccessionDetails.number)
+    actualAccession.accession.detail.collectedFrom should be(expectedAccessionDetails.collectedFrom)
+    actualAccession.accession.detail.taxa should be(expectedAccessionDetails.taxa)
+    actualAccession.accession.detail.references should not be empty
   }
 
 
