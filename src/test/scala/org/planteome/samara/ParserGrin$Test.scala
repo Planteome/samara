@@ -83,12 +83,6 @@ class ParserGrin$Test extends FlatSpec with Matchers with TermFinderStatic with 
     observations.size should be(33)
   }
 
-  "parsing reference" should "omit comments" in {
-    ParserGrinStatic.extractReference("Reference: xyz Comment: abc") should be(Some("xyz"))
-    ParserGrinStatic.extractReference("Reference: xyz") should be(Some("xyz"))
-  }
-
-
   "parsing taxon page" should "return a taxon path" in {
     val doc: Document = parse("grin/taxonomydetail.aspx")
     val (scientificName, ranks) = ParserGrinStatic.parseTaxonPage(doc)

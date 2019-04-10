@@ -29,7 +29,7 @@ class NCBILinkOut$Test extends FlatSpec with Matchers with NCBILinkOut {
 
   "id map builder" should "build a map linking grin taxon id with ncbi ids" in {
     val ids: Seq[Int] = findNCBITaxonIdsWithGRINTaxonLinkOut
-    val ncbiTaxonIdLookup = buildIdMap(ids.take(5))
+    val ncbiTaxonIdLookup = buildIdMap(ids.take(1))
 
     ncbiTaxonIdLookup.get(30022) should be(Some(329890))
     ncbiTaxonIdLookup.get(3025) should be(Some(329890))

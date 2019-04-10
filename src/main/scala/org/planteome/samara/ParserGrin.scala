@@ -106,10 +106,18 @@ abstract class ParserGrin extends Scrubber {
     }
 
 
-    val referenceRegex: Regex = """(Reference: )(.*)((Comment:)(.*))?$""".r
-    val listItems = doc >> elements("li")
-    val references = listItems.flatMap {
-      elem => extractReference(elem.text)
+    val citationsH1 = doc >> elements("div > h1")
+    val citationsDiv = citationsH1
+      .filter {
+        _.text == "Citations"
+      }
+      .flatMap {
+        _.parent
+      }
+
+    val references = citationsDiv.headOption match {
+      case Some(row) => row >> texts("li")
+      case None => Iterable.empty
     }
 
     val aElem = doc >> elements("b")
@@ -141,18 +149,6 @@ abstract class ParserGrin extends Scrubber {
           }
           case _ => None
         })
-  }
-
-  def extractReference(citationText: String): Option[String] = {
-    val referenceRegex: Regex = """(Reference: )(.*)""".r
-    val commentRegex: Regex = """(.*)(Comment:)(.*)""".r
-    citationText match {
-      case referenceRegex(_, ref) => ref match {
-        case commentRegex(refNoCmt, _, _) => Some(refNoCmt.trim)
-        case _ => Some(ref.trim)
-      }
-      case _ => None
-    }
   }
 
   def parseObservationsForAccession(doc: Document): Iterable[(Descriptor, Method, String)] = {
@@ -191,7 +187,7 @@ abstract class ParserGrin extends Scrubber {
 
     val scientificName = scrub(h1.replace("Taxon:", ""))
 
-    val (names, urls) = table >> element("table.grid") >>(texts("a"), attrs("href")("a"))
+    val (names, urls) = table >> element("table.grid") >> (texts("a"), attrs("href")("a"))
 
     val ranks = extractTaxa(names, urls, """(taxonomy)(\w+)(.aspx\?id=)(\d+)""".r)
     val familyRanks = extractTaxa(names, urls, """(taxonomyfamily.aspx\?type=)(\w+)(&id=)(\d+)""".r)

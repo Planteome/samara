@@ -53,7 +53,11 @@ class ScraperGrin$Test extends FlatSpec with Matchers {
     actualAccession.accession.detail.number should be(expectedAccessionDetails.number)
     actualAccession.accession.detail.collectedFrom should be(expectedAccessionDetails.collectedFrom)
     actualAccession.accession.detail.taxa should be(expectedAccessionDetails.taxa)
-    actualAccession.accession.detail.references should not be empty
+    actualAccession.accession.detail.references.filter(_.contains("C.C. Anker and R.E. Niks. 2001. ")) should not be empty
+    actualAccession.accession.detail.references.filter(_.contains("Accession was collected")) should be(empty)
+    actualAccession.accession.detail.references.filter(_.contains("Accession was donated")) should be(empty)
+    actualAccession.accession.detail.references.size should be > 1
+
   }
 
 
