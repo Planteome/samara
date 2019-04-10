@@ -28,9 +28,9 @@ object ScraperApsnet extends Scraper with ResourceUtil {
     getTry(s"$prefix/commonnames/Pages/default.aspx") match {
       case Success(doc) =>
         Parser.parsePageIndex(doc)
-          .filterNot(_.contains("Turfgrasses"))
-          .filterNot(_.contains("Conifer"))
-          .filterNot(_.contains("Kalanchoë"))
+          .filterNot(_.contains("Turfgrasses")) // 
+          .filterNot(_.contains("Conifer")) // see https://github.com/Planteome/samara/issues/58
+          .filterNot(_.contains("Kalanchoë")) // see https://github.com/Planteome/samara/issues/59
           .flatMap(page => {
             Parser.parse(get(page)).map((page, today, _))
           })
