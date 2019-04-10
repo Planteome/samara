@@ -44,6 +44,13 @@ class ParserApsnet$Test extends FlatSpec with Matchers with TermFinderStatic wit
       citation = expectedCitations.alfalfa))
   }
 
+  ignore should "result in pathogen-host interactions for diseases in Conifers" in {
+    val doc: Document = parse("apsnet/Conifer.aspx")
+    val interactions: Iterable[Disease] = ParserApsnetStatic$.parse(doc)
+
+    interactions should not(be(empty))
+  }
+
   "Parsing Peach and Nectarine" should "result in pathogen-host interactions for disease" in {
     parsePeaches should contain(Disease(name = "Bacterial canker",
       verbatimPathogen = "Pseudomonas syringae pv. syringae van Hall 1902",

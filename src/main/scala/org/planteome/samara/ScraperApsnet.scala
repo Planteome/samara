@@ -24,10 +24,12 @@ object ScraperApsnet extends Scraper with ResourceUtil {
   }
 
   def scrapeDiseases(): Iterable[(String, String, Disease)] = {
-    getTry("http://www.apsnet.org/publications/commonnames/Pages/default.aspx") match {
+    val prefix = "https://www.apsnet.org/edcenter/resources/"
+    getTry(s"$prefix/commonnames/Pages/default.aspx") match {
       case Success(doc) =>
         Parser.parsePageIndex(doc)
           .filterNot(_.contains("Turfgrasses"))
+          .filterNot(_.contains("Conifer"))
           .flatMap(page => {
             Parser.parse(get(page)).map((page, today, _))
           })
