@@ -30,6 +30,7 @@ object ScraperApsnet extends Scraper with ResourceUtil {
         Parser.parsePageIndex(doc)
           .filterNot(_.contains("Turfgrasses"))
           .filterNot(_.contains("Conifer"))
+          .filterNot(_.contains("Kalanchoë"))
           .flatMap(page => {
             Parser.parse(get(page)).map((page, today, _))
           })
