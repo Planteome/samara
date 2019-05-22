@@ -83,6 +83,23 @@ class ParserGrin$Test extends FlatSpec with Matchers with TermFinderStatic with 
     observations.size should be(33)
   }
 
+  "parsing assession observations page 20190522" should "list all observations for assession" in {
+    val doc: Document = parse("grin/AccessionObservation20190522.aspx")
+    val observations: Iterable[(Descriptor, Method, String)] = ParserGrinStatic.parseObservationsForAccession(doc)
+
+    observations should contain((
+      Descriptor(
+        id = 65098,
+        name = Some("Stripe Rust Adult Reaction MTV"),
+        definition = Some("Reaction to Stripe Rust (incited by Puccinia striiformis) in the adult plant stage in the field.  See also related descriptor Stripe Rust Adult Severity.  Grown in Mt. Vernon.")
+      ),
+      Method(
+        id = 402008,
+        name = Some("WHEAT.STRIPERUST.MTVERNON.87")
+      ),
+      "0 - RESISTANT, NO SYMPTOMS"))
+  }
+
   "parsing taxon page" should "return a taxon path" in {
     val doc: Document = parse("grin/taxonomydetail.aspx")
     val (scientificName, ranks) = ParserGrinStatic.parseTaxonPage(doc)
