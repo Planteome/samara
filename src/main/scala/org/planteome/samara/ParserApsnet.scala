@@ -42,7 +42,8 @@ abstract class ParserApsnet extends TermFinder with Scrubber {
         }
       }).reverse
 
-    val targetTaxonNames = doc >> text("h1")
+    val targetTaxonNames = doc >> text("h1").map(_.replace("DisplayTitle", "").trim)
+
     val authorInfo = doc >> text("h4")
 
     val citation = s"$authorInfo. $targetTaxonNames. The American Phytopathological Society."

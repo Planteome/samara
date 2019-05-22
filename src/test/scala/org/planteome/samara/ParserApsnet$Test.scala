@@ -18,7 +18,14 @@ object expectedHosts {
 class ParserApsnet$Test extends FlatSpec with Matchers with TermFinderStatic with ParseTestUtil {
 
   "Parsing Alfalfa" should "result in pathogen-host interactions for disease" in {
-    val doc: Document = parse("apsnet/Alfalfa.aspx")
+    assertAlfalfaPathogen(parse("apsnet/Alfalfa.aspx"))
+  }
+
+  "Parsing Alfalfa2" should "result in pathogen-host interactions for disease" in {
+    assertAlfalfaPathogen(parse("apsnet/Alfalfa2.aspx"))
+  }
+
+  private def assertAlfalfaPathogen(doc: Document) = {
     val interactions: Iterable[Disease] = ParserApsnetStatic$.parse(doc)
 
     interactions should contain(Disease(name = "Alfalfa witches’-broom",
@@ -43,6 +50,7 @@ class ParserApsnet$Test extends FlatSpec with Matchers with TermFinderStatic wit
       hostPartId = "id[Red clover vein mosaic]",
       citation = expectedCitations.alfalfa))
   }
+
 
   ignore should "result in pathogen-host interactions for diseases in Conifers" in {
     val doc: Document = parse("apsnet/Conifer.aspx")
