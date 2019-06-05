@@ -12,7 +12,7 @@ object ScraperApsnet extends Scraper with ResourceUtil {
 
   object Parser extends ParserApsnet with TermFinderProxy
 
-  override def scrape() = {
+  override def scrape(): Unit = {
     println("disease_name\tsource_taxon_verbatim_name\tsource_taxon_name\tsource_taxon_id\tinteraction_type_label\tinteraction_type_id\ttarget_taxon_verbatim_name\ttarget_taxon_name\ttarget_taxon_id\ttarget_part_name\ttarget_part_id\tsource_citation\tsource_url\tsource_accessed_at")
     scrapeDiseases().foreach {
       case (page: String, accessedAt: String, disease: Disease) => {
@@ -20,7 +20,6 @@ object ScraperApsnet extends Scraper with ResourceUtil {
         println(s"${disease.name}\t${disease.verbatimPathogen}\t${disease.pathogen}\t${disease.pathogenId}\tpathogen of\thttp://purl.obolibrary.org/obo/RO_0002556\t${disease.verbatimHost}\t${disease.host}\t${disease.hostId}\t${disease.hostPartName}\t${disease.hostPartId}\t$citationFull\t$page\t$accessedAt")
       }
     }
-
   }
 
   def scrapeDiseases(): Iterable[(String, String, Disease)] = {
@@ -32,9 +31,11 @@ object ScraperApsnet extends Scraper with ResourceUtil {
           .filterNot(_.contains("Conifer")) // see https://github.com/Planteome/samara/issues/58
           .filterNot(_.contains("Kalanchoë")) // see https://github.com/Planteome/samara/issues/59
           .flatMap(page => {
-            Parser.parse(get(page)).map((page, today, _))
-          })
-      case Failure(e) => Seq.empty[(String, String, Disease)]
+          Parser.parse(get(page)).map((page, today, _))
+        })
+      case Failure(e) => {
+        throw e;
+      }
     }
   }
 

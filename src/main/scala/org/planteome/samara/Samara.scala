@@ -38,7 +38,12 @@ object Samara extends App {
       config.mode match {
         case "scrape" =>
           sourceMap.get(config.source) match {
-            case Some(scraper) => scraper.scrape()
+            case Some(scraper) => try {
+              scraper.scrape()
+              System.exit(0)
+            } catch {
+              case e: Throwable => System.exit(1)
+            }
             case None =>
           }
         case "list" =>
